@@ -18,6 +18,19 @@
 		E6C5D7EA23D9B3820038A920 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6C5D7E823D9B3820038A920 /* Main.storyboard */; };
 		E6C5D7EC23D9B3840038A920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6C5D7EB23D9B3840038A920 /* Assets.xcassets */; };
 		E6C5D7EF23D9B3840038A920 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6C5D7ED23D9B3840038A920 /* LaunchScreen.storyboard */; };
+		F623D41723DF05140046C482 /* alpinebi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F623D41523DF05140046C482 /* alpinebi.xcdatamodeld */; };
+		F623D42023DF07D30046C482 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F623D41F23DF07D30046C482 /* UserManager.swift */; };
+		F623D42223DF08050046C482 /* ServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F623D42123DF08050046C482 /* ServiceHandler.swift */; };
+		F623D42423DF08710046C482 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F623D42323DF08710046C482 /* CoreDataManager.swift */; };
+		F689B95D23E1487D00F00D9E /* PreferencesUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B95C23E1487D00F00D9E /* PreferencesUtil.swift */; };
+		F689B95F23E15E7600F00D9E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B95E23E15E7600F00D9E /* LoginViewController.swift */; };
+		F689B96123E16AA000F00D9E /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96023E16AA000F00D9E /* StringConstants.swift */; };
+		F689B96323E16BBE00F00D9E /* MessageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96223E16BBE00F00D9E /* MessageFormat.swift */; };
+		F689B96523E16C9E00F00D9E /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96423E16C9E00F00D9E /* GlobalData.swift */; };
+		F689B96723E1718200F00D9E /* DashboardTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96623E1718200F00D9E /* DashboardTabController.swift */; };
+		F689B96C23E19B0900F00D9E /* CustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96B23E19B0900F00D9E /* CustomerTableViewController.swift */; };
+		F689B96E23E1A1B500F00D9E /* CustomerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96D23E1A1B500F00D9E /* CustomerTableViewCell.swift */; };
+		F6B6961423E2BD9B004C49BF /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B6961323E2BD9B004C49BF /* SignOutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +47,20 @@
 		E6C5D7EB23D9B3840038A920 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6C5D7EE23D9B3840038A920 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6C5D7F023D9B3840038A920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F623D41623DF05140046C482 /* alpinebi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = alpinebi.xcdatamodel; sourceTree = "<group>"; };
+		F623D41F23DF07D30046C482 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		F623D42123DF08050046C482 /* ServiceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHandler.swift; sourceTree = "<group>"; };
+		F623D42323DF08710046C482 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F689B95C23E1487D00F00D9E /* PreferencesUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesUtil.swift; sourceTree = "<group>"; };
+		F689B95E23E15E7600F00D9E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F689B96023E16AA000F00D9E /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		F689B96223E16BBE00F00D9E /* MessageFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormat.swift; sourceTree = "<group>"; };
+		F689B96423E16C9E00F00D9E /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
+		F689B96623E1718200F00D9E /* DashboardTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabController.swift; sourceTree = "<group>"; };
+		F689B96823E1800D00F00D9E /* AlpineBI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlpineBI.entitlements; sourceTree = "<group>"; };
+		F689B96B23E19B0900F00D9E /* CustomerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewController.swift; sourceTree = "<group>"; };
+		F689B96D23E1A1B500F00D9E /* CustomerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewCell.swift; sourceTree = "<group>"; };
+		F6B6961323E2BD9B004C49BF /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +112,10 @@
 		E6C5D7E123D9B3820038A920 /* AlpineBI */ = {
 			isa = PBXGroup;
 			children = (
+				F689B96823E1800D00F00D9E /* AlpineBI.entitlements */,
+				F689B95B23E1486D00F00D9E /* Utils */,
+				F623D41D23DF07BE0046C482 /* Managers */,
+				F623D41E23DF07BF0046C482 /* Services */,
 				E6ABC51723DB02FE00AF84C1 /* icons */,
 				E6ABC51423DAE99400AF84C1 /* images */,
 				E6C5D7E223D9B3820038A920 /* AppDelegate.swift */,
@@ -94,8 +125,42 @@
 				E6C5D7EB23D9B3840038A920 /* Assets.xcassets */,
 				E6C5D7ED23D9B3840038A920 /* LaunchScreen.storyboard */,
 				E6C5D7F023D9B3840038A920 /* Info.plist */,
+				F623D41523DF05140046C482 /* alpinebi.xcdatamodeld */,
+				F689B95E23E15E7600F00D9E /* LoginViewController.swift */,
+				F689B96623E1718200F00D9E /* DashboardTabController.swift */,
+				F689B96B23E19B0900F00D9E /* CustomerTableViewController.swift */,
+				F689B96D23E1A1B500F00D9E /* CustomerTableViewCell.swift */,
+				F6B6961323E2BD9B004C49BF /* SignOutViewController.swift */,
 			);
 			path = AlpineBI;
+			sourceTree = "<group>";
+		};
+		F623D41D23DF07BE0046C482 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F623D41F23DF07D30046C482 /* UserManager.swift */,
+				F623D42323DF08710046C482 /* CoreDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F623D41E23DF07BF0046C482 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F623D42123DF08050046C482 /* ServiceHandler.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F689B95B23E1486D00F00D9E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F689B95C23E1487D00F00D9E /* PreferencesUtil.swift */,
+				F689B96023E16AA000F00D9E /* StringConstants.swift */,
+				F689B96223E16BBE00F00D9E /* MessageFormat.swift */,
+				F689B96423E16C9E00F00D9E /* GlobalData.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +195,11 @@
 				TargetAttributes = {
 					E6C5D7DE23D9B3810038A920 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -174,9 +244,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F689B95F23E15E7600F00D9E /* LoginViewController.swift in Sources */,
+				F689B95D23E1487D00F00D9E /* PreferencesUtil.swift in Sources */,
 				E6C5D7E723D9B3820038A920 /* SecondViewController.swift in Sources */,
+				F623D42023DF07D30046C482 /* UserManager.swift in Sources */,
+				F689B96323E16BBE00F00D9E /* MessageFormat.swift in Sources */,
+				F689B96E23E1A1B500F00D9E /* CustomerTableViewCell.swift in Sources */,
 				E6C5D7E323D9B3820038A920 /* AppDelegate.swift in Sources */,
+				F689B96523E16C9E00F00D9E /* GlobalData.swift in Sources */,
 				E6C5D7E523D9B3820038A920 /* FirstViewController.swift in Sources */,
+				F623D42223DF08050046C482 /* ServiceHandler.swift in Sources */,
+				F689B96C23E19B0900F00D9E /* CustomerTableViewController.swift in Sources */,
+				F623D42423DF08710046C482 /* CoreDataManager.swift in Sources */,
+				F689B96723E1718200F00D9E /* DashboardTabController.swift in Sources */,
+				F689B96123E16AA000F00D9E /* StringConstants.swift in Sources */,
+				F6B6961423E2BD9B004C49BF /* SignOutViewController.swift in Sources */,
+				F623D41723DF05140046C482 /* alpinebi.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AlpineBI/AlpineBI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2RLNL6C4P;
 				INFOPLIST_FILE = AlpineBI/Info.plist;
@@ -340,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AlpineBI/AlpineBI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2RLNL6C4P;
 				INFOPLIST_FILE = AlpineBI/Info.plist;
@@ -376,6 +461,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F623D41523DF05140046C482 /* alpinebi.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F623D41623DF05140046C482 /* alpinebi.xcdatamodel */,
+			);
+			currentVersion = F623D41623DF05140046C482 /* alpinebi.xcdatamodel */;
+			path = alpinebi.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E6C5D7D723D9B3810038A920 /* Project object */;
 }
