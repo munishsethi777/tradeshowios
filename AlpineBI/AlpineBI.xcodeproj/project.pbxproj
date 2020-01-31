@@ -22,6 +22,10 @@
 		F623D42023DF07D30046C482 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F623D41F23DF07D30046C482 /* UserManager.swift */; };
 		F623D42223DF08050046C482 /* ServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F623D42123DF08050046C482 /* ServiceHandler.swift */; };
 		F623D42423DF08710046C482 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F623D42323DF08710046C482 /* CoreDataManager.swift */; };
+		F6319A6F23E2F78B003B2DDF /* CustomerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319A6E23E2F78B003B2DDF /* CustomerDetailViewController.swift */; };
+		F6319A7123E2FC97003B2DDF /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319A7023E2FC97003B2DDF /* ProgressHUD.swift */; };
+		F6319A7323E2FF48003B2DDF /* CustomerDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319A7223E2FF48003B2DDF /* CustomerDetailTableViewCell.swift */; };
+		F6319A7523E409CB003B2DDF /* BuyerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319A7423E409CB003B2DDF /* BuyerTableViewCell.swift */; };
 		F689B95D23E1487D00F00D9E /* PreferencesUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B95C23E1487D00F00D9E /* PreferencesUtil.swift */; };
 		F689B95F23E15E7600F00D9E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B95E23E15E7600F00D9E /* LoginViewController.swift */; };
 		F689B96123E16AA000F00D9E /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96023E16AA000F00D9E /* StringConstants.swift */; };
@@ -51,6 +55,10 @@
 		F623D41F23DF07D30046C482 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		F623D42123DF08050046C482 /* ServiceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHandler.swift; sourceTree = "<group>"; };
 		F623D42323DF08710046C482 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F6319A6E23E2F78B003B2DDF /* CustomerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailViewController.swift; sourceTree = "<group>"; };
+		F6319A7023E2FC97003B2DDF /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		F6319A7223E2FF48003B2DDF /* CustomerDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailTableViewCell.swift; sourceTree = "<group>"; };
+		F6319A7423E409CB003B2DDF /* BuyerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerTableViewCell.swift; sourceTree = "<group>"; };
 		F689B95C23E1487D00F00D9E /* PreferencesUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesUtil.swift; sourceTree = "<group>"; };
 		F689B95E23E15E7600F00D9E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F689B96023E16AA000F00D9E /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
@@ -131,6 +139,10 @@
 				F689B96B23E19B0900F00D9E /* CustomerTableViewController.swift */,
 				F689B96D23E1A1B500F00D9E /* CustomerTableViewCell.swift */,
 				F6B6961323E2BD9B004C49BF /* SignOutViewController.swift */,
+				F6319A6E23E2F78B003B2DDF /* CustomerDetailViewController.swift */,
+				F6319A7023E2FC97003B2DDF /* ProgressHUD.swift */,
+				F6319A7223E2FF48003B2DDF /* CustomerDetailTableViewCell.swift */,
+				F6319A7423E409CB003B2DDF /* BuyerTableViewCell.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -246,7 +258,10 @@
 			files = (
 				F689B95F23E15E7600F00D9E /* LoginViewController.swift in Sources */,
 				F689B95D23E1487D00F00D9E /* PreferencesUtil.swift in Sources */,
+				F6319A7123E2FC97003B2DDF /* ProgressHUD.swift in Sources */,
+				F6319A6F23E2F78B003B2DDF /* CustomerDetailViewController.swift in Sources */,
 				E6C5D7E723D9B3820038A920 /* SecondViewController.swift in Sources */,
+				F6319A7323E2FF48003B2DDF /* CustomerDetailTableViewCell.swift in Sources */,
 				F623D42023DF07D30046C482 /* UserManager.swift in Sources */,
 				F689B96323E16BBE00F00D9E /* MessageFormat.swift in Sources */,
 				F689B96E23E1A1B500F00D9E /* CustomerTableViewCell.swift in Sources */,
@@ -254,6 +269,7 @@
 				F689B96523E16C9E00F00D9E /* GlobalData.swift in Sources */,
 				E6C5D7E523D9B3820038A920 /* FirstViewController.swift in Sources */,
 				F623D42223DF08050046C482 /* ServiceHandler.swift in Sources */,
+				F6319A7523E409CB003B2DDF /* BuyerTableViewCell.swift in Sources */,
 				F689B96C23E19B0900F00D9E /* CustomerTableViewController.swift in Sources */,
 				F623D42423DF08710046C482 /* CoreDataManager.swift in Sources */,
 				F689B96723E1718200F00D9E /* DashboardTabController.swift in Sources */,

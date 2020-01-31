@@ -12,7 +12,7 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
     var loggedInUserSeq:Int!
     var customerArr:[Any]!
     var filteredData:[Any]!
-    
+    var selectedCustomer:[String:Any]!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var customerTableView: UITableView!
     override func viewDidLoad() {
@@ -23,6 +23,7 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
         searchBar.delegate = self
         customerArr = []
         filteredData = []
+        selectedCustomer = [:]
         getCustomers()
     }
    
@@ -36,6 +37,11 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
             }
         }
         customerTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCustomer = filteredData[indexPath.row] as! [String: Any]
+        self.performSegue(withIdentifier: "CustomerDetailController", sender: self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,30 +85,10 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
         filteredData =  customerArr
         customerTableView.reloadData()
     }
-}
-
-struct customer {
-    let fullname: String
-    let seq: Int
-}
-
-extension Dictionary
-{
-    func filteredDictionary(_ isIncluded: (Key, Value) -> Bool)  -> Dictionary<Key, Value>
-    {
-        return self.filter(isIncluded).toDictionary(byTransforming: { $0 })
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let secondController = segue.destination as? CustomerDetailViewController {
+            secondController.selectedCustomerSeq =  Int(selectedCustomer["seq"] as! String)!
+        }
     }
 }
 
-extension Array
-{
-    func toDictionary<H:Hashable, T>(byTransforming transformer: (Element) -> (H, T)) -> Dictionary<H, T>
-    {
-        var result = Dictionary<H,T>()
-        self.forEach({ element in
-            let (key,value) = transformer(element)
-            result[key] = value
-        })
-        return result
-    }
-}
