@@ -418,22 +418,23 @@
                         <outlet property="detailTableView" destination="etm-rK-gJh" id="SUO-rb-yVq"/>
                         <outlet property="scrollView" destination="3oe-mk-aEi" id="uJY-cJ-nS5"/>
                         <outlet property="storeNameLabel" destination="vHc-Ck-c30" id="TWm-0z-gv0"/>
+                        <segue destination="gqt-LZ-CjW" kind="show" identifier="BuyerDetailViewController" id="VLB-e8-Zpb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddK-dp-g3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1436" y="1463.1184407796104"/>
         </scene>
-        <!--View Controller-->
+        <!--Buyer Detail View Controller-->
         <scene sceneID="6Mp-pJ-NCk">
             <objects>
-                <viewController id="gqt-LZ-CjW" sceneMemberID="viewController">
+                <viewController id="gqt-LZ-CjW" customClass="BuyerDetailViewController" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aoP-MY-Eoj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
-                                <rect key="frame" x="16" y="20" width="343" height="266"/>
+                                <rect key="frame" x="16" y="64" width="343" height="266"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="zUn-tt-T2n" userLabel="contactButtonsStack">
                                         <rect key="frame" x="4" y="182" width="341" height="84"/>
@@ -567,7 +568,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YgG-Nm-AJV">
-                                <rect key="frame" x="16" y="301" width="343" height="300"/>
+                                <rect key="frame" x="16" y="345" width="343" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mES-5t-LJ1" userLabel="cellphone">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="53.5"/>
