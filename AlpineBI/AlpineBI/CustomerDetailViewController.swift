@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class CustomerDetailViewController : UIViewController , UITableViewDataSource, UITableViewDelegate{
+    
     var selectedCustomerSeq:Int = 0;
     var loggedInUserSeq:Int = 0;
     var progressHUD: ProgressHUD!
@@ -16,9 +17,11 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     var buyerDetailSt: [IDNamePair]!
    // var selectedBuyer: IDNamePair
     @IBOutlet weak var detailTableView: UITableView!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var buyerTableView: UITableView!
     @IBOutlet weak var storeNameLabel: UILabel!
+    @IBOutlet weak var buyerTableHeight: NSLayoutConstraint!
     @IBOutlet weak var customerNameLabel: UILabel!
     let DELETE_CUSTOMER = "Delete Customer"
     override func viewDidLoad() {
@@ -134,8 +137,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
             addDeleteButtonLink()
         }
         buyerTableView.reloadData()
-        
-        
+        buyerTableHeight.constant = CGFloat(38 * buyerDetailSt.count)
     }
     func addDeleteButtonLink(){
         var detail = IDNamePair()
