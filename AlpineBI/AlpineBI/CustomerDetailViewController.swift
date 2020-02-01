@@ -14,12 +14,12 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     var progressHUD: ProgressHUD!
     var customerDetailSt: [IDNamePair]!
     var buyerDetailSt: [IDNamePair]!
-   // var selectedBuyer: IDNamePair
+    var selectedBuyerSeq:Int = 0
     @IBOutlet weak var detailTableView: UITableView!
-    
     @IBOutlet weak var buyerTableView: UITableView!
     @IBOutlet weak var storeNameLabel: UILabel!
     @IBOutlet weak var customerNameLabel: UILabel!
+    var lastIndexOfBuyerArr:Int = 0
     let DELETE_CUSTOMER = "Delete Customer"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         getCustomerDetail();
         customerDetailSt = []
         buyerDetailSt = []
-        
         detailTableView.dataSource = self
         detailTableView.delegate = self
         detailTableView.tableFooterView = UIView()
@@ -46,10 +45,16 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedBuyer = buyerDetailSt[indexPath.row]
-//        self.performSegue(withIdentifier: "CustomerDetailController", sender: self)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedBuyer = buyerDetailSt[indexPath.row]
+        if(selectedBuyer.value == DELETE_CUSTOMER && lastIndexOfBuyerArr == indexPath.row){
+            deleteCustomerConfirm()
+        }else{
+            selectedBuyerSeq = Int(selectedBuyer.id)!
+            self.performSegue(withIdentifier: "BuyerDetailViewController", sender: self)
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          if(tableView == detailTableView){
@@ -67,13 +72,13 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
             cell.buyerNameLabel.text = buyer.value
             cell.buyerNameLabel.textColor = .black
             cell.buyerNameLabel.font = UIFont(name:"Helvetica",size: 13.0)
-            if(buyer.value == DELETE_CUSTOMER){
+            let lastIndex = buyerDetailSt.count - 1;
+            if(buyer.value == DELETE_CUSTOMER && lastIndex == indexPath.row){
                 cell.buyerNameLabel.font = UIFont(name:"Helvetica",size: 15.0)
                 cell.buyerNameLabel.textColor = .red
             }
             return cell
           }
-       
     }
     
     func getCustomerDetail(){
@@ -132,30 +137,39 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         if(buyers.count > 0){
             addDeleteButtonLink()
+            lastIndexOfBuyerArr = buyerDetailSt.count - 1
         }
         buyerTableView.reloadData()
         
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let secondController = segue.destination as? BuyerDetailViewController {
+            secondController.selectedBuyerSeq =  selectedBuyerSeq
+        }
+    }
+    
     func addDeleteButtonLink(){
         var detail = IDNamePair()
         detail.id = String(selectedCustomerSeq)
         detail.value = DELETE_CUSTOMER
         buyerDetailSt.append(detail)
     }
-//    func addDeleteBuyerLink(){
-//        let view:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
-//        view.setTitle("Delete Customer", for: .normal)
-//        view.setTitleColor(.red, for: UIControl.State.normal)
-//        view.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
-//        buyerTableView.tableFooterView = view
-//    }
     
-    @objc func buttonClicked() {
-        print("Button Clicked")
+    func deleteCustomerConfirm(){
+        let refreshAlert = UIAlertController(title: "Delete Customer", message: "Are you realy want to delete customer.", preferredStyle: UIAlertController.Style.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.perfomDeleteCustomer()
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+        }))
+        present(refreshAlert, animated: true, completion: nil)
     }
-}
-struct IDNamePair{
-    var id:String!
-    var value:String?
+    
+    func perfomDeleteCustomer(){
+        
+    }
 }

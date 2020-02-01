@@ -26,6 +26,19 @@
 		F6319A7123E2FC97003B2DDF /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319A7023E2FC97003B2DDF /* ProgressHUD.swift */; };
 		F6319A7323E2FF48003B2DDF /* CustomerDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319A7223E2FF48003B2DDF /* CustomerDetailTableViewCell.swift */; };
 		F6319A7523E409CB003B2DDF /* BuyerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319A7423E409CB003B2DDF /* BuyerTableViewCell.swift */; };
+		F6319A9623E443D5003B2DDF /* icons8-add-user-male-24.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A8C23E443D5003B2DDF /* icons8-add-user-male-24.png */; };
+		F6319A9723E443D5003B2DDF /* icons8-user-account-24-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A8D23E443D5003B2DDF /* icons8-user-account-24-2.png */; };
+		F6319A9823E443D5003B2DDF /* icons8-settings-24.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A8E23E443D5003B2DDF /* icons8-settings-24.png */; };
+		F6319A9923E443D5003B2DDF /* icons8-sms-100.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A8F23E443D5003B2DDF /* icons8-sms-100.png */; };
+		F6319A9A23E443D5003B2DDF /* icons8-male-user-100-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A9023E443D5003B2DDF /* icons8-male-user-100-2.png */; };
+		F6319A9B23E443D5003B2DDF /* rounded-profile-pic.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A9123E443D5003B2DDF /* rounded-profile-pic.png */; };
+		F6319A9C23E443D5003B2DDF /* icons8-new-post-100-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A9223E443D5003B2DDF /* icons8-new-post-100-2.png */; };
+		F6319A9D23E443D5003B2DDF /* icons8-whatsapp-100.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A9323E443D5003B2DDF /* icons8-whatsapp-100.png */; };
+		F6319A9E23E443D5003B2DDF /* icons8-phone-100-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A9423E443D5003B2DDF /* icons8-phone-100-2.png */; };
+		F6319A9F23E443D5003B2DDF /* icons8-sign-out-24.png in Resources */ = {isa = PBXBuildFile; fileRef = F6319A9523E443D5003B2DDF /* icons8-sign-out-24.png */; };
+		F6319AA123E52E36003B2DDF /* BuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AA023E52E36003B2DDF /* BuyerDetailViewController.swift */; };
+		F6319AA323E5329A003B2DDF /* IDNamePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AA223E5329A003B2DDF /* IDNamePair.swift */; };
+		F6319AA523E53C62003B2DDF /* BuyerDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AA423E53C62003B2DDF /* BuyerDetailTableViewCell.swift */; };
 		F689B95D23E1487D00F00D9E /* PreferencesUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B95C23E1487D00F00D9E /* PreferencesUtil.swift */; };
 		F689B95F23E15E7600F00D9E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B95E23E15E7600F00D9E /* LoginViewController.swift */; };
 		F689B96123E16AA000F00D9E /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689B96023E16AA000F00D9E /* StringConstants.swift */; };
@@ -59,6 +72,19 @@
 		F6319A7023E2FC97003B2DDF /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		F6319A7223E2FF48003B2DDF /* CustomerDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailTableViewCell.swift; sourceTree = "<group>"; };
 		F6319A7423E409CB003B2DDF /* BuyerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerTableViewCell.swift; sourceTree = "<group>"; };
+		F6319A8C23E443D5003B2DDF /* icons8-add-user-male-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-add-user-male-24.png"; sourceTree = "<group>"; };
+		F6319A8D23E443D5003B2DDF /* icons8-user-account-24-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-user-account-24-2.png"; sourceTree = "<group>"; };
+		F6319A8E23E443D5003B2DDF /* icons8-settings-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-24.png"; sourceTree = "<group>"; };
+		F6319A8F23E443D5003B2DDF /* icons8-sms-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-sms-100.png"; sourceTree = "<group>"; };
+		F6319A9023E443D5003B2DDF /* icons8-male-user-100-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-male-user-100-2.png"; sourceTree = "<group>"; };
+		F6319A9123E443D5003B2DDF /* rounded-profile-pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-profile-pic.png"; sourceTree = "<group>"; };
+		F6319A9223E443D5003B2DDF /* icons8-new-post-100-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-new-post-100-2.png"; sourceTree = "<group>"; };
+		F6319A9323E443D5003B2DDF /* icons8-whatsapp-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-whatsapp-100.png"; sourceTree = "<group>"; };
+		F6319A9423E443D5003B2DDF /* icons8-phone-100-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-phone-100-2.png"; sourceTree = "<group>"; };
+		F6319A9523E443D5003B2DDF /* icons8-sign-out-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-sign-out-24.png"; sourceTree = "<group>"; };
+		F6319AA023E52E36003B2DDF /* BuyerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerDetailViewController.swift; sourceTree = "<group>"; };
+		F6319AA223E5329A003B2DDF /* IDNamePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDNamePair.swift; sourceTree = "<group>"; };
+		F6319AA423E53C62003B2DDF /* BuyerDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerDetailTableViewCell.swift; sourceTree = "<group>"; };
 		F689B95C23E1487D00F00D9E /* PreferencesUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesUtil.swift; sourceTree = "<group>"; };
 		F689B95E23E15E7600F00D9E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F689B96023E16AA000F00D9E /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
@@ -120,6 +146,7 @@
 		E6C5D7E123D9B3820038A920 /* AlpineBI */ = {
 			isa = PBXGroup;
 			children = (
+				F6319A8B23E443D5003B2DDF /* icons */,
 				F689B96823E1800D00F00D9E /* AlpineBI.entitlements */,
 				F689B95B23E1486D00F00D9E /* Utils */,
 				F623D41D23DF07BE0046C482 /* Managers */,
@@ -143,6 +170,9 @@
 				F6319A7023E2FC97003B2DDF /* ProgressHUD.swift */,
 				F6319A7223E2FF48003B2DDF /* CustomerDetailTableViewCell.swift */,
 				F6319A7423E409CB003B2DDF /* BuyerTableViewCell.swift */,
+				F6319AA023E52E36003B2DDF /* BuyerDetailViewController.swift */,
+				F6319AA223E5329A003B2DDF /* IDNamePair.swift */,
+				F6319AA423E53C62003B2DDF /* BuyerDetailTableViewCell.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -162,6 +192,23 @@
 				F623D42123DF08050046C482 /* ServiceHandler.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F6319A8B23E443D5003B2DDF /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				F6319A8C23E443D5003B2DDF /* icons8-add-user-male-24.png */,
+				F6319A8D23E443D5003B2DDF /* icons8-user-account-24-2.png */,
+				F6319A8E23E443D5003B2DDF /* icons8-settings-24.png */,
+				F6319A8F23E443D5003B2DDF /* icons8-sms-100.png */,
+				F6319A9023E443D5003B2DDF /* icons8-male-user-100-2.png */,
+				F6319A9123E443D5003B2DDF /* rounded-profile-pic.png */,
+				F6319A9223E443D5003B2DDF /* icons8-new-post-100-2.png */,
+				F6319A9323E443D5003B2DDF /* icons8-whatsapp-100.png */,
+				F6319A9423E443D5003B2DDF /* icons8-phone-100-2.png */,
+				F6319A9523E443D5003B2DDF /* icons8-sign-out-24.png */,
+			);
+			path = icons;
 			sourceTree = "<group>";
 		};
 		F689B95B23E1486D00F00D9E /* Utils */ = {
@@ -239,12 +286,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6ABC51623DAE9A200AF84C1 /* logo.png in Resources */,
+				F6319A9F23E443D5003B2DDF /* icons8-sign-out-24.png in Resources */,
+				F6319A9D23E443D5003B2DDF /* icons8-whatsapp-100.png in Resources */,
+				F6319A9823E443D5003B2DDF /* icons8-settings-24.png in Resources */,
+				F6319A9723E443D5003B2DDF /* icons8-user-account-24-2.png in Resources */,
+				F6319A9C23E443D5003B2DDF /* icons8-new-post-100-2.png in Resources */,
+				F6319A9623E443D5003B2DDF /* icons8-add-user-male-24.png in Resources */,
+				F6319A9B23E443D5003B2DDF /* rounded-profile-pic.png in Resources */,
 				E6ABC51D23DB030700AF84C1 /* icons8-add-user-male-24.png in Resources */,
 				E6ABC51C23DB030700AF84C1 /* icons8-settings-24.png in Resources */,
 				E6ABC51F23DB030700AF84C1 /* icons8-sign-out-24.png in Resources */,
+				F6319A9923E443D5003B2DDF /* icons8-sms-100.png in Resources */,
 				E6C5D7EF23D9B3840038A920 /* LaunchScreen.storyboard in Resources */,
+				F6319A9A23E443D5003B2DDF /* icons8-male-user-100-2.png in Resources */,
 				E6ABC51E23DB030700AF84C1 /* icons8-user-account-24-2.png in Resources */,
 				E6C5D7EC23D9B3840038A920 /* Assets.xcassets in Resources */,
+				F6319A9E23E443D5003B2DDF /* icons8-phone-100-2.png in Resources */,
 				E6C5D7EA23D9B3820038A920 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,13 +313,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6319AA123E52E36003B2DDF /* BuyerDetailViewController.swift in Sources */,
 				F689B95F23E15E7600F00D9E /* LoginViewController.swift in Sources */,
 				F689B95D23E1487D00F00D9E /* PreferencesUtil.swift in Sources */,
 				F6319A7123E2FC97003B2DDF /* ProgressHUD.swift in Sources */,
 				F6319A6F23E2F78B003B2DDF /* CustomerDetailViewController.swift in Sources */,
 				E6C5D7E723D9B3820038A920 /* SecondViewController.swift in Sources */,
 				F6319A7323E2FF48003B2DDF /* CustomerDetailTableViewCell.swift in Sources */,
+				F6319AA323E5329A003B2DDF /* IDNamePair.swift in Sources */,
 				F623D42023DF07D30046C482 /* UserManager.swift in Sources */,
+				F6319AA523E53C62003B2DDF /* BuyerDetailTableViewCell.swift in Sources */,
 				F689B96323E16BBE00F00D9E /* MessageFormat.swift in Sources */,
 				F689B96E23E1A1B500F00D9E /* CustomerTableViewCell.swift in Sources */,
 				E6C5D7E323D9B3820038A920 /* AppDelegate.swift in Sources */,
