@@ -18,7 +18,11 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     let DELETE_BUYER = "Delete Buyer"
     let SAVE_IN_CONTACTS = "Save In Contacts"
     @IBOutlet weak var buyerNameLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var buyerDetailTableView: UITableView!
+    @IBAction func callButtonAction(_ sender: Any) {
+        GlobalData.showAlert(view: self, message: "Clicked")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
@@ -28,6 +32,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         getBuyerDetail()
         buyerDetailSt = []
         self.view.addSubview(progressHUD)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,6 +112,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
             secondLastIndexOfBuyerArr = lastIndexOfBuyerArr - 1
         }
         buyerDetailTableView.reloadData()
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 1200.00)
     }
     
     func addSaveInContactButtonLink(){
