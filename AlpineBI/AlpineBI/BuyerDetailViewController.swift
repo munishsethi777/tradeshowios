@@ -26,6 +26,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     var selectedBuyerEmail:String?
     @IBOutlet weak var buyerNameLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var buyerActionView: UIView!
     @IBOutlet weak var buyerDetailTableView: UITableView!
  
     override func viewDidLoad() {
@@ -227,7 +228,8 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
             secondLastIndexOfBuyerArr = lastIndexOfBuyerArr - 1
         }
         buyerDetailTableView.reloadData()
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 1200.00)
+        let scrollViewHeight = buyerActionView.frame.height + buyerDetailTableView.frame.height + 12;
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight)
     }
     
     func addSaveInContactButtonLink(){

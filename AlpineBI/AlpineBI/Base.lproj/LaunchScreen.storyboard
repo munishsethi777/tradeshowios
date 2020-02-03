@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -337,13 +337,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-sW-NKB">
-                                                            <rect key="frame" x="15" y="7" width="345" height="16"/>
+                                                            <rect key="frame" x="15" y="7" width="637" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="005310" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P81-q2-JsZ">
-                                                            <rect key="frame" x="15" y="31" width="345" height="18"/>
+                                                            <rect key="frame" x="15" y="31" width="637" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -392,7 +392,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BuyerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QU-0G-3uX">
-                                                            <rect key="frame" x="15" y="11" width="345" height="18"/>
+                                                            <rect key="frame" x="15" y="11" width="637" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -470,7 +470,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -709,7 +709,6 @@
                                     <constraint firstItem="AdO-fP-mHo" firstAttribute="leading" secondItem="YS3-fG-FPW" secondAttribute="leading" constant="8" id="G8v-ri-9WF"/>
                                     <constraint firstItem="Y9O-of-bPS" firstAttribute="centerX" secondItem="YS3-fG-FPW" secondAttribute="centerX" id="M6f-UB-mAJ"/>
                                     <constraint firstItem="Y9O-of-bPS" firstAttribute="top" secondItem="AdO-fP-mHo" secondAttribute="bottom" constant="8" id="Y31-On-rf8"/>
-                                    <constraint firstAttribute="height" constant="687" id="beO-vW-Ayo"/>
                                     <constraint firstAttribute="trailing" secondItem="Y9O-of-bPS" secondAttribute="trailing" id="gpS-Kb-Lzm"/>
                                     <constraint firstItem="AdO-fP-mHo" firstAttribute="centerX" secondItem="YS3-fG-FPW" secondAttribute="centerX" id="j4X-rv-24S"/>
                                     <constraint firstItem="Y9O-of-bPS" firstAttribute="top" secondItem="AdO-fP-mHo" secondAttribute="bottom" constant="8" id="t1C-cX-aMg"/>
@@ -721,6 +720,7 @@
                         <constraints>
                             <constraint firstItem="YS3-fG-FPW" firstAttribute="trailing" secondItem="Qp4-ND-lfx" secondAttribute="trailing" id="B06-Ls-EZf"/>
                             <constraint firstItem="YS3-fG-FPW" firstAttribute="top" secondItem="Qp4-ND-lfx" secondAttribute="top" id="QQE-Wg-h89"/>
+                            <constraint firstItem="YS3-fG-FPW" firstAttribute="height" secondItem="Qp4-ND-lfx" secondAttribute="height" id="Z9m-1I-h5i"/>
                             <constraint firstItem="YS3-fG-FPW" firstAttribute="centerX" secondItem="aoP-MY-Eoj" secondAttribute="centerX" id="ms6-QZ-44w"/>
                             <constraint firstItem="YS3-fG-FPW" firstAttribute="leading" secondItem="Qp4-ND-lfx" secondAttribute="leading" id="oQp-xh-vDn"/>
                         </constraints>
@@ -728,6 +728,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="buyerActionView" destination="AdO-fP-mHo" id="1KH-xc-csA"/>
                         <outlet property="buyerDetailTableView" destination="Y9O-of-bPS" id="HxN-xm-k2e"/>
                         <outlet property="buyerNameLabel" destination="2DE-6N-wR2" id="S9m-P8-glB"/>
                         <outlet property="scrollView" destination="YS3-fG-FPW" id="Tdx-ki-B7B"/>
