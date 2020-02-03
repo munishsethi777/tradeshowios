@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import Contacts
+import ContactsUI
 import UIKit
-class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
+import MessageUI
+class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableViewDataSource,CNContactViewControllerDelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate{
     var selectedBuyerSeq:Int = 0;
     var loggedInUserSeq:Int = 0;
     var progressHUD: ProgressHUD!
@@ -17,12 +20,14 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     var secondLastIndexOfBuyerArr:Int = 0;
     let DELETE_BUYER = "Delete Buyer"
     let SAVE_IN_CONTACTS = "Save In Contacts"
+    var selectedBuyerPhone:String?
+    var selectedBuyerFName:String?
+    var selectedBuyerLName:String?
+    var selectedBuyerEmail:String?
     @IBOutlet weak var buyerNameLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var buyerDetailTableView: UITableView!
-    @IBAction func callButtonAction(_ sender: Any) {
-        GlobalData.showAlert(view: self, message: "Clicked")
-    }
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
@@ -33,6 +38,112 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         buyerDetailSt = []
         self.view.addSubview(progressHUD)
         
+    }
+    
+    @IBAction func sms1Button(_ sender: Any) {
+        sendSMS()
+    }
+    @IBAction func whatsapp1Button(_ sender: Any) {
+        sendWhatsAppMessage()
+    }
+    @IBAction func email1Button(_ sender: Any) {
+        sendEmail()
+    }
+    @IBAction func call1Button(_ sender: Any) {
+        makeAPhoneCall()
+    }
+    @IBAction func smsButton(_ sender: Any) {
+        sendSMS()
+    }
+    @IBAction func whatsappButton(_ sender: Any) {
+        sendWhatsAppMessage()
+    }
+    @IBAction func emailButton(_ sender: Any) {
+        sendEmail()
+    }
+    @IBAction func callButton(_ sender: Any) {
+        makeAPhoneCall()
+    }
+    
+    func makeAPhoneCall()  {
+        if(selectedBuyerPhone != nil && selectedBuyerPhone != ""){
+            let url: NSURL = URL(string: "TEL://" + selectedBuyerPhone!)! as NSURL
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }else{
+            GlobalData.showAlert(view: self, message: StringConstants.PHONE_NOT_AVAILABLE)
+        }
+    }
+    
+    func sendEmail(){
+        if(selectedBuyerEmail != nil && selectedBuyerEmail != ""){
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients([selectedBuyerEmail!])
+                present(mail, animated: true)
+            } else {
+                let email = selectedBuyerEmail!
+                if let url = URL(string: "mailto:\(email)") {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+        }else{
+            GlobalData.showAlert(view: self, message: StringConstants.EMAIL_NOT_AVAILABLE)
+        }
+    }
+    
+    func sendSMS(){
+        if(selectedBuyerPhone != nil && selectedBuyerPhone != ""){
+            if (MFMessageComposeViewController.canSendText()) {
+                let controller = MFMessageComposeViewController()
+                controller.recipients = [selectedBuyerPhone!]
+                controller.messageComposeDelegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
+        }else{
+            GlobalData.showAlert(view: self, message: StringConstants.PHONE_NOT_AVAILABLE)
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    func sendWhatsAppMessage(){
+        if(selectedBuyerPhone != nil && selectedBuyerPhone != ""){
+            //        var str = "Hello"
+            //        str = str.addingPercentEncoding(withAllowedCharacters: (NSCharacterSet.urlQueryAllowed))!
+            //        let whatsappURL = NSURL(string: "whatsapp://send?text=\(str)")
+            //
+            //        if UIApplication.shared.canOpenURL(whatsappURL! as URL) {
+            //             UIApplication.shared.open(whatsappURL! as URL, options: [:], completionHandler: nil)
+            //        } else {
+            //            GlobalData.showAlert(view: self, message: StringConstants.WHATS_APP_NOT_INSTALLED)
+            //        }
+            let urlWhats = "whatsapp://send?phone=91"+selectedBuyerPhone!+"&abid=12354&text="
+            if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+                if let whatsappURL = URL(string: urlString) {
+                    if UIApplication.shared.canOpenURL(whatsappURL) {
+                        UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: nil)
+                    } else {
+                        print("Install Whatsapp")
+                    }
+                }
+            }
+        }else{
+            GlobalData.showAlert(view: self, message: StringConstants.PHONE_NOT_AVAILABLE)
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,6 +206,10 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     func loadBuyerDetail(jsonResponse: [String: Any]){
         let buyer = jsonResponse["buyer"] as! [Any]
         let buyerName = jsonResponse["buyername"] as! String
+        selectedBuyerFName = jsonResponse["buyerfirstname"] as? String
+        selectedBuyerLName = jsonResponse["buyerlastname"] as? String
+        selectedBuyerPhone = jsonResponse["buyercellphone"] as? String
+        selectedBuyerEmail = jsonResponse["buyeremail"] as? String
         for j in 0..<buyer.count{
             let buyerJson = buyer[j] as! [String: Any]
             let name = buyerJson["name"] as! String

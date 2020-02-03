@@ -8,6 +8,9 @@
 
 import Foundation
 struct StringConstants {
+    static var PHONE_NOT_AVAILABLE = "Cell Phone number does not exists for this buyer!";
+    static var EMAIL_NOT_AVAILABLE = "Email id does not exists for this buyer!";
+    static var WHATS_APP_NOT_INSTALLED = "Whatsapp is not installed on this device. Please install Whatsapp and try again."
     static var ACTION_API_URL = "http://www.alpinebi.com/Actions/Mobile/"
     static let WEB_API_URL = "http://www.alpinebi.com/"
     //USER ACTION API URL

@@ -469,9 +469,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
-
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -486,6 +485,9 @@
                                                                 <rect key="frame" x="16" y="55" width="30" height="28"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <state key="normal" title="call"/>
+                                                                <connections>
+                                                                    <action selector="call1Button:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="PxS-jf-TUd"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwS-Az-jJr" userLabel="callButton">
                                                                 <rect key="frame" x="6" y="4" width="50" height="50"/>
@@ -494,6 +496,9 @@
                                                                     <constraint firstAttribute="width" constant="50" id="n3B-OQ-VJ1"/>
                                                                 </constraints>
                                                                 <state key="normal" title="call" image="icons8-phone-100-2.png"/>
+                                                                <connections>
+                                                                    <action selector="callButton:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="7bC-e4-YF8"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -512,6 +517,9 @@
                                                                 <rect key="frame" x="12" y="56" width="33" height="28"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <state key="normal" title="email"/>
+                                                                <connections>
+                                                                    <action selector="email1Button:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="e5S-vb-PbS"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5s6-he-xjR" userLabel="emailButton">
                                                                 <rect key="frame" x="6" y="4" width="50" height="50"/>
@@ -520,6 +528,9 @@
                                                                     <constraint firstAttribute="height" constant="50" id="Trr-yk-r9O"/>
                                                                 </constraints>
                                                                 <state key="normal" image="icons8-new-post-100-2.png"/>
+                                                                <connections>
+                                                                    <action selector="emailButton:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="pq0-0q-cK4"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -538,6 +549,9 @@
                                                                 <rect key="frame" x="1.5" y="55" width="59" height="28"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <state key="normal" title="whatsapp"/>
+                                                                <connections>
+                                                                    <action selector="whatsapp1Button:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="9B1-TR-gMr"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCd-zV-8Fj" userLabel="whatsappButton">
                                                                 <rect key="frame" x="6" y="4" width="50" height="50"/>
@@ -546,6 +560,9 @@
                                                                     <constraint firstAttribute="width" constant="50" id="Hgy-ak-Etu"/>
                                                                 </constraints>
                                                                 <state key="normal" image="icons8-whatsapp-100.png"/>
+                                                                <connections>
+                                                                    <action selector="whatsappButton:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="zg0-zt-xKw"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -564,6 +581,9 @@
                                                                 <rect key="frame" x="3.5" y="55" width="55" height="28"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <state key="normal" title="message"/>
+                                                                <connections>
+                                                                    <action selector="sms1Button:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="DNf-Ah-J9W"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aQ-CB-4RA" userLabel="messageButton">
                                                                 <rect key="frame" x="6" y="4" width="50" height="50"/>
@@ -572,6 +592,9 @@
                                                                     <constraint firstAttribute="width" constant="50" id="PNE-S1-VQy"/>
                                                                 </constraints>
                                                                 <state key="normal" image="icons8-sms-100.png"/>
+                                                                <connections>
+                                                                    <action selector="smsButton:" destination="gqt-LZ-CjW" eventType="touchUpInside" id="KuH-xS-zDq"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -639,13 +662,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGl-um-Prf">
-                                                            <rect key="frame" x="15" y="7" width="329" height="16"/>
+                                                            <rect key="frame" x="15" y="7" width="347" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-j8-6SR">
-                                                            <rect key="frame" x="15" y="31" width="344" height="18"/>
+                                                            <rect key="frame" x="15" y="31" width="362" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.10687923713201472" green="0.56365132582723232" blue="0.91717560279187815" alpha="0.79459199989927487" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -744,12 +767,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CQk-S9-d6d">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="65" id="CQk-S9-d6d">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CQk-S9-d6d" id="xCF-2d-9Y9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8mB-1e-d3k">
+                                                    <rect key="frame" x="15" y="11" width="345" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
