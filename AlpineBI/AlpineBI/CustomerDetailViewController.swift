@@ -147,6 +147,8 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         buyerTableView.reloadData()
         buyerTableHeight.constant = CGFloat(38 * buyerDetailSt.count)
+        let scrollHeight = customerNameLabel.frame.height + storeNameLabel.frame.height + detailTableView.frame.height + buyerTableView.frame.height + 141.5
+        //scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollHeight)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
