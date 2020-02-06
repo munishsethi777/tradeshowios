@@ -314,12 +314,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oe-mk-aEi" userLabel="ScrollView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="700"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cnme Cnme Cnme Cnme Cnme Cnme Cnme Cnme Cnme Cnme " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZF-gm-o95">
                                         <rect key="frame" x="8" y="8" width="359" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StoreName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHc-Ck-c30">
+                                        <rect key="frame" x="151" y="46.5" width="73" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="etm-rK-gJh" userLabel="customerdetailsTable">
@@ -409,12 +415,6 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StoreName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHc-Ck-c30">
-                                        <rect key="frame" x="151" y="46.5" width="73" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="GZF-gm-o95" firstAttribute="top" secondItem="3oe-mk-aEi" secondAttribute="top" constant="8" id="5ld-Sz-8iK"/>
@@ -434,7 +434,6 @@
                                     <constraint firstItem="GZF-gm-o95" firstAttribute="leading" secondItem="3oe-mk-aEi" secondAttribute="leading" constant="8" id="Y1I-bv-MQM"/>
                                     <constraint firstItem="GZF-gm-o95" firstAttribute="centerX" secondItem="3oe-mk-aEi" secondAttribute="centerX" id="ap6-j2-LGj"/>
                                     <constraint firstAttribute="trailing" secondItem="n9l-sH-fb0" secondAttribute="trailing" constant="8" id="d9l-zu-WOI"/>
-                                    <constraint firstAttribute="height" constant="700" id="kNw-U5-JcA"/>
                                     <constraint firstAttribute="bottom" secondItem="gow-bT-Cbs" secondAttribute="bottom" id="owM-6L-hqo"/>
                                 </constraints>
                             </scrollView>
@@ -443,6 +442,7 @@
                         <constraints>
                             <constraint firstItem="3oe-mk-aEi" firstAttribute="top" secondItem="oYG-iD-FZZ" secondAttribute="top" id="Ack-66-Jtw"/>
                             <constraint firstItem="3oe-mk-aEi" firstAttribute="leading" secondItem="0ar-EC-TOf" secondAttribute="leading" id="V6s-d7-V0K"/>
+                            <constraint firstItem="3oe-mk-aEi" firstAttribute="height" secondItem="oYG-iD-FZZ" secondAttribute="height" id="usR-yk-YBc"/>
                             <constraint firstItem="3oe-mk-aEi" firstAttribute="width" secondItem="oYG-iD-FZZ" secondAttribute="width" id="v19-U9-ZwS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oYG-iD-FZZ"/>
