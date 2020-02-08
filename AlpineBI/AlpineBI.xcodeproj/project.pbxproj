@@ -45,7 +45,6 @@
 		F6319B1423E82FA9003B2DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AE523E82FA9003B2DDF /* AppDelegate.swift */; };
 		F6319B1523E82FA9003B2DDF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AE623E82FA9003B2DDF /* SecondViewController.swift */; };
 		F6319B1623E82FA9003B2DDF /* CustomerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AE723E82FA9003B2DDF /* CustomerTableViewCell.swift */; };
-		F6319B1723E82FA9003B2DDF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6319AE823E82FA9003B2DDF /* Info.plist */; };
 		F6319B1823E82FA9003B2DDF /* ServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AEA23E82FA9003B2DDF /* ServiceHandler.swift */; };
 		F6319B2723E83CC1003B2DDF /* FormItemCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B1F23E83CBF003B2DDF /* FormItemCellType.swift */; };
 		F6319B2923E83CC1003B2DDF /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B2123E83CC0003B2DDF /* FormItem.swift */; };
@@ -292,7 +291,6 @@
 			files = (
 				F6319B0C23E82FA9003B2DDF /* icons8-whatsapp-100.png in Resources */,
 				F6319B0123E82FA9003B2DDF /* Main.storyboard in Resources */,
-				F6319B1723E82FA9003B2DDF /* Info.plist in Resources */,
 				F6319B0923E82FA9003B2DDF /* icons8-male-user-100-2.png in Resources */,
 				F6319B0623E82FA9003B2DDF /* icons8-user-account-24-2.png in Resources */,
 				F6319AF423E82FA9003B2DDF /* logo.png in Resources */,
