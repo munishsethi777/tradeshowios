@@ -165,10 +165,23 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         let selectedBuyer = buyerDetailSt[indexPath.row]
         if(selectedBuyer.value == DELETE_BUYER && lastIndexOfBuyerArr == indexPath.row){
             deleteBuyerConfirm()
-        }else{
-            selectedBuyerSeq = Int(selectedBuyer.id)!
-            self.performSegue(withIdentifier: "BuyerDetailViewController", sender: self)
         }
+        if(selectedBuyer.value == SAVE_IN_CONTACTS && secondLastIndexOfBuyerArr == indexPath.row){
+            saveInContacts()
+        }
+    }
+    
+    func saveInContacts(){
+        let con = CNMutableContact()
+        con.givenName = selectedBuyerFName ??  ""
+        con.familyName = selectedBuyerLName ?? ""
+        con.phoneNumbers.append(CNLabeledValue(
+            label: "Cell Phone", value: CNPhoneNumber(stringValue: selectedBuyerPhone ??  "")))
+        let unkvc = CNContactViewController(forUnknownContact: con)
+        unkvc.contactStore = CNContactStore()
+        unkvc.delegate = self
+        unkvc.allowsActions = false
+        self.navigationController?.pushViewController(unkvc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
