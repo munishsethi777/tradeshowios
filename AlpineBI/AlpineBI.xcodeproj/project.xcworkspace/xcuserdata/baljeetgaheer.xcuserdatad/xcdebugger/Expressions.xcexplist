@@ -3,10 +3,35 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "CustomerTableViewController.searchBar(_:textDidChange:):CustomerTableViewController.swift">
+         contextName = "FormPickerViewTableViewCell.pickerView(_:didSelectRow:inComponent:):FormPickerViewTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DashboardTabController.viewDidLoad():DashboardTabController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self">
+            </PersistentString>
+            <PersistentString
+               value = "self.selectedIndex">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in CustomerDetailViewController.getCustomerDetail():CustomerDetailViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.tableView(_:heightForRowAt:):AddCustomerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CustomerTableViewController.searchBar(_:textDidChange:):CustomerTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.prepare(for:sender:):AddCustomerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "segue.destination">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "DashboardTabController.tabBar(_:didSelect:):DashboardTabController.swift">
@@ -23,13 +48,38 @@
          contextName = "CustomerDetailViewController.loadCustomerDetail(jsonReponse:):CustomerDetailViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "CustomerDetailViewController.tableView(_:cellForRowAt:):CustomerDetailViewController.swift">
+         contextName = "closure #1 in closure #1 in AddCustomerViewController.excecuteSaveCustomerCall(jsonstring:):AddCustomerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.tableView(_:cellForRowAt:):AddCustomerViewController.swift">
       </ContextState>
       <ContextState
          contextName = "CustomerDetailViewController.addDeleteBuyerLink():CustomerDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "buyerTableView.tableFooterView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.tableView(_:didSelectRowAt:):AddCustomerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CustomerDetailViewController.tableView(_:cellForRowAt:):CustomerDetailViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DashboardTabController.viewDidAppear(_:):DashboardTabController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.selectedViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.gestureRecognizer(_:shouldReceive:):AddCustomerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "touch.view">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

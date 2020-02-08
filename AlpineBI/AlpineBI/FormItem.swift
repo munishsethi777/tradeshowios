@@ -5,6 +5,7 @@ class FormItem: FormValidable {
     var value: String?
     var placeholder = ""
     var indexPath: IndexPath?
+    var name:String?
     var valueCompletion: ((String?) -> Void)?
     
     var isMandatory = true
@@ -14,9 +15,10 @@ class FormItem: FormValidable {
     var uiProperties = FormItemUIProperties()
     
     // MARK: Init
-    init(placeholder: String, value: String? = nil) {
+    init(placeholder: String, value: String? = nil,name: String? = nil) {
         self.placeholder = placeholder
         self.value = value
+        self.name = name
     }
     
     // MARK: FormValidable

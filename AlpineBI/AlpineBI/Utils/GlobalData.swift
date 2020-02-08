@@ -9,9 +9,16 @@
 import Foundation
 import UIKit
 class GlobalData : NSObject{
-    static func showAlert(view:UIViewController,message:String){
+    static func showAlert(view:UIViewController,message:String,nextViewControllerSegueId:String? = nil){
         let alert = UIAlertController(title: "Validation", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+            if(nextViewControllerSegueId != nil){
+                let viewControllerYouWantToPresent = view.storyboard?.instantiateViewController(withIdentifier: nextViewControllerSegueId!)
+                view.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
+                //view.performSegue(withIdentifier: nextViewControllerSegueId!, sender: nil)
+            }
+        }
+        alert.addAction(action)
         view.present(alert, animated: true, completion: nil)
     }
 }

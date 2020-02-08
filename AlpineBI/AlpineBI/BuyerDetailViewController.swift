@@ -28,19 +28,28 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var buyerActionView: UIView!
     @IBOutlet weak var buyerDetailTableView: UITableView!
- 
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         progressHUD = ProgressHUD(text: "Loading")
         buyerDetailTableView.delegate = self
         buyerDetailTableView.dataSource = self
-        getBuyerDetail()
         buyerDetailSt = []
+        getBuyerDetail()
+       
         self.view.addSubview(progressHUD)
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
         
     }
-    
+    @objc func refreshView(control:UIRefreshControl){
+        buyerDetailSt = []
+        getBuyerDetail()
+    }
     @IBAction func sms1Button(_ sender: Any) {
         sendSMS()
     }
@@ -192,6 +201,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
+                        self.buyerDetailTableView.reloadData()
                         self.loadBuyerDetail(jsonResponse: json)
                         self.progressHUD.hide()
                     }else{
@@ -226,6 +236,9 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
             addDeleteButtonLink()
             lastIndexOfBuyerArr = buyerDetailSt.count - 1
             secondLastIndexOfBuyerArr = lastIndexOfBuyerArr - 1
+        }
+        if #available(iOS 10.0, *) {
+            self.refreshControl.endRefreshing()
         }
         buyerDetailTableView.reloadData()
         let scrollViewHeight = buyerActionView.frame.height + buyerDetailTableView.frame.height + 12;
