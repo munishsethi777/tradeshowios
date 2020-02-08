@@ -9,11 +9,23 @@
 import Foundation
 import UIKit
 class DashboardTabController : UITabBarController,UITabBarControllerDelegate{
+    var selectedCustomerSeq:Int = 0
+    var isGoToDetailView = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        if(self.selectedIndex == 0 && isGoToDetailView){
+            let viewController1 = self.selectedViewController as! UINavigationController
+            if let viewController = viewController1.visibleViewController as? CustomerTableViewController {
+                viewController.selectedCustomerSeq = selectedCustomerSeq
+                viewController.isGoToDetailView = isGoToDetailView
+                isGoToDetailView = false
+            }
+        }
+    }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is SignOutViewController {
             let refreshAlert = UIAlertController(title: "Logout", message: "Are you realy want to logout.", preferredStyle: UIAlertController.Style.alert)
@@ -29,6 +41,9 @@ class DashboardTabController : UITabBarController,UITabBarControllerDelegate{
             present(refreshAlert, animated: true, completion: nil)
             return false;
         }else{
+            if(viewController is CustomerTableViewController){
+                GlobalData.showAlert(view: self, message: "CustomerTableViewController")
+            }
             return true;
         }
         

@@ -13,8 +13,12 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
     var customerArr:[Any]!
     var filteredData:[Any]!
     var selectedCustomer:[String:Any]!
+    var selectedCustomerSeq:Int = 0
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var customerTableView: UITableView!
+    var refreshControl:UIRefreshControl!
+    var progressHUD: ProgressHUD!
+    var isGoToDetailView = false
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
@@ -24,9 +28,20 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
         customerArr = []
         filteredData = []
         selectedCustomer = [:]
+        progressHUD = ProgressHUD(text: "Loading")
+        self.hideKeyboardWhenTappedAround()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            customerTableView.refreshControl = refreshControl
+        }
+        self.view.addSubview(progressHUD)
         getCustomers()
     }
-   
+    @objc func refreshView(control:UIRefreshControl){
+        searchBar.text = ""
+        getCustomers()
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = searchText.isEmpty ? customerArr : customerArr.filter() {
@@ -41,6 +56,7 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCustomer = filteredData[indexPath.row] as! [String: Any]
+        selectedCustomerSeq = Int(selectedCustomer["seq"] as! String)!
         self.performSegue(withIdentifier: "CustomerDetailController", sender: self)
     }
     
@@ -70,6 +86,7 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.loadCustomers(response: json)
+                        self.progressHUD.hide()
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }
@@ -83,11 +100,21 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
     func loadCustomers(response: [String: Any]) {
         customerArr = response["customers"] as! [Any]
         filteredData =  customerArr
+        if #available(iOS 10.0, *) {
+            self.refreshControl.endRefreshing()
+        }
         customerTableView.reloadData()
+        if(isGoToDetailView){
+            isGoToDetailView = false
+            goToDetail()
+        }
+    }
+    func goToDetail(){
+        self.performSegue(withIdentifier: "CustomerDetailController", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let secondController = segue.destination as? CustomerDetailViewController {
-            secondController.selectedCustomerSeq =  Int(selectedCustomer["seq"] as! String)!
+            secondController.selectedCustomerSeq =  selectedCustomerSeq
         }
     }
 }

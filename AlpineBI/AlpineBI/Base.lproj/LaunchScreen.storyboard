@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2516" y="-880"/>
+            <point key="canvasLocation" x="-2518" y="-908"/>
         </scene>
         <!--Add Customer Controller-->
         <scene sceneID="XMq-Cz-Awg">
@@ -237,7 +237,7 @@
         <!--Customers-->
         <scene sceneID="yO0-bP-aAZ">
             <objects>
-                <viewController id="PvD-if-f9F" customClass="CustomerTableViewController" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomerTableViewController" id="PvD-if-f9F" customClass="CustomerTableViewController" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hOo-eS-FnA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,20 +279,6 @@
                                             <outlet property="customerNameLabel" destination="kvK-Pc-knG" id="rKx-v0-qZy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormPickerViewTableViewCell" rowHeight="43" id="nH3-j1-bZL" customClass="FormPickerViewTableViewCell" customModule="AlpineBI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="43"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nH3-j1-bZL" id="F6b-0S-SS0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="42.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gRm-vh-zsf">
-                                                    <rect key="frame" x="15" y="0.0" width="343" height="38"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                </pickerView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -319,10 +305,34 @@
             </objects>
             <point key="canvasLocation" x="-1436" y="742.5787106446777"/>
         </scene>
+        <!--Testpickerview-->
+        <scene sceneID="F0R-LA-VZr">
+            <objects>
+                <viewController id="t6c-Jr-BXk" customClass="testpickerview" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xv6-id-MO0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWh-ke-zhf">
+                                <rect key="frame" x="25" y="32" width="325" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SXg-dZ-cHK"/>
+                    </view>
+                    <connections>
+                        <outlet property="pickerView" destination="sWh-ke-zhf" id="W7d-ah-vAE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5X8-bM-lV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-692" y="774.06296851574223"/>
+        </scene>
         <!--Customer Details-->
         <scene sceneID="9XI-Vz-BMA">
             <objects>
-                <viewController title="Customer Details" id="kEu-Ku-t9x" customClass="CustomerDetailViewController" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomerDetailViewController" title="Customer Details" id="kEu-Ku-t9x" customClass="CustomerDetailViewController" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ar-EC-TOf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -484,7 +494,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -661,7 +671,7 @@
                                             <constraint firstAttribute="trailing" secondItem="zUn-tt-T2n" secondAttribute="trailing" constant="10" id="xcc-TX-Fep"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-of-bPS">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-of-bPS">
                                         <rect key="frame" x="0.0" y="288" width="377" height="420"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -755,7 +765,7 @@
         <!--Customers Controller-->
         <scene sceneID="cWf-FA-Iug">
             <objects>
-                <navigationController title="Customers Controller" id="L3U-A8-E6Y" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CustomerViewController" title="Customers Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L3U-A8-E6Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Customers" image="icons8-user-account-24-2.png" landscapeImage="icons8-user-account-24-2.png" largeContentSizeImage="icons8-user-account-24-2.png" id="eG2-yo-Pf4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vF8-na-L7e">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -777,16 +787,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yFy-zd-kBe">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yFy-zd-kBe">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormTextFieldTableViewCell" rowHeight="65" id="CQk-S9-d6d" customClass="FormTextFieldTableViewCell" customModule="AlpineBI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormTextFieldTableViewCell" rowHeight="45" id="CQk-S9-d6d" customClass="FormTextFieldTableViewCell" customModule="AlpineBI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CQk-S9-d6d" id="xCF-2d-9Y9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZyE-af-E7g">
@@ -802,6 +812,43 @@
                                             <outlet property="ibTextField" destination="ZyE-af-E7g" id="KTm-Uc-L28"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormPickerViewTableViewCell" rowHeight="48" id="hMI-hD-EQU" customClass="FormPickerViewTableViewCell" customModule="AlpineBI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="73" width="375" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hMI-hD-EQU" id="AqL-lz-l7Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJi-gJ-tIN">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                </pickerView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="pickerView" destination="GJi-gJ-tIN" id="3zZ-7h-Xsd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormLabelFieldTableViewCell" rowHeight="39" id="dk6-pV-Mqg" customClass="FormLabelFieldTableViewCell" customModule="AlpineBI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="121" width="375" height="39"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dk6-pV-Mqg" id="3j2-nJ-JMN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="38.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFt-DP-krb">
+                                                    <rect key="frame" x="15" y="13" width="132" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelField" destination="xFt-DP-krb" id="PX2-TE-My5"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tc-TG-NN5">
@@ -812,6 +859,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="9Xz-9v-hMk">
                                             <connections>
                                                 <action selector="cancelAction:" destination="3Wk-eg-5YS" id="u9v-2O-4Rd"/>
+                                                <segue destination="SBk-Jr-42s" kind="showDetail" id="ofG-vq-LUI"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="r9I-Am-4m8">
@@ -829,11 +877,12 @@
                     <tabBarItem key="tabBarItem" title="+ Customer" image="icons8-add-user-male-24.png" landscapeImage="icons8-add-user-male-24.png" selectedImage="icons8-add-user-male-24.png" id="NFy-qh-igh"/>
                     <connections>
                         <outlet property="ibTableView" destination="yFy-zd-kBe" id="FrE-TE-VJ0"/>
+                        <segue destination="kEu-Ku-t9x" kind="show" identifier="showCustomerDetail" id="V3O-Ia-Nvz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70M-wq-ckj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-754.39999999999998" y="90.404797601199405"/>
+            <point key="canvasLocation" x="-692" y="52.623688155922046"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="4RH-t4-l2t">
@@ -900,4 +949,9 @@
         <image name="logo.png" width="180" height="72"/>
         <image name="rounded-profile-pic.png" width="240" height="240"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="VL9-g0-nWp"/>
+        <segue reference="ofG-vq-LUI"/>
+        <segue reference="f3v-QV-Lhu"/>
+    </inferredMetricsTieBreakers>
 </document>

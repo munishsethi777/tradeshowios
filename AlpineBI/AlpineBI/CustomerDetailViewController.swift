@@ -27,7 +27,8 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     @IBOutlet weak var customerNameLabel: UILabel!
     var lastIndexOfBuyerArr:Int = 0
     let DELETE_CUSTOMER = "Delete Customer"
-    override func viewDidLoad() {
+    var refreshControl:UIRefreshControl!
+    override func viewDidLoad(){
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         progressHUD = ProgressHUD(text: "Loading")
@@ -40,6 +41,11 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         buyerTableView.dataSource = self
         buyerTableView.delegate = self
         buyerTableView.tableFooterView = UIView()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
         self.view.addSubview(progressHUD)
         
         self.navigationController!.navigationBar.topItem!.title = "Back"
@@ -47,6 +53,11 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     }
     @objc func addTapped(){
         
+    }
+    @objc func refreshView(control:UIRefreshControl){
+        customerDetailSt = []
+        buyerDetailSt = []
+        getCustomerDetail()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == detailTableView){
@@ -104,6 +115,8 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
+                        self.detailTableView.reloadData()
+                        self.buyerTableView.reloadData()
                         self.loadCustomerDetail(jsonReponse: json)
                         self.loadBuyers(jsonReponse: json)
                         self.progressHUD.hide()
@@ -132,6 +145,9 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         customerNameLabel.text = cutomername
         storeNameLabel.text = storename
+        if #available(iOS 10.0, *) {
+            self.refreshControl.endRefreshing()
+        }
         detailTableView.reloadData()
     }
     

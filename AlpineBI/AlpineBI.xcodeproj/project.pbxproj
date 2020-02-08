@@ -52,6 +52,8 @@
 		F6319B2E23E83CC1003B2DDF /* FormItemUIProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B2623E83CC0003B2DDF /* FormItemUIProperties.swift */; };
 		F6319B3023E83DAB003B2DDF /* FormTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */; };
 		F6319B3223EADDBC003B2DDF /* FormPickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */; };
+		F6319B3423EBF498003B2DDF /* testpickerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B3323EBF498003B2DDF /* testpickerview.swift */; };
+		F694CF6023ED279500895D48 /* FormLabelFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +105,8 @@
 		F6319B2623E83CC0003B2DDF /* FormItemUIProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItemUIProperties.swift; sourceTree = "<group>"; };
 		F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerViewTableViewCell.swift; sourceTree = "<group>"; };
+		F6319B3323EBF498003B2DDF /* testpickerview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testpickerview.swift; sourceTree = "<group>"; };
+		F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabelFieldTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +159,6 @@
 				F6319AC823E82FA9003B2DDF /* Utils */,
 				F6319ACD23E82FA9003B2DDF /* LaunchScreen.storyboard */,
 				F6319ACF23E82FA9003B2DDF /* Main.storyboard */,
-				F6319AD123E82FA9003B2DDF /* CustomerDetailTableViewCell.swift */,
 				F6319AD223E82FA9003B2DDF /* BuyerDetailTableViewCell.swift */,
 				F6319AD323E82FA9003B2DDF /* ProgressHUD.swift */,
 				F6319AD423E82FA9003B2DDF /* icons */,
@@ -165,10 +168,13 @@
 				F6319AE623E82FA9003B2DDF /* SecondViewController.swift */,
 				F6319AE723E82FA9003B2DDF /* CustomerTableViewCell.swift */,
 				F6319AE823E82FA9003B2DDF /* Info.plist */,
+				F6319AD123E82FA9003B2DDF /* CustomerDetailTableViewCell.swift */,
 				F6319AE923E82FA9003B2DDF /* Services */,
 				F6319AEB23E82FA9003B2DDF /* AlpineBI.entitlements */,
 				F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */,
 				F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */,
+				F6319B3323EBF498003B2DDF /* testpickerview.swift */,
+				F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				F6319B1523E82FA9003B2DDF /* SecondViewController.swift in Sources */,
 				F6319AF023E82FA9003B2DDF /* AddCustomerViewController.swift in Sources */,
 				F6319B0423E82FA9003B2DDF /* ProgressHUD.swift in Sources */,
+				F6319B3423EBF498003B2DDF /* testpickerview.swift in Sources */,
 				F6319AF123E82FA9003B2DDF /* CustomerDetailViewController.swift in Sources */,
 				F6319B0223E82FA9003B2DDF /* CustomerDetailTableViewCell.swift in Sources */,
 				F6319AF323E82FA9003B2DDF /* User.xcdatamodeld in Sources */,
@@ -330,6 +337,7 @@
 				F6319AEC23E82FA9003B2DDF /* BuyerDetailViewController.swift in Sources */,
 				F6319AF823E82FA9003B2DDF /* UserManager.swift in Sources */,
 				F6319B1123E82FA9003B2DDF /* LoginViewController.swift in Sources */,
+				F694CF6023ED279500895D48 /* FormLabelFieldTableViewCell.swift in Sources */,
 				F6319AEF23E82FA9003B2DDF /* DashboardTabController.swift in Sources */,
 				F6319B1423E82FA9003B2DDF /* AppDelegate.swift in Sources */,
 				F6319AFD23E82FA9003B2DDF /* MessageFormat.swift in Sources */,

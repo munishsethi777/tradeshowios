@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
-class FormTextFieldTableViewCell: UITableViewCell, FormConformity,UITextFieldDelegate {
+class FormTextFieldTableViewCell: UITableViewCell, FormConformity,UITextFieldDelegate,UIPickerViewDelegate {
     
     var formItem: FormItem?
+    
     @IBOutlet weak var ibTextField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,11 +26,13 @@ class FormTextFieldTableViewCell: UITableViewCell, FormConformity,UITextFieldDel
 extension FormTextFieldTableViewCell: FormUpdatable {
     func update(with formItem: FormItem) {
         self.formItem = formItem
-        self.ibTextField.text = self.formItem?.value
-        let bgColor: UIColor = self.formItem?.isValid  == false ? .red : .white
-        self.ibTextField.layer.backgroundColor = bgColor.cgColor
-        self.ibTextField.placeholder = self.formItem?.placeholder
-        self.ibTextField.keyboardType = self.formItem?.uiProperties.keyboardType ?? .default
-        self.ibTextField.tintColor = self.formItem?.uiProperties.tintColor
+        if(self.ibTextField != nil){
+            self.ibTextField.text = self.formItem?.value
+            let bgColor: UIColor = self.formItem?.isValid  == false ? .red : .white
+            self.ibTextField.layer.backgroundColor = bgColor.cgColor
+            self.ibTextField.placeholder = self.formItem?.placeholder
+            self.ibTextField.keyboardType = self.formItem?.uiProperties.keyboardType ?? .default
+            self.ibTextField.tintColor = self.formItem?.uiProperties.tintColor
+        }
     }
 }

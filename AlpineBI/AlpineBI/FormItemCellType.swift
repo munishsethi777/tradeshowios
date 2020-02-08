@@ -22,11 +22,12 @@ protocol FormConformity {
 enum FormItemCellType {
   case textField
   case pickerView
+  case labelField
   /// Registering methods for all forms items cell types
   ///
   /// - Parameter tableView: TableView where apply cells registration
   static func registerCells(for tableView: UITableView) {
-    tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormPickerViewTableViewCell")
+    //tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormPickerViewTableViewCell")
    // tableView.register(cellType: FormTextViewTableViewCell.self)
   }
   
@@ -36,16 +37,26 @@ enum FormItemCellType {
   ///   - tableView: TableView where cells previously registered
   ///   - indexPath: indexPath where dequeue
   /// - Returns: a non-nullable UITableViewCell dequeued
-  func dequeueCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-    let cell:UITableViewCell
+    func dequeueCell(for tableView: UITableView, at indexPath: IndexPath,pickerViewData:[String:String]) -> UITableViewCell {
+    //let cell:UITableViewCell
     switch self {
         case .pickerView:
+            let cell:FormPickerViewTableViewCell
             let cellIdentifier = "FormPickerViewTableViewCell"
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormPickerViewTableViewCell
+            cell.setPickerViewData(pickerViewData: pickerViewData)
+            return cell
         case .textField:
+             let cell:FormTextFieldTableViewCell
             let cellIdentifier = "FormTextFieldTableViewCell"
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormTextFieldTableViewCell
+             return cell
+        case .labelField:
+            let cell:FormLabelFieldTableViewCell
+            let cellIdentifier = "FormLabelFieldTableViewCell"
+            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormLabelFieldTableViewCell
+            return cell
     }
-    return cell
+   
   }
 }
