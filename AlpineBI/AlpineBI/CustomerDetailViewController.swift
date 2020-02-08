@@ -48,7 +48,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         self.view.addSubview(progressHUD)
         
-        self.navigationController!.navigationBar.topItem!.title = "Back"
+        //self.navigationController!.navigationBar.topItem!.title = "Back"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addTapped))
     }
     @objc func addTapped(){
@@ -168,7 +168,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         buyerTableView.reloadData()
         buyerTableHeight.constant = CGFloat(38 * buyerDetailSt.count)
-        let scrollHeight = customerNameLabel.frame.height + storeNameLabel.frame.height + detailTableView.frame.height + buyerTableView.frame.height + 141.5
+//        let scrollHeight = customerNameLabel.frame.height + storeNameLabel.frame.height + detailTableView.frame.height + buyerTableView.frame.height + 141.5
         //scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollHeight)
     }
     

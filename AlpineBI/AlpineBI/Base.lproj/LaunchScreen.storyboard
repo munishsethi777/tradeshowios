@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -237,7 +237,7 @@
         <!--Customers-->
         <scene sceneID="yO0-bP-aAZ">
             <objects>
-                <viewController storyboardIdentifier="CustomerTableViewController" id="PvD-if-f9F" customClass="CustomerTableViewController" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomerTableViewController" title="Customers" id="PvD-if-f9F" customClass="CustomerTableViewController" customModule="AlpineBI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hOo-eS-FnA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -494,7 +494,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -691,7 +691,7 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-j8-6SR">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-j8-6SR">
                                                             <rect key="frame" x="15" y="15" width="362" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.10687923713201472" green="0.56365132582723232" blue="0.91717560279187815" alpha="0.79459199989927487" colorSpace="custom" customColorSpace="sRGB"/>
@@ -710,6 +710,7 @@
                                                         <constraint firstItem="ebD-j8-6SR" firstAttribute="trailing" secondItem="yjS-hr-VIT" secondAttribute="trailingMargin" constant="15" id="6Ek-fa-4r3"/>
                                                         <constraint firstAttribute="trailing" secondItem="wGl-um-Prf" secondAttribute="trailing" constant="15" id="9t2-mS-VwA"/>
                                                         <constraint firstItem="wGl-um-Prf" firstAttribute="leading" secondItem="yjS-hr-VIT" secondAttribute="leading" constant="15" id="MeS-wU-nxJ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ebD-j8-6SR" secondAttribute="bottom" constant="10.5" id="Smc-hf-nfA"/>
                                                         <constraint firstItem="ebD-j8-6SR" firstAttribute="leading" secondItem="yjS-hr-VIT" secondAttribute="leading" constant="15" id="XH3-Fo-YLl"/>
                                                         <constraint firstItem="wGl-um-Prf" firstAttribute="top" secondItem="yjS-hr-VIT" secondAttribute="top" constant="7" id="bDn-Hp-rfD"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="7lc-rD-Sbj" secondAttribute="bottom" constant="2" id="bWV-JD-ITi"/>
