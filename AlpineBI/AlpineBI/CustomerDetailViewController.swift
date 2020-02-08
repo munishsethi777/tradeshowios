@@ -41,8 +41,13 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         buyerTableView.delegate = self
         buyerTableView.tableFooterView = UIView()
         self.view.addSubview(progressHUD)
+        
+        self.navigationController!.navigationBar.topItem!.title = "Back"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addTapped))
     }
-    
+    @objc func addTapped(){
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == detailTableView){
             return customerDetailSt.count

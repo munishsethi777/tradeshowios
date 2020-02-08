@@ -37,9 +37,17 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         buyerDetailTableView.dataSource = self
         getBuyerDetail()
         buyerDetailSt = []
+
         self.view.addSubview(progressHUD)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addTapped))
+    }
+    
+    @objc func addTapped(){
         
     }
+
+        
+    
     
     @IBAction func sms1Button(_ sender: Any) {
         sendSMS()
@@ -230,6 +238,8 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         buyerDetailTableView.reloadData()
         let scrollViewHeight = buyerActionView.frame.height + buyerDetailTableView.frame.height + 12;
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight)
+
+        
     }
     
     func addSaveInContactButtonLink(){
