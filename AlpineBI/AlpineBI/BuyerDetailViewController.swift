@@ -138,7 +138,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
             //        } else {
             //            GlobalData.showAlert(view: self, message: StringConstants.WHATS_APP_NOT_INSTALLED)
             //        }
-            let urlWhats = "whatsapp://send?phone=91"+selectedBuyerPhone!+"&abid=12354&text="
+            let urlWhats = "whatsapp://send?phone="+selectedBuyerPhone!+"&abid=12354&text="
             if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
                 if let whatsappURL = URL(string: urlString) {
                     if UIApplication.shared.canOpenURL(whatsappURL) {
