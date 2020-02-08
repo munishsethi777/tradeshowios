@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "CustomerTableViewController.tableView(_:didSelectRowAt:):CustomerTableViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "FormPickerViewTableViewCell.pickerView(_:didSelectRow:inComponent:):FormPickerViewTableViewCell.swift">
       </ContextState>
       <ContextState
@@ -18,6 +21,14 @@
       </ContextState>
       <ContextState
          contextName = "closure #1 in CustomerDetailViewController.getCustomerDetail():CustomerDetailViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BuyerDetailViewController.saveInContacts():BuyerDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "con.email">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "AddCustomerViewController.tableView(_:heightForRowAt:):AddCustomerViewController.swift">
