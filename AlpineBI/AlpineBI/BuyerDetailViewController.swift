@@ -177,6 +177,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         con.familyName = selectedBuyerLName ?? ""
         con.phoneNumbers.append(CNLabeledValue(
             label: "Cell Phone", value: CNPhoneNumber(stringValue: selectedBuyerPhone ??  "")))
+        con.emailAddresses.append(CNLabeledValue(label: "Email",value:(selectedBuyerEmail ?? "") as NSString))
         let unkvc = CNContactViewController(forUnknownContact: con)
         unkvc.contactStore = CNContactStore()
         unkvc.delegate = self
