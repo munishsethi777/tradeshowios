@@ -9,7 +9,7 @@ class FormItem: FormValidable {
     var valueCompletion: ((String?) -> Void)?
     
     var isMandatory = true
-    
+    var isPicker = false
     var isValid = true //FormValidable
     
     var uiProperties = FormItemUIProperties()

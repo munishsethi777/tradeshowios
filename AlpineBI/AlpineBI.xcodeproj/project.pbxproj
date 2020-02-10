@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680058723F1610600F943AD /* ViewWithBottomBorder.swift */; };
+		F63060B023F1148F0032BCCF /* AddBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */; };
+		F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060B123F11E340032BCCF /* BuyerForm.swift */; };
+		F63060B423F136DB0032BCCF /* MyCustomeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */; };
+		F63060B623F1384C0032BCCF /* MyCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63060B523F1384B0032BCCF /* MyCustomCell.xib */; };
+		F63060B823F14C7D0032BCCF /* LabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63060B723F14C7D0032BCCF /* LabelViewCell.xib */; };
+		F63060BA23F150D40032BCCF /* PickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63060B923F150D40032BCCF /* PickerViewCell.xib */; };
+		F63060BC23F158C60032BCCF /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060BB23F158C60032BCCF /* JsonUtil.swift */; };
 		F6319AEC23E82FA9003B2DDF /* BuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AB523E82FA8003B2DDF /* BuyerDetailViewController.swift */; };
 		F6319AED23E82FA9003B2DDF /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AB623E82FA8003B2DDF /* SignOutViewController.swift */; };
 		F6319AEE23E82FA9003B2DDF /* CustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AB723E82FA8003B2DDF /* CustomerTableViewController.swift */; };
@@ -59,6 +67,13 @@
 /* Begin PBXFileReference section */
 		E680058723F1610600F943AD /* ViewWithBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithBottomBorder.swift; sourceTree = "<group>"; };
 		E6C5D7DF23D9B3820038A920 /* AlpineBI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpineBI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuyerViewController.swift; sourceTree = "<group>"; };
+		F63060B123F11E340032BCCF /* BuyerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerForm.swift; sourceTree = "<group>"; };
+		F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomeCellTableViewCell.swift; sourceTree = "<group>"; };
+		F63060B523F1384B0032BCCF /* MyCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCustomCell.xib; sourceTree = "<group>"; };
+		F63060B723F14C7D0032BCCF /* LabelViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelViewCell.xib; sourceTree = "<group>"; };
+		F63060B923F150D40032BCCF /* PickerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerViewCell.xib; sourceTree = "<group>"; };
+		F63060BB23F158C60032BCCF /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
 		F6319AB523E82FA8003B2DDF /* BuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerDetailViewController.swift; sourceTree = "<group>"; };
 		F6319AB623E82FA8003B2DDF /* SignOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
 		F6319AB723E82FA8003B2DDF /* CustomerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerTableViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +163,7 @@
 				F6319AB723E82FA8003B2DDF /* CustomerTableViewController.swift */,
 				F6319AB823E82FA8003B2DDF /* DashboardTabController.swift */,
 				F6319AB923E82FA8003B2DDF /* AddCustomerViewController.swift */,
+				F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */,
 				F6319ABA23E82FA9003B2DDF /* CustomerDetailViewController.swift */,
 				F6319ABC23E82FA9003B2DDF /* User.xcdatamodeld */,
 				F6319ABE23E82FA9003B2DDF /* images */,
@@ -174,7 +190,15 @@
 				F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */,
 				F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */,
 				F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */,
+
 				E680058723F1610600F943AD /* ViewWithBottomBorder.swift */,
+
+				F63060B123F11E340032BCCF /* BuyerForm.swift */,
+				F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */,
+				F63060B523F1384B0032BCCF /* MyCustomCell.xib */,
+				F63060B723F14C7D0032BCCF /* LabelViewCell.xib */,
+				F63060B923F150D40032BCCF /* PickerViewCell.xib */,
+
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -203,6 +227,7 @@
 				F6319ACA23E82FA9003B2DDF /* MessageFormat.swift */,
 				F6319ACB23E82FA9003B2DDF /* GlobalData.swift */,
 				F6319ACC23E82FA9003B2DDF /* PreferencesUtil.swift */,
+				F63060BB23F158C60032BCCF /* JsonUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -299,14 +324,17 @@
 				F6319B0123E82FA9003B2DDF /* Main.storyboard in Resources */,
 				F6319B0923E82FA9003B2DDF /* icons8-male-user-100-2.png in Resources */,
 				F6319B0623E82FA9003B2DDF /* icons8-user-account-24-2.png in Resources */,
+				F63060B623F1384C0032BCCF /* MyCustomCell.xib in Resources */,
 				F6319AF423E82FA9003B2DDF /* logo.png in Resources */,
 				F6319AF923E82FA9003B2DDF /* Assets.xcassets in Resources */,
 				F6319B0E23E82FA9003B2DDF /* icons8-sign-out-24.png in Resources */,
 				F6319B0A23E82FA9003B2DDF /* rounded-profile-pic.png in Resources */,
+				F63060BA23F150D40032BCCF /* PickerViewCell.xib in Resources */,
 				F6319B0023E82FA9003B2DDF /* LaunchScreen.storyboard in Resources */,
 				F6319B0B23E82FA9003B2DDF /* icons8-new-post-100-2.png in Resources */,
 				F6319B0723E82FA9003B2DDF /* icons8-settings-24.png in Resources */,
 				F6319B0D23E82FA9003B2DDF /* icons8-phone-100-2.png in Resources */,
+				F63060B823F14C7D0032BCCF /* LabelViewCell.xib in Resources */,
 				F6319B0523E82FA9003B2DDF /* icons8-add-user-male-24.png in Resources */,
 				F6319B0823E82FA9003B2DDF /* icons8-sms-100.png in Resources */,
 			);
@@ -332,6 +360,7 @@
 				F6319AF323E82FA9003B2DDF /* User.xcdatamodeld in Sources */,
 				F6319AFC23E82FA9003B2DDF /* StringConstants.swift in Sources */,
 				F6319AF523E82FA9003B2DDF /* FirstViewController.swift in Sources */,
+				F63060B423F136DB0032BCCF /* MyCustomeCellTableViewCell.swift in Sources */,
 				F6319AFA23E82FA9003B2DDF /* BuyerTableViewCell.swift in Sources */,
 				F6319AEC23E82FA9003B2DDF /* BuyerDetailViewController.swift in Sources */,
 				F6319AF823E82FA9003B2DDF /* UserManager.swift in Sources */,
@@ -343,11 +372,14 @@
 				F6319B0323E82FA9003B2DDF /* BuyerDetailTableViewCell.swift in Sources */,
 				E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */,
 				F6319AFF23E82FA9003B2DDF /* PreferencesUtil.swift in Sources */,
+				F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */,
+				F63060BC23F158C60032BCCF /* JsonUtil.swift in Sources */,
 				F6319B2D23E83CC1003B2DDF /* Form.swift in Sources */,
 				F6319B2E23E83CC1003B2DDF /* FormItemUIProperties.swift in Sources */,
 				F6319AED23E82FA9003B2DDF /* SignOutViewController.swift in Sources */,
 				F6319B3023E83DAB003B2DDF /* FormTextFieldTableViewCell.swift in Sources */,
 				F6319B1623E82FA9003B2DDF /* CustomerTableViewCell.swift in Sources */,
+				F63060B023F1148F0032BCCF /* AddBuyerViewController.swift in Sources */,
 				F6319AFB23E82FA9003B2DDF /* IDNamePair.swift in Sources */,
 				F6319B1023E82FA9003B2DDF /* alpinebi.xcdatamodeld in Sources */,
 				F6319AF723E82FA9003B2DDF /* CoreDataManager.swift in Sources */,

@@ -12,7 +12,9 @@ class FormTextFieldTableViewCell: UITableViewCell, FormConformity,UITextFieldDel
     
     var formItem: FormItem?
     
+   
     @IBOutlet weak var ibTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.ibTextField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)

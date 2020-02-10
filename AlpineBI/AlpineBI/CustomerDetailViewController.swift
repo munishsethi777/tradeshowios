@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 class CustomerDetailViewController : UIViewController , UITableViewDataSource, UITableViewDelegate{
     
+    @IBAction func addBuyerTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "AddBuyer", sender: self)
+    }
+    
     var selectedCustomerSeq:Int = 0;
     var loggedInUserSeq:Int = 0;
     var progressHUD: ProgressHUD!
@@ -32,7 +36,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         progressHUD = ProgressHUD(text: "Loading")
-        getCustomerDetail();
+       // getCustomerDetail();
         customerDetailSt = []
         buyerDetailSt = []
         detailTableView.dataSource = self
@@ -50,6 +54,12 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         
         //self.navigationController!.navigationBar.topItem!.title = "Back"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addTapped))
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        customerDetailSt = []
+        buyerDetailSt = []
+        getCustomerDetail()
+        super.viewWillAppear(animated)
     }
     @objc func addTapped(){
         if let addCustomerController = self.tabBarController?.viewControllers?[1] as? AddCustomerViewController {
@@ -181,6 +191,9 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         if let secondController = segue.destination as? AddCustomerViewController {
             secondController.editCustomerSeq =  selectedCustomerSeq
+        }
+        if let secondController = segue.destination as? AddBuyerViewController {
+            secondController.customerSeq =  selectedCustomerSeq
         }
     }
     

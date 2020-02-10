@@ -15,7 +15,6 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     var progressHUD: ProgressHUD!
     private var form = Form()
     var businessTypes:[String:String] = [:]
-    var businessTypesLabels:[String] = []
     var priorityTypes:[String:String] = [:]
     var editCustomerData:[String:Any] = [:]
     var editCustomerSeq:Int = 0
@@ -29,9 +28,7 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         businessTypes["direct"] = "Direct"
         businessTypes["domestic"] = "Domestic"
         businessTypes["dot_com"] = "Dot Com"
-        for (_, value) in businessTypes {
-            businessTypesLabels.append(value)
-        }
+        
         priorityTypes[""] = "Select Any"
         priorityTypes["A"] = "A"
         priorityTypes["B"] = "B"
@@ -45,13 +42,11 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         getCustomer()
     }
     private func prepareSubViews() {
-        FormItemCellType.registerCells(for: self.ibTableView)
-        self.ibTableView.tableFooterView = UIView(frame: CGRect.zero)
+       FormItemCellType.registerCells(for: self.ibTableView)
+       self.ibTableView.tableFooterView = UIView(frame: CGRect.zero)
        // self.ibTableView.allowsSelection = false
-        
        //self.ibTableView.estimatedRowHeight = 90
-        //self.ibTableView.rowHeight = UITableView.automaticDimension
-        
+       //self.ibTableView.rowHeight = UITableView.automaticDimension
     }
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         self.saveCustomer()
@@ -121,8 +116,10 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
                     if(success == 1){
                       self.customerSeq = Int(json["customerseq"] as! Int)
                       self.progressHUD.hide()
+                      self.showAlertMessage(view: self, message: message!)
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
                     }
-                    self.showAlertMessage(view: self, message: message!)
                 }
             } catch let parseError as NSError {
                 GlobalData.showAlert(view: self, message: parseError.description)
