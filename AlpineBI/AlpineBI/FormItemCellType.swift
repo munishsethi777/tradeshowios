@@ -28,7 +28,14 @@ enum FormItemCellType {
   /// - Parameter tableView: TableView where apply cells registration
   static func registerCells(for tableView: UITableView) {
     //tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormPickerViewTableViewCell")
-   // tableView.register(cellType: FormTextViewTableViewCell.self)
+    //tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormTextViewTableViewCell")
+    //tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormLabelFieldTableViewCell")
+    let nib = UINib.init(nibName: "MyCustomCell", bundle: nil)
+    tableView.register(nib, forCellReuseIdentifier: "MyCustomCell")
+    let nib1 = UINib.init(nibName: "LabelViewCell", bundle: nil)
+    tableView.register(nib1, forCellReuseIdentifier: "LabelViewCell")
+    let nib2 = UINib.init(nibName: "PickerViewCell", bundle: nil)
+    tableView.register(nib2, forCellReuseIdentifier: "PickerViewCell")
   }
   
   /// Correctly dequeue the UITableViewCell according to the current cell type
@@ -42,18 +49,18 @@ enum FormItemCellType {
     switch self {
         case .pickerView:
             let cell:FormPickerViewTableViewCell
-            let cellIdentifier = "FormPickerViewTableViewCell"
+            let cellIdentifier = "PickerViewCell"
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormPickerViewTableViewCell
             cell.setPickerViewData(pickerViewData: pickerViewData)
             return cell
         case .textField:
              let cell:FormTextFieldTableViewCell
-            let cellIdentifier = "FormTextFieldTableViewCell"
+            let cellIdentifier = "MyCustomCell"
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormTextFieldTableViewCell
              return cell
         case .labelField:
             let cell:FormLabelFieldTableViewCell
-            let cellIdentifier = "FormLabelFieldTableViewCell"
+            let cellIdentifier = "LabelViewCell"
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormLabelFieldTableViewCell
             return cell
     }

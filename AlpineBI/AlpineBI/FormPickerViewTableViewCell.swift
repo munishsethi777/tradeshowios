@@ -13,6 +13,8 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
     var updateCallback : ((_ selectedValue: String,_ indexPath: IndexPath)-> Void)?
     var pickerDataLabel: [String] = [String]()
     var pickerData: [String:String] = [:]
+    
+    @IBOutlet weak var pickerView: UIPickerView!
     override func awakeFromNib() {
         super.awakeFromNib()
         pickerData = [:]
@@ -21,7 +23,7 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
         pickerView.delegate = self
     }
     
-    @IBOutlet weak var pickerView: UIPickerView!
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
     }
