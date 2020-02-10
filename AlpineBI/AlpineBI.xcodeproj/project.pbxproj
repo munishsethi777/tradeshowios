@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680058723F1610600F943AD /* ViewWithBottomBorder.swift */; };
 		F63060B023F1148F0032BCCF /* AddBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */; };
 		F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060B123F11E340032BCCF /* BuyerForm.swift */; };
 		F63060B423F136DB0032BCCF /* MyCustomeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */; };
@@ -63,6 +65,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E680058723F1610600F943AD /* ViewWithBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithBottomBorder.swift; sourceTree = "<group>"; };
 		E6C5D7DF23D9B3820038A920 /* AlpineBI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpineBI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuyerViewController.swift; sourceTree = "<group>"; };
 		F63060B123F11E340032BCCF /* BuyerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerForm.swift; sourceTree = "<group>"; };
@@ -187,11 +190,15 @@
 				F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */,
 				F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */,
 				F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */,
+
+				E680058723F1610600F943AD /* ViewWithBottomBorder.swift */,
+
 				F63060B123F11E340032BCCF /* BuyerForm.swift */,
 				F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */,
 				F63060B523F1384B0032BCCF /* MyCustomCell.xib */,
 				F63060B723F14C7D0032BCCF /* LabelViewCell.xib */,
 				F63060B923F150D40032BCCF /* PickerViewCell.xib */,
+
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -363,6 +370,7 @@
 				F6319B1423E82FA9003B2DDF /* AppDelegate.swift in Sources */,
 				F6319AFD23E82FA9003B2DDF /* MessageFormat.swift in Sources */,
 				F6319B0323E82FA9003B2DDF /* BuyerDetailTableViewCell.swift in Sources */,
+				E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */,
 				F6319AFF23E82FA9003B2DDF /* PreferencesUtil.swift in Sources */,
 				F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */,
 				F63060BC23F158C60032BCCF /* JsonUtil.swift in Sources */,
