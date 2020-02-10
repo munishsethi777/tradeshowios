@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680058723F1610600F943AD /* ViewWithBottomBorder.swift */; };
 		F6319AEC23E82FA9003B2DDF /* BuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AB523E82FA8003B2DDF /* BuyerDetailViewController.swift */; };
 		F6319AED23E82FA9003B2DDF /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AB623E82FA8003B2DDF /* SignOutViewController.swift */; };
 		F6319AEE23E82FA9003B2DDF /* CustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319AB723E82FA8003B2DDF /* CustomerTableViewController.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E680058723F1610600F943AD /* ViewWithBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithBottomBorder.swift; sourceTree = "<group>"; };
 		E6C5D7DF23D9B3820038A920 /* AlpineBI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpineBI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6319AB523E82FA8003B2DDF /* BuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerDetailViewController.swift; sourceTree = "<group>"; };
 		F6319AB623E82FA8003B2DDF /* SignOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */,
 				F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */,
 				F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */,
+				E680058723F1610600F943AD /* ViewWithBottomBorder.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				F6319B1423E82FA9003B2DDF /* AppDelegate.swift in Sources */,
 				F6319AFD23E82FA9003B2DDF /* MessageFormat.swift in Sources */,
 				F6319B0323E82FA9003B2DDF /* BuyerDetailTableViewCell.swift in Sources */,
+				E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */,
 				F6319AFF23E82FA9003B2DDF /* PreferencesUtil.swift in Sources */,
 				F6319B2D23E83CC1003B2DDF /* Form.swift in Sources */,
 				F6319B2E23E83CC1003B2DDF /* FormItemUIProperties.swift in Sources */,
