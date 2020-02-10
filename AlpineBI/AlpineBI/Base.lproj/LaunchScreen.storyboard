@@ -892,9 +892,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yFy-zd-kBe" firstAttribute="height" secondItem="ufJ-rD-GAb" secondAttribute="height" id="8Nk-g1-ve3"/>
-                            <constraint firstItem="yFy-zd-kBe" firstAttribute="width" secondItem="ufJ-rD-GAb" secondAttribute="width" id="YlU-sl-bU8"/>
-                            <constraint firstItem="yFy-zd-kBe" firstAttribute="top" secondItem="2Tc-TG-NN5" secondAttribute="bottom" id="nF3-3H-lw8"/>
+                            <constraint firstItem="yFy-zd-kBe" firstAttribute="leading" secondItem="ufJ-rD-GAb" secondAttribute="leading" id="3O8-Oq-ziJ"/>
+                            <constraint firstItem="yFy-zd-kBe" firstAttribute="top" secondItem="2Tc-TG-NN5" secondAttribute="bottom" id="OAV-nb-MBw"/>
+                            <constraint firstItem="yFy-zd-kBe" firstAttribute="trailing" secondItem="ufJ-rD-GAb" secondAttribute="trailing" id="dRP-F6-FaY"/>
+                            <constraint firstItem="yFy-zd-kBe" firstAttribute="bottom" secondItem="ufJ-rD-GAb" secondAttribute="bottom" id="rct-O9-0pm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ufJ-rD-GAb"/>
                     </view>
