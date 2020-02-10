@@ -13,21 +13,51 @@ class LoginViewController : UIViewController{
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var userNameText: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    var gradientLayer: CAGradientLayer!
+    
+    
+    @IBInspectable var offsetMultiplier: CGFloat = 0.75
+    private var keyboardHeight = 0 as CGFloat
+    private weak var activeTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameText.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         passwordTextfield.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         loginButton.isEnabled = false
-        // Do any additional setup after loading the view, typically from a nib.
+        setGradientBackground()
+        super.hideKeyboardWhenTappedAround()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWasShown),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillBeHidden),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+
+    
+    @objc func keyboardWasShown(notification: NSNotification){
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height + 60, right: 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
     }
     
+    @objc func keyboardWillBeHidden(notification: NSNotification){
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0, right: 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
+
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-        setGradientBackground()
         userNameText.text = ""
         passwordTextfield.text = ""
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -90,11 +120,15 @@ class LoginViewController : UIViewController{
         let colorBottom =  UIColor(red: 0.0/255.0, green: 123.0/255.0, blue: 127.0/255.0, alpha: 1.0).cgColor
         let colorTop = UIColor(red: 0.0/255.0, green: 229.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         
-        let gradientLayer = CAGradientLayer()
+        gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = self.view.bounds
-        
         self.view.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = self.view.bounds
     }
 }
