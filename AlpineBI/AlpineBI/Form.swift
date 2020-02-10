@@ -11,6 +11,8 @@ class Form {
   var salesperson: String?
   var salespersonid: String?
   var priority: String?
+  var storename:String?
+  var storeid:String?
     
   init() {
     self.configureItems()
@@ -48,7 +50,7 @@ class Form {
     let idItem = FormItem(placeholder: "ID")
     idItem.uiProperties.cellType = FormItemCellType.textField
     idItem.value = self.id
-    idItem.name = "id"
+    idItem.name = "customerid"
     idItem.valueCompletion = { [weak self, weak idItem] value in
         self?.id = value
         idItem?.value = value
@@ -77,7 +79,7 @@ class Form {
     let salesPersonitem = FormItem(placeholder: "Sales Person")
     salesPersonitem.uiProperties.cellType = FormItemCellType.textField
     salesPersonitem.value = self.salesperson
-    salesPersonitem.name = "salesperson"
+    salesPersonitem.name = "salespersonname"
     salesPersonitem.valueCompletion = { [weak self, weak salesPersonitem] value in
         self?.salesperson = value
         salesPersonitem?.value = value
@@ -112,6 +114,26 @@ class Form {
         priorityPickerNameItem?.value = value
     }
     
-    self.formItems = [fullNameItem, idItem, businessTypeItem,businessTypePickerItem,salesPersonitem,salesPersonIdItem,priorityNameItem,priorityPickerNameItem]
+    // Store Name
+    let storeNameItem = FormItem(placeholder: "Store Name")
+    storeNameItem.uiProperties.cellType = FormItemCellType.textField
+    storeNameItem.value = self.storename
+    storeNameItem.name = "storename"
+    storeNameItem.valueCompletion = { [weak self, weak storeNameItem] value in
+        self?.storename = value
+        storeNameItem?.value = value
+    }
+    
+    //Store ID
+    let storeIdItem = FormItem(placeholder: "Store ID")
+    storeIdItem.uiProperties.cellType = FormItemCellType.textField
+    storeIdItem.value = self.storeid
+    storeIdItem.name = "storeid"
+    storeIdItem.valueCompletion = { [weak self, weak storeIdItem] value in
+        self?.storeid = value
+        storeIdItem?.value = value
+    }
+    
+    self.formItems = [fullNameItem, idItem, businessTypeItem,businessTypePickerItem,salesPersonitem,salesPersonIdItem,priorityNameItem,priorityPickerNameItem,storeNameItem,storeIdItem]
   }
 }

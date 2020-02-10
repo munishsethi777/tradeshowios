@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -327,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5X8-bM-lV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="774.06296851574223"/>
+            <point key="canvasLocation" x="-46" y="842"/>
         </scene>
         <!--Customer Details-->
         <scene sceneID="9XI-Vz-BMA">
@@ -479,11 +479,12 @@
                         <outlet property="scrollView" destination="3oe-mk-aEi" id="uJY-cJ-nS5"/>
                         <outlet property="storeNameLabel" destination="vHc-Ck-c30" id="TWm-0z-gv0"/>
                         <segue destination="gqt-LZ-CjW" kind="show" identifier="BuyerDetailViewController" id="VLB-e8-Zpb"/>
+                        <segue destination="3Wk-eg-5YS" kind="presentation" identifier="showCreateCustomer" id="xoE-aw-Hmz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddK-dp-g3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1436" y="1463.1184407796104"/>
+            <point key="canvasLocation" x="-1039" y="1480"/>
         </scene>
         <!--Buyer Detail View Controller-->
         <scene sceneID="6Mp-pJ-NCk">
@@ -494,7 +495,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -761,7 +762,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gX-te-9Cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="1523"/>
+            <point key="canvasLocation" x="-204" y="1640"/>
         </scene>
         <!--Customers Controller-->
         <scene sceneID="cWf-FA-Iug">
@@ -878,12 +879,11 @@
                     <tabBarItem key="tabBarItem" title="+ Customer" image="icons8-add-user-male-24.png" landscapeImage="icons8-add-user-male-24.png" selectedImage="icons8-add-user-male-24.png" id="NFy-qh-igh"/>
                     <connections>
                         <outlet property="ibTableView" destination="yFy-zd-kBe" id="FrE-TE-VJ0"/>
-                        <segue destination="kEu-Ku-t9x" kind="show" identifier="showCustomerDetail" id="V3O-Ia-Nvz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70M-wq-ckj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="52.623688155922046"/>
+            <point key="canvasLocation" x="-722" y="434"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="4RH-t4-l2t">
@@ -952,6 +952,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ofG-vq-LUI"/>
-        <segue reference="f3v-QV-Lhu"/>
+        <segue reference="xoE-aw-Hmz"/>
     </inferredMetricsTieBreakers>
 </document>

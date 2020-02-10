@@ -15,6 +15,8 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
     var pickerData: [String:String] = [:]
     override func awakeFromNib() {
         super.awakeFromNib()
+        pickerData = [:]
+        pickerDataLabel = []
         pickerView.dataSource = self
         pickerView.delegate = self
     }
@@ -58,9 +60,30 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
         }
         return ""
     }
+    func getSelectedPickerViewValueByKey(selectedKey:String)->String{
+        for (key, value) in pickerData {
+            if(key == selectedKey){
+                return value
+            }
+        }
+        return ""
+    }
+    
+    func getIndexOfKey(selectedValue:String)->Int{
+        var i = 0;
+        for (value) in pickerDataLabel {
+            if(value == selectedValue){
+                return i
+            }
+            i = i + 1
+        }
+        return 0
+    }
     
     func setPickerViewData(pickerViewData:[String:String]){
+        pickerData = [:]
         pickerData = pickerViewData
+        pickerDataLabel = []
         for (_, value) in pickerViewData {
             if(value != "Select Any"){
                 pickerDataLabel.append(value)
@@ -76,5 +99,11 @@ extension FormPickerViewTableViewCell: FormUpdatable {
     func update(with formItem: FormItem) {
        self.formItem = formItem
        self.pickerView.tintColor = .white
+        if(formItem.value != nil){
+            let value = pickerData[formItem.value!]!;
+            let keyIndex = getIndexOfKey(selectedValue: value)
+            pickerView.selectRow(keyIndex, inComponent: 0, animated: true)
+            self.pickerView(self.pickerView, didSelectRow: keyIndex, inComponent: 0)
+        }
     }
 }

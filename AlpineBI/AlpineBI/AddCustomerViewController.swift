@@ -17,9 +17,12 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     var businessTypes:[String:String] = [:]
     var businessTypesLabels:[String] = []
     var priorityTypes:[String:String] = [:]
+    var editCustomerData:[String:Any] = [:]
+    var editCustomerSeq:Int = 0
     @IBOutlet weak var ibTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        editCustomerData = [:]
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         self.form = Form()
         businessTypes[""] = "Select Any"
@@ -39,9 +42,9 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         hideKeyboardWhenTappedAround()
         ibTableView.dataSource = self
         ibTableView.delegate = self
-        self.ibTableView.reloadData()
+        getCustomer()
     }
-       private func prepareSubViews() {
+    private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.ibTableView)
         self.ibTableView.tableFooterView = UIView(frame: CGRect.zero)
        // self.ibTableView.allowsSelection = false
@@ -65,6 +68,14 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         customerArr["salespersonname"] = self.form.salesperson
         customerArr["businesstype"] = self.form.businesstype
         customerArr["priority"] = self.form.priority
+        var isStoreEnabled = 1
+        if(self.form.storename == nil && self.form.storeid == nil ){
+            isStoreEnabled = 0
+        }
+        customerArr["seq"] = editCustomerSeq
+        customerArr["storename"] = self.form.storename
+        customerArr["storeid"] = self.form.storeid
+        customerArr["isstore"] = isStoreEnabled
         customerArr["createdby"] = self.loggedInUserSeq
         let jsonString = toJsonString(jsonObject: customerArr);
         excecuteSaveCustomerCall(jsonstring: jsonString)
@@ -80,6 +91,7 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         }
         return jsonString!
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let secondController = segue.destination as? CustomerDetailViewController {
             secondController.selectedCustomerSeq =  customerSeq
@@ -107,7 +119,7 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                      self.customerSeq = Int(json["customerseq"] as! String)!
+                      self.customerSeq = Int(json["customerseq"] as! Int)
                       self.progressHUD.hide()
                     }
                     self.showAlertMessage(view: self, message: message!)
@@ -152,9 +164,58 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     func UpdateCallback(selectedValue:String,indexPath:IndexPath) //add this extra method
     {
         form.formItems[indexPath.row].value = selectedValue
+        if(form.formItems[indexPath.row].name == "businesstype"){
+            form.businesstype = selectedValue
+            editCustomerData["businesstype"] = selectedValue
+        }
+        if(form.formItems[indexPath.row].name == "priority"){
+            form.priority = selectedValue
+            editCustomerData["priority"] = selectedValue
+        }
         self.ibTableView.reloadRows(at:[indexPath], with: .none)
     }
+    func getCustomer(){
+        if(self.editCustomerSeq == 0){
+            self.ibTableView.reloadData()
+            return
+        }
+        self.view.addSubview(progressHUD)
+        let args: [Int] = [self.loggedInUserSeq,self.editCustomerSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_CUSTOMER_BY_SEQ, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadFormOnEdit(response: json)
+                        self.progressHUD.hide()
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                GlobalData.showAlert(view: self, message: parseError.description)
+            }
+        })
+    }
+    func loadFormOnEdit(response:[String:Any]){
+        editCustomerData = response["customer"] as! [String:Any]
+        self.form.fullname = editCustomerData["fullname"] as? String
+        self.form.id = editCustomerData["customerid"] as? String
+        self.form.salespersonid = editCustomerData["salespersonid"] as? String
+        self.form.salesperson = editCustomerData["salespersonname"] as? String
+        self.form.businesstype = editCustomerData["businesstype"] as? String
+        self.form.priority = editCustomerData["priority"] as? String
+        self.form.storename = editCustomerData["storename"] as? String
+        self.form.storeid = editCustomerData["storeid"] as? String
+        self.ibTableView.reloadData()
+    }
 }
+
 // MARK: - UITableViewDataSource
 extension AddCustomerViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -167,13 +228,29 @@ extension AddCustomerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = self.form.formItems[indexPath.row]
-        var cell: UITableViewCell
+        let name = item.name
+        if let val = editCustomerData[name!] as? String {
+            item.value = val
+            if(name == "businesstype" && val != ""){
+                if let v = businessTypes[val] {
+                    item.value = v;
+                }
+            }
+            if(name == "priorty" && val != ""){
+                if let v = priorityTypes[val] {
+                    item.value = v;
+                }
+            }
+        }
         var pickerViewData:[String:String] = [:]
+        var cell: UITableViewCell
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
             if(item.name == "businesstypepicker" && cellType == FormItemCellType.pickerView){
+                item.value = editCustomerData["businesstype"] as? String
                 pickerViewData = businessTypes
             }
             if(item.name == "prioritypicker" && cellType == FormItemCellType.pickerView){
+                item.value = editCustomerData["priority"] as? String
                 pickerViewData = priorityTypes
             }
             cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData)
@@ -189,7 +266,6 @@ extension AddCustomerViewController: UITableViewDataSource {
             item.indexPath = indexPath
             formUpdatableCell.update(with: item)
         }
-        //indexPath.row == 3 ? (cell.isHidden = true): (cell.isHidden = false)
         return cell
     }
     

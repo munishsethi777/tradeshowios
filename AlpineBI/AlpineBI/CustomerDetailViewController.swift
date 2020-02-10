@@ -52,7 +52,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addTapped))
     }
     @objc func addTapped(){
-        
+        if let addCustomerController = self.tabBarController?.viewControllers?[1] as? AddCustomerViewController {
+            addCustomerController.editCustomerSeq = selectedCustomerSeq
+            self.tabBarController?.selectedIndex = 1;
+        }
     }
     @objc func refreshView(control:UIRefreshControl){
         customerDetailSt = []
@@ -136,8 +139,8 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         let storename = jsonReponse["storename"] as? String
         for j in 0..<customerDetail.count{
             let customerJson = customerDetail[j] as! [String: Any]
-            let name = customerJson["name"] as! String
-            let value = customerJson["value"] as! String
+            let name = customerJson["name"] as? String
+            let value = customerJson["value"] as? String
             var detail = IDNamePair()
             detail.id = name
             detail.value = value
@@ -175,6 +178,9 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let secondController = segue.destination as? BuyerDetailViewController {
             secondController.selectedBuyerSeq =  selectedBuyerSeq
+        }
+        if let secondController = segue.destination as? AddCustomerViewController {
+            secondController.editCustomerSeq =  selectedCustomerSeq
         }
     }
     
