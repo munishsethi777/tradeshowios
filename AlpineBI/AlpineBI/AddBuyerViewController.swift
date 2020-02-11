@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ContactsUI
 class AddBuyerViewController: UIViewController,UITableViewDelegate{
     let totalRowsCount:Int = 0
     var loggedInUserSeq:Int = 0
@@ -19,7 +20,8 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
     var categoryTypes:[String:String] = [:]
     private var dpShowCategoryTypeVisible = false
     private var selectedIndex = 0;
-    private var editBuyerData:[String:String] = [:]
+    private var editBuyerData:[String:Any] = [:]
+    private let contactPicker = CNContactPickerViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         addBuyerTableView.dataSource = self
@@ -28,8 +30,12 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
         initPickerViewData()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         progressHUD = ProgressHUD(text: "Processing")
+        getBuyer()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addBuyerTableView.reloadData()
+    }
     private func initPickerViewData(){
         categoryTypes[""] = "Select Any"
         categoryTypes["fountains"] = "Fountains"
@@ -63,6 +69,46 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
         let jsonString = JsonUtil.toJsonString(jsonObject: buyerArr);
         excecuteSaveBuyerCall(jsonstring: jsonString)
     }
+    func loadFormOnEdit(response:[String:Any]){
+        editBuyerData = response["buyer"] as! [String:Any]
+        self.form.lastname = editBuyerData["firstname"] as? String
+        self.form.lastname = editBuyerData["lastname"] as? String
+        self.form.email = editBuyerData["email"] as? String
+        self.form.cellphone = editBuyerData["cellphone"] as? String
+        self.form.phone = editBuyerData["officephone"] as? String
+        self.form.category = editBuyerData["category"] as? String
+        self.form.notes = editBuyerData["notes"] as? String
+        self.addBuyerTableView.reloadData()
+    }
+    
+    func getBuyer(){
+        if(self.editBuyerSeq == 0){
+            self.addBuyerTableView.reloadData()
+            return
+        }
+        self.view.addSubview(progressHUD)
+        let args: [Int] = [self.loggedInUserSeq,self.editBuyerSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_BUYER_BY_SEQ, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadFormOnEdit(response: json)
+                        self.progressHUD.hide()
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                GlobalData.showAlert(view: self, message: parseError.description)
+            }
+        })
+    }
     
     private func excecuteSaveBuyerCall(jsonstring: String!){
         self.view.addSubview(progressHUD)
@@ -80,7 +126,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
                     if(success == 1){
                         self.customerSeq = Int(json["buyerseq"] as! Int)
                         self.progressHUD.hide()
-                        self.showAlertMessage(view: self, message: message!)
+                        GlobalData.showAlertWithDismiss(view: self, title: "Success", message: message!)
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }
@@ -90,11 +136,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
             }
         })
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    override func viewDidAppear(_ animated: Bool) {
+   override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     @IBAction func cancelTapped(_ sender: Any) {
@@ -136,7 +178,13 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
             
         }
     }
-    
+    func buttonTappedCallBack(){
+        openContact()
+    }
+    func openContact(){
+        contactPicker.delegate = self
+        self.present(contactPicker, animated: true, completion: nil)
+    }
     func UpdateCallback(selectedValue:String,indexPath:IndexPath) //add this extra method
     {
         form.formItems[indexPath.row].value = selectedValue
@@ -158,18 +206,34 @@ extension AddBuyerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = self.form.formItems[indexPath.row]
+        let name = item.name
+        if let val = editBuyerData[name!] as? String {
+            item.value = val
+            if(name == "category" && val != ""){
+                if let v = categoryTypes[val] {
+                    item.value = v;
+                }
+            }
+        }
         var cell: UITableViewCell
         let pickerViewData:[String:String] = categoryTypes
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
+            if(item.isPicker  && cellType == FormItemCellType.pickerView){
+                item.value = editBuyerData["category"] as? String
+            }
            cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData)
+           if let pickerViewCell = cell as? FormPickerViewTableViewCell {
+                pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)
+                pickerViewCell.updateCallback = self.UpdateCallback
+                cell = pickerViewCell
+           }
+           if let buttonViewCell = cell as? FormButtonViewTableViewCell {
+                buttonViewCell.buttonTappedCallBack = buttonTappedCallBack
+           }
         }else{
            cell = UITableViewCell()
         }
-        if let pickerViewCell = cell as? FormPickerViewTableViewCell {
-            pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)
-            pickerViewCell.updateCallback = self.UpdateCallback
-            cell = pickerViewCell
-        }
+       
         if let formUpdatableCell = cell as? FormUpdatable {
             item.indexPath = indexPath
             formUpdatableCell.update(with: item)
@@ -177,15 +241,71 @@ extension AddBuyerViewController: UITableViewDataSource {
         return cell
     }
     
-    func showAlertMessage(view:UIViewController,message:String,nextViewControllerSegueId:String? = nil){
-        let alert = UIAlertController(title: "Validation", message: message, preferredStyle: UIAlertController.Style.alert)
-        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-            self.dismiss(animated: true, completion: nil)
+}
+extension AddBuyerViewController: CNContactPickerDelegate {
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        let phoneNumberCount = contact.phoneNumbers.count
+        
+        guard phoneNumberCount > 0 else {
+            dismiss(animated: true)
+            //show pop up: "Selected contact does not have a number"
+            return
         }
-        alert.addAction(action)
-        view.present(alert, animated: true, completion: nil)
+        setInfoFromContact(contact: contact)
+        if phoneNumberCount == 1 {
+            setNumberFromContact(contactNumber: contact.phoneNumbers[0].value.stringValue)
+        } else {
+            let alertController = UIAlertController(title: "Select one of the numbers", message: nil, preferredStyle: .alert)
+            
+            for i in 0...phoneNumberCount-1 {
+                let phoneAction = UIAlertAction(title: contact.phoneNumbers[i].value.stringValue, style: .default, handler: {
+                    alert -> Void in
+                    self.setNumberFromContact(contactNumber: contact.phoneNumbers[i].value.stringValue)
+                    self.addBuyerTableView.reloadData()
+                })
+                alertController.addAction(phoneAction)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: {
+                alert -> Void in
+                
+            })
+            alertController.addAction(cancelAction)
+            
+            dismiss(animated: true)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
+    func setNumberFromContact(contactNumber: String) {
+        
+        //UPDATE YOUR NUMBER SELECTION LOGIC AND PERFORM ACTION WITH THE SELECTED NUMBER
+        
+        var contactNumber = contactNumber.replacingOccurrences(of: "-", with: "")
+        contactNumber = contactNumber.replacingOccurrences(of: "+", with: "")
+        contactNumber = contactNumber.replacingOccurrences(of: "(", with: "")
+        contactNumber = contactNumber.replacingOccurrences(of: ")", with: "")
+        //contactNumber = contactNumber.removeWhitespacesInBetween()
+        guard contactNumber.count >= 10 else {
+            dismiss(animated: true) {
+                   GlobalData.showAlert(view: self, message: "Selected contact does not have a valid number")
+            }
+            return
+        }
+        editBuyerData["cellphone"] = contactNumber
+        self.form.cellphone = contactNumber;
+    }
     
-    
+    func setInfoFromContact(contact:CNContact){
+        editBuyerData["firstname"] = contact.givenName
+        self.form.firstname = contact.givenName;
+        editBuyerData["lastname"] = contact.familyName
+        self.form.lastname = contact.familyName;
+        if(contact.emailAddresses.count > 0){
+            editBuyerData["email"] = contact.emailAddresses[0].value
+        }
+    }
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        
+    }
 }

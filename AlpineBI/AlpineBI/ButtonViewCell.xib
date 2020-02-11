@@ -12,39 +12,41 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="eQB-up-dNb" customClass="FormLabelFieldTableViewCell" customModule="AlpineBI" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="yxp-fd-zTS" customClass="FormButtonViewTableViewCell" customModule="AlpineBI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="449" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-OM-9YR">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="baC-lg-Sxi">
                     <rect key="frame" x="0.0" y="0.0" width="449" height="44"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WA5-NF-m4B">
-                            <rect key="frame" x="14" y="15" width="433" height="21"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avT-gC-aYh">
+                            <rect key="frame" x="12" y="18" width="433" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="buttonViewTapped:" destination="yxp-fd-zTS" eventType="touchUpInside" id="QSa-bb-3hC"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="PZg-OM-9YR" firstAttribute="leading" secondItem="eQB-up-dNb" secondAttribute="leading" id="Obx-Ha-lei"/>
-                <constraint firstItem="PZg-OM-9YR" firstAttribute="top" secondItem="eQB-up-dNb" secondAttribute="top" id="Rrl-YC-w6K"/>
-                <constraint firstItem="GQv-GI-Gkh" firstAttribute="bottom" secondItem="PZg-OM-9YR" secondAttribute="bottom" id="Siv-gP-P3D"/>
-                <constraint firstAttribute="trailing" secondItem="PZg-OM-9YR" secondAttribute="trailing" id="i63-SM-fjD"/>
+                <constraint firstItem="baC-lg-Sxi" firstAttribute="leading" secondItem="yxp-fd-zTS" secondAttribute="leading" id="74U-Lj-ga3"/>
+                <constraint firstItem="Z7s-8r-g9x" firstAttribute="bottom" secondItem="baC-lg-Sxi" secondAttribute="bottom" id="9gp-oO-uzy"/>
+                <constraint firstAttribute="trailing" secondItem="baC-lg-Sxi" secondAttribute="trailing" id="L6U-oz-ACX"/>
+                <constraint firstItem="baC-lg-Sxi" firstAttribute="top" secondItem="yxp-fd-zTS" secondAttribute="top" id="aGC-X5-mLW"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="GQv-GI-Gkh"/>
+            <viewLayoutGuide key="safeArea" id="Z7s-8r-g9x"/>
             <connections>
-                <outlet property="labelField" destination="WA5-NF-m4B" id="w6T-0n-GFs"/>
+                <outlet property="buttonView" destination="avT-gC-aYh" id="SK7-pz-pO1"/>
             </connections>
-            <point key="canvasLocation" x="147.10144927536234" y="-716.51785714285711"/>
+            <point key="canvasLocation" x="110.86956521739131" y="-852.45535714285711"/>
         </view>
     </objects>
 </document>

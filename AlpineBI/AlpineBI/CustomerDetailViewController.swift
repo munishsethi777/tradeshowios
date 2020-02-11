@@ -188,6 +188,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let secondController = segue.destination as? BuyerDetailViewController {
             secondController.selectedBuyerSeq =  selectedBuyerSeq
+            secondController.selectedCustomerSeq = selectedCustomerSeq
         }
         if let secondController = segue.destination as? AddCustomerViewController {
             secondController.editCustomerSeq =  selectedCustomerSeq

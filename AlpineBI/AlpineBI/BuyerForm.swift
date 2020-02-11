@@ -86,7 +86,7 @@ class BuyerForm {
         let phoneItem = FormItem(placeholder: "Phone")
         phoneItem.uiProperties.cellType = FormItemCellType.textField
         phoneItem.value = self.phone
-        phoneItem.name = "phone"
+        phoneItem.name = "officephone"
         phoneItem.valueCompletion = { [weak self, weak phoneItem] value in
             self?.phone = value
             phoneItem?.value = value
@@ -122,6 +122,10 @@ class BuyerForm {
             notesItem?.value = value
         }
         
-       self.formItems = [fullNameItem, lastNameItem, emailItem,cellPhoneitem,phoneItem,categoryLabelItem,categoryTypePickerItem,notesItem]
+        let saveFromContactItem = FormItem(placeholder: "Save From Contacts")
+        saveFromContactItem.uiProperties.cellType = FormItemCellType.buttonView
+        saveFromContactItem.value = self.notes
+        saveFromContactItem.name = "saveFromContact"
+        self.formItems = [fullNameItem, lastNameItem, emailItem,cellPhoneitem,phoneItem,categoryLabelItem,categoryTypePickerItem,notesItem,saveFromContactItem]
     }
 }

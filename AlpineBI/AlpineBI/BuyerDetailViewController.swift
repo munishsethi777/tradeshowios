@@ -13,6 +13,7 @@ import UIKit
 import MessageUI
 class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableViewDataSource,CNContactViewControllerDelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate{
     var selectedBuyerSeq:Int = 0;
+    var selectedCustomerSeq:Int = 0;
     var loggedInUserSeq:Int = 0;
     var progressHUD: ProgressHUD!
     var buyerDetailSt: [IDNamePair]!
@@ -37,7 +38,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         buyerDetailTableView.dataSource = self
         buyerDetailSt = []
 
-        getBuyerDetail()
+        //getBuyerDetail()
        
         self.view.addSubview(progressHUD)
         if #available(iOS 10.0, *) {
@@ -45,8 +46,18 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             scrollView.refreshControl = refreshControl
         }
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        buyerDetailSt = []
+        getBuyerDetail()
+    }
+    
+    @objc func editTapped(){
+        self.performSegue(withIdentifier: "showAddBuyer", sender: self)
+    }
+    
     @objc func refreshView(control:UIRefreshControl){
         buyerDetailSt = []
         getBuyerDetail()
@@ -239,7 +250,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         for j in 0..<buyer.count{
             let buyerJson = buyer[j] as! [String: Any]
             let name = buyerJson["name"] as! String
-            let value = buyerJson["value"] as! String
+            let value = buyerJson["value"] as? String
             var detail = IDNamePair()
             detail.id = name
             detail.value = value
@@ -290,6 +301,12 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     
     func perfomDeleteBuyer(){
         
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let secondController = segue.destination as? AddBuyerViewController {
+            secondController.editBuyerSeq =  selectedBuyerSeq
+            secondController.customerSeq = selectedCustomerSeq
+        }
     }
     
     

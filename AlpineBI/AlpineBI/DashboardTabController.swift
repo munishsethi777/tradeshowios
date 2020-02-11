@@ -41,9 +41,6 @@ class DashboardTabController : UITabBarController,UITabBarControllerDelegate{
             present(refreshAlert, animated: true, completion: nil)
             return false;
         }else{
-            if(viewController is CustomerTableViewController){
-                GlobalData.showAlert(view: self, message: "CustomerTableViewController")
-            }
             return true;
         }
         

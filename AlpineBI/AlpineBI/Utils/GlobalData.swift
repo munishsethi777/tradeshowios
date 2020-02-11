@@ -21,4 +21,12 @@ class GlobalData : NSObject{
         alert.addAction(action)
         view.present(alert, animated: true, completion: nil)
     }
+    static func showAlertWithDismiss(view:UIViewController,title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+             view.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        view.present(alert, animated: true, completion: nil)
+    }
 }

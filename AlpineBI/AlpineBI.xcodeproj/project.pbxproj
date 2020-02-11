@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680058723F1610600F943AD /* ViewWithBottomBorder.swift */; };
 		F63060B023F1148F0032BCCF /* AddBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */; };
 		F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060B123F11E340032BCCF /* BuyerForm.swift */; };
@@ -62,6 +61,8 @@
 		F6319B3023E83DAB003B2DDF /* FormTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */; };
 		F6319B3223EADDBC003B2DDF /* FormPickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */; };
 		F694CF6023ED279500895D48 /* FormLabelFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */; };
+		F6EFBAB823F2784300D4B9EB /* ButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6EFBAB723F2784300D4B9EB /* ButtonViewCell.xib */; };
+		F6EFBABA23F278D000D4B9EB /* FormButtonViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,8 @@
 		F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerViewTableViewCell.swift; sourceTree = "<group>"; };
 		F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabelFieldTableViewCell.swift; sourceTree = "<group>"; };
+		F6EFBAB723F2784300D4B9EB /* ButtonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonViewCell.xib; sourceTree = "<group>"; };
+		F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButtonViewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,15 +193,14 @@
 				F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */,
 				F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */,
 				F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */,
-
 				E680058723F1610600F943AD /* ViewWithBottomBorder.swift */,
-
 				F63060B123F11E340032BCCF /* BuyerForm.swift */,
 				F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */,
 				F63060B523F1384B0032BCCF /* MyCustomCell.xib */,
 				F63060B723F14C7D0032BCCF /* LabelViewCell.xib */,
 				F63060B923F150D40032BCCF /* PickerViewCell.xib */,
-
+				F6EFBAB723F2784300D4B9EB /* ButtonViewCell.xib */,
+				F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -332,6 +334,7 @@
 				F63060BA23F150D40032BCCF /* PickerViewCell.xib in Resources */,
 				F6319B0023E82FA9003B2DDF /* LaunchScreen.storyboard in Resources */,
 				F6319B0B23E82FA9003B2DDF /* icons8-new-post-100-2.png in Resources */,
+				F6EFBAB823F2784300D4B9EB /* ButtonViewCell.xib in Resources */,
 				F6319B0723E82FA9003B2DDF /* icons8-settings-24.png in Resources */,
 				F6319B0D23E82FA9003B2DDF /* icons8-phone-100-2.png in Resources */,
 				F63060B823F14C7D0032BCCF /* LabelViewCell.xib in Resources */,
@@ -381,6 +384,7 @@
 				F6319B1623E82FA9003B2DDF /* CustomerTableViewCell.swift in Sources */,
 				F63060B023F1148F0032BCCF /* AddBuyerViewController.swift in Sources */,
 				F6319AFB23E82FA9003B2DDF /* IDNamePair.swift in Sources */,
+				F6EFBABA23F278D000D4B9EB /* FormButtonViewTableViewCell.swift in Sources */,
 				F6319B1023E82FA9003B2DDF /* alpinebi.xcdatamodeld in Sources */,
 				F6319AF723E82FA9003B2DDF /* CoreDataManager.swift in Sources */,
 				F6319AEE23E82FA9003B2DDF /* CustomerTableViewController.swift in Sources */,

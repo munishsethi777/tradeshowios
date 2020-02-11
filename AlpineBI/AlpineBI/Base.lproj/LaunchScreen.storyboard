@@ -567,7 +567,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -830,11 +830,12 @@
                         <outlet property="buyerDetailTableView" destination="Y9O-of-bPS" id="HxN-xm-k2e"/>
                         <outlet property="buyerNameLabel" destination="2DE-6N-wR2" id="S9m-P8-glB"/>
                         <outlet property="scrollView" destination="YS3-fG-FPW" id="Tdx-ki-B7B"/>
+                        <segue destination="8JO-6o-ccg" kind="showDetail" identifier="showAddBuyer" id="ltV-YN-AjY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gX-te-9Cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1599" y="1501"/>
+            <point key="canvasLocation" x="-505" y="1489"/>
         </scene>
         <!--Customers Controller-->
         <scene sceneID="cWf-FA-Iug">
@@ -966,5 +967,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="ofG-vq-LUI"/>
         <segue reference="VL9-g0-nWp"/>
+        <segue reference="ltV-YN-AjY"/>
     </inferredMetricsTieBreakers>
 </document>

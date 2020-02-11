@@ -23,19 +23,19 @@ enum FormItemCellType {
   case textField
   case pickerView
   case labelField
+  case buttonView
   /// Registering methods for all forms items cell types
   ///
   /// - Parameter tableView: TableView where apply cells registration
   static func registerCells(for tableView: UITableView) {
-    //tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormPickerViewTableViewCell")
-    //tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormTextViewTableViewCell")
-    //tableView.register(FormPickerViewTableViewCell.self,forCellReuseIdentifier: "FormLabelFieldTableViewCell")
     let nib = UINib.init(nibName: "MyCustomCell", bundle: nil)
     tableView.register(nib, forCellReuseIdentifier: "MyCustomCell")
     let nib1 = UINib.init(nibName: "LabelViewCell", bundle: nil)
     tableView.register(nib1, forCellReuseIdentifier: "LabelViewCell")
     let nib2 = UINib.init(nibName: "PickerViewCell", bundle: nil)
     tableView.register(nib2, forCellReuseIdentifier: "PickerViewCell")
+    let nib3 = UINib.init(nibName: "ButtonViewCell", bundle: nil)
+    tableView.register(nib3, forCellReuseIdentifier: "ButtonViewCell")
   }
   
   /// Correctly dequeue the UITableViewCell according to the current cell type
@@ -62,6 +62,11 @@ enum FormItemCellType {
             let cell:FormLabelFieldTableViewCell
             let cellIdentifier = "LabelViewCell"
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormLabelFieldTableViewCell
+            return cell
+        case .buttonView:
+            let cell:FormButtonViewTableViewCell
+            let cellIdentifier = "ButtonViewCell"
+            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormButtonViewTableViewCell
             return cell
     }
    
