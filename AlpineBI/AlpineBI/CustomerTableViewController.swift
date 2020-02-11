@@ -36,10 +36,16 @@ class CustomerTableViewController : UIViewController, UITableViewDataSource,UITa
             customerTableView.refreshControl = refreshControl
         }
         self.view.addSubview(progressHUD)
+        //getCustomers()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        searchBar.text = ""
+        customerArr = []
         getCustomers()
     }
     @objc func refreshView(control:UIRefreshControl){
         searchBar.text = ""
+        customerArr = []
         getCustomers()
     }
     

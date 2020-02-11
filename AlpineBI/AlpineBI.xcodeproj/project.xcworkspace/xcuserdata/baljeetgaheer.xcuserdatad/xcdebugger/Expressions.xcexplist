@@ -3,24 +3,35 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "CustomerTableViewController.tableView(_:didSelectRowAt:):CustomerTableViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "FormPickerViewTableViewCell.pickerView(_:didSelectRow:inComponent:):FormPickerViewTableViewCell.swift">
-      </ContextState>
-      <ContextState
          contextName = "DashboardTabController.viewDidLoad():DashboardTabController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self">
+               value = "self.selectedIndex">
             </PersistentString>
             <PersistentString
-               value = "self.selectedIndex">
+               value = "self">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in CustomerDetailViewController.getCustomerDetail():CustomerDetailViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CustomerDetailViewController.addTapped():CustomerDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tabBarController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.tableView(_:cellForRowAt:):AddCustomerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FormTextFieldTableViewCell.update(with:):FormTextFieldTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CustomerTableViewController.tableView(_:didSelectRowAt:):CustomerTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "BuyerDetailViewController.saveInContacts():BuyerDetailViewController.swift">
@@ -31,18 +42,35 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddCustomerViewController.tableView(_:heightForRowAt:):AddCustomerViewController.swift">
+         contextName = "CustomerDetailViewController.addDeleteBuyerLink():CustomerDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "buyerTableView.tableFooterView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DashboardTabController.viewDidAppear(_:):DashboardTabController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.selectedViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FormPickerViewTableViewCell.pickerView(_:didSelectRow:inComponent:):FormPickerViewTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "CustomerTableViewController.searchBar(_:textDidChange:):CustomerTableViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "AddCustomerViewController.prepare(for:sender:):AddCustomerViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "segue.destination">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "CustomerDetailViewController.loadCustomerDetail(jsonReponse:):CustomerDetailViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FormPickerViewTableViewCell.pickerView(_:viewForRow:forComponent:reusing:):FormPickerViewTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.tableView(_:didSelectRowAt:):AddCustomerViewController.swift">
       </ContextState>
       <ContextState
          contextName = "DashboardTabController.tabBar(_:didSelect:):DashboardTabController.swift">
@@ -56,33 +84,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CustomerDetailViewController.loadCustomerDetail(jsonReponse:):CustomerDetailViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in AddCustomerViewController.excecuteSaveCustomerCall(jsonstring:):AddCustomerViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "AddCustomerViewController.tableView(_:cellForRowAt:):AddCustomerViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "CustomerDetailViewController.addDeleteBuyerLink():CustomerDetailViewController.swift">
+         contextName = "closure #1 in FormPickerViewTableViewCell.setPickerViewData(pickerViewData:):FormPickerViewTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "buyerTableView.tableFooterView">
+               value = "pickerDataLabel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddCustomerViewController.tableView(_:didSelectRowAt:):AddCustomerViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "CustomerDetailViewController.tableView(_:cellForRowAt:):CustomerDetailViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "DashboardTabController.viewDidAppear(_:):DashboardTabController.swift">
+         contextName = "AddCustomerViewController.saveCustomer():AddCustomerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.selectedViewController">
+               value = "self.form.priority">
+            </PersistentString>
+            <PersistentString
+               value = "self.form.storename">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -91,6 +107,48 @@
          <PersistentStrings>
             <PersistentString
                value = "touch.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddBuyerViewController.loadFormOnEdit(response:):AddBuyerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.form.phone">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.prepare(for:sender:):AddCustomerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "segue.destination">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CustomerDetailViewController.tableView(_:cellForRowAt:):CustomerDetailViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FormPickerViewTableViewCell.setPickerViewData(pickerViewData:):FormPickerViewTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddBuyerViewController.setInfoFromContact(contactNumber:):AddBuyerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddCustomerViewController.tableView(_:heightForRowAt:):AddCustomerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in AddCustomerViewController.excecuteSaveCustomerCall(jsonstring:):AddCustomerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddBuyerViewController.setInfoFromContact(contact:):AddBuyerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "contact.emailAddresses">
+            </PersistentString>
+            <PersistentString
+               value = "contact.emailAddresses[0].value as String">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

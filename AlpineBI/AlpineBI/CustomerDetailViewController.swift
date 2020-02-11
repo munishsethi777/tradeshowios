@@ -209,7 +209,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         let refreshAlert = UIAlertController(title: "Delete Customer", message: "Do you realy want to delete customer.", preferredStyle: UIAlertController.Style.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.perfomDeleteCustomer()
+             self.excuteDeleteCustomerCall()
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -217,7 +217,35 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         present(refreshAlert, animated: true, completion: nil)
     }
     
-    func perfomDeleteCustomer(){
-        
+    func excuteDeleteCustomerCall(){
+        let args: [Int] = [self.loggedInUserSeq,self.selectedCustomerSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.DELETE_CUSTOMER, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.showAlert(title: "Delete Success", message: message!)
+                        self.progressHUD.hide()
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                GlobalData.showAlert(view: self, message: parseError.description)
+            }
+        })
+    }
+    func showAlert(title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }

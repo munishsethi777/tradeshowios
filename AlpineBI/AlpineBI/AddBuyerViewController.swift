@@ -171,9 +171,9 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
         } else {
             if(indexPath.row == 7){
                //return 60
-               return UITableView.automaticDimension
+               return 60
             }else{
-               return UITableView.automaticDimension
+               return 60
             }
             
         }
