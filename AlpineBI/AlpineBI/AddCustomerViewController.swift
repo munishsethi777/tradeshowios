@@ -45,8 +45,8 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
        FormItemCellType.registerCells(for: self.ibTableView)
        self.ibTableView.tableFooterView = UIView(frame: CGRect.zero)
        // self.ibTableView.allowsSelection = false
-       //self.ibTableView.estimatedRowHeight = 90
-       //self.ibTableView.rowHeight = UITableView.automaticDimension
+       self.ibTableView.estimatedRowHeight = 90
+       self.ibTableView.rowHeight = UITableView.automaticDimension
     }
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         self.saveCustomer()
@@ -155,7 +155,7 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         if ((!dpShowBusinessTypeVisible && indexPath.row == 3) || (!dpShowPriortyVisible && indexPath.row == 7) ) {
             return 0.0
         } else {
-            return UITableView.automaticDimension
+            return 60
         }
     }
     func UpdateCallback(selectedValue:String,indexPath:IndexPath) //add this extra method

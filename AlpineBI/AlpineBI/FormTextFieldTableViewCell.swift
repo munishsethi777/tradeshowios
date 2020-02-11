@@ -12,7 +12,8 @@ class FormTextFieldTableViewCell: UITableViewCell, FormConformity,UITextFieldDel
     
     var formItem: FormItem?
     
-   
+    @IBOutlet weak var labelField: UILabel!
+    
     @IBOutlet weak var ibTextField: UITextField!
     
     override func awakeFromNib() {
@@ -30,9 +31,10 @@ extension FormTextFieldTableViewCell: FormUpdatable {
         self.formItem = formItem
         if(self.ibTextField != nil){
             self.ibTextField.text = self.formItem?.value
+            self.labelField.text = self.formItem?.placeholder
             let bgColor: UIColor = self.formItem?.isValid  == false ? .red : .white
             self.ibTextField.layer.backgroundColor = bgColor.cgColor
-            self.ibTextField.placeholder = self.formItem?.placeholder
+           // self.ibTextField.placeholder = self.formItem?.placeholder
             self.ibTextField.keyboardType = self.formItem?.uiProperties.keyboardType ?? .default
             self.ibTextField.tintColor = self.formItem?.uiProperties.tintColor
         }
