@@ -56,10 +56,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addTapped))
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         customerDetailSt = []
         buyerDetailSt = []
         getCustomerDetail()
-        super.viewWillAppear(animated)
     }
     @objc func addTapped(){
         if let addCustomerController = self.tabBarController?.viewControllers?[1] as? AddCustomerViewController {
@@ -117,6 +117,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     }
     
     func getCustomerDetail(){
+        self.view.addSubview(progressHUD)
         let args: [Int] = [self.loggedInUserSeq,self.selectedCustomerSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_CUSTOMER_DETAIL, args: args)
         var success : Int = 0
