@@ -63,6 +63,8 @@
 		F694CF6023ED279500895D48 /* FormLabelFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */; };
 		F6EFBAB823F2784300D4B9EB /* ButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6EFBAB723F2784300D4B9EB /* ButtonViewCell.xib */; };
 		F6EFBABA23F278D000D4B9EB /* FormButtonViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */; };
+		F6EFBABC23F3F3F600D4B9EB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */; };
+		F6EFBABE23F3F56000D4B9EB /* SettingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,8 @@
 		F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabelFieldTableViewCell.swift; sourceTree = "<group>"; };
 		F6EFBAB723F2784300D4B9EB /* ButtonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonViewCell.xib; sourceTree = "<group>"; };
 		F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButtonViewTableViewCell.swift; sourceTree = "<group>"; };
+		F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 				F63060B923F150D40032BCCF /* PickerViewCell.xib */,
 				F6EFBAB723F2784300D4B9EB /* ButtonViewCell.xib */,
 				F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */,
+				F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */,
+				F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -372,7 +378,9 @@
 				F6319AEF23E82FA9003B2DDF /* DashboardTabController.swift in Sources */,
 				F6319B1423E82FA9003B2DDF /* AppDelegate.swift in Sources */,
 				F6319AFD23E82FA9003B2DDF /* MessageFormat.swift in Sources */,
+				F6EFBABE23F3F56000D4B9EB /* SettingForm.swift in Sources */,
 				F6319B0323E82FA9003B2DDF /* BuyerDetailTableViewCell.swift in Sources */,
+				F6EFBABC23F3F3F600D4B9EB /* SettingsViewController.swift in Sources */,
 				E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */,
 				F6319AFF23E82FA9003B2DDF /* PreferencesUtil.swift in Sources */,
 				F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */,

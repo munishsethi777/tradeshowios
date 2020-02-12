@@ -207,7 +207,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     }
     
     func deleteCustomerConfirm(){
-        let refreshAlert = UIAlertController(title: "Delete Customer", message: "Do you realy want to delete customer.", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "Delete Customer", message: StringConstants.DELETE_CUSTOMER_CONFIRM, preferredStyle: UIAlertController.Style.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
              self.excuteDeleteCustomerCall()

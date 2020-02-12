@@ -11,11 +11,16 @@ struct StringConstants {
     static var PHONE_NOT_AVAILABLE = "Cell Phone number does not exists for this buyer!";
     static var EMAIL_NOT_AVAILABLE = "Email id does not exists for this buyer!";
     static var WHATS_APP_NOT_INSTALLED = "Whatsapp is not installed on this device. Please install Whatsapp and try again."
+    static var DELETE_BUYER_CONFIRM = "Do you really want to delete this buyer."
+    static var DELETE_CUSTOMER_CONFIRM = "Do you really want to delete this customer."
+    static var LOGOUT_CONFIRM = "Do you really want to logout."
     //Actions URL
     static var ACTION_API_URL = "http://www.alpinebi.com/Actions/Mobile/"
     static let WEB_API_URL = "http://www.alpinebi.com/"
     //USER ACTION API URL
     static let LOGIN_URL = ACTION_API_URL + "UserAction.php?call=login&username={0}&password={1}&deviceid={2}"
+    static let SUBMIT_UPDATE_USER = ACTION_API_URL  + "UserAction.php?call=updateUserDetail&userSeq={0}&user={1}"
+    static let GET_USER_DETAIL = ACTION_API_URL  + "UserAction.php?call=getUserDetail&userSeq={0}"
     //Customer Action
     static let GET_CUSTOMER_NAMES = ACTION_API_URL + "CustomerAction.php?call=getAllCustomerNames&userSeq={0}"
     static let GET_CUSTOMER_DETAIL = ACTION_API_URL + "CustomerAction.php?call=getCustomerDetails&userSeq={0}&customerseq={1}"
