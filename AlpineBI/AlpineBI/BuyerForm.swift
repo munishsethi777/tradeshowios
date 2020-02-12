@@ -94,7 +94,7 @@ class BuyerForm {
         
         // Category
         let categoryLabelItem = FormItem(placeholder: "Category")
-        categoryLabelItem.uiProperties.cellType = FormItemCellType.labelField
+        categoryLabelItem.uiProperties.cellType = FormItemCellType.buttonView
         categoryLabelItem.value = self.category
         categoryLabelItem.name = "category"
         categoryLabelItem.valueCompletion = { [weak self, weak categoryLabelItem] value in
@@ -124,7 +124,7 @@ class BuyerForm {
         
         let saveFromContactItem = FormItem(placeholder: "Save From Contacts")
         saveFromContactItem.uiProperties.cellType = FormItemCellType.buttonView
-        saveFromContactItem.value = self.notes
+        saveFromContactItem.value = "Save From Contacts"
         saveFromContactItem.name = "saveFromContact"
         self.formItems = [fullNameItem, lastNameItem, emailItem,cellPhoneitem,phoneItem,categoryLabelItem,categoryTypePickerItem,notesItem,saveFromContactItem]
     }

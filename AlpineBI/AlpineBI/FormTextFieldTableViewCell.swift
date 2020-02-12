@@ -27,7 +27,7 @@ class FormTextFieldTableViewCell: UITableViewCell, FormConformity,UITextFieldDel
 
 // MARK: - FormUpdatable
 extension FormTextFieldTableViewCell: FormUpdatable {
-    func update(with formItem: FormItem) {
+    func update(with formItem: FormItem,isSetCaption:Bool = false) {
         self.formItem = formItem
         if(self.ibTextField != nil){
             self.ibTextField.text = self.formItem?.value
@@ -37,6 +37,7 @@ extension FormTextFieldTableViewCell: FormUpdatable {
            // self.ibTextField.placeholder = self.formItem?.placeholder
             self.ibTextField.keyboardType = self.formItem?.uiProperties.keyboardType ?? .default
             self.ibTextField.tintColor = self.formItem?.uiProperties.tintColor
+            //ibTextField.bindToKeyboard()
         }
     }
 }

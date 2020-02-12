@@ -270,8 +270,8 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="688-Cv-wjz" userLabel="Customer Table View">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="688-Cv-wjz" userLabel="Customer Table View">
+                                <rect key="frame" x="0.0" y="120" width="375" height="386"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomerTableViewCell" rowHeight="27" id="Yj7-AP-nIr" customClass="CustomerTableViewCell" customModule="AlpineBI" customModuleProvider="target">
@@ -322,7 +322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WD8-Rj-cwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1386" y="758"/>
+            <point key="canvasLocation" x="-1386.4000000000001" y="757.87106446776613"/>
         </scene>
         <!--Testpickerview-->
         <scene sceneID="F0R-LA-VZr">
@@ -357,7 +357,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oe-mk-aEi" userLabel="ScrollView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZF-gm-o95">
                                         <rect key="frame" x="8" y="8" width="359" height="19.5"/>
@@ -567,7 +567,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -974,6 +974,7 @@
         <image name="rounded-profile-pic.png" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="f3v-QV-Lhu"/>
         <segue reference="ofG-vq-LUI"/>
         <segue reference="xoE-aw-Hmz"/>
         <segue reference="i13-P3-HGp"/>

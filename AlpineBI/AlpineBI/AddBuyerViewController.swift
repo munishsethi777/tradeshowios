@@ -29,8 +29,13 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
         prepareSubViews()
         initPickerViewData()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
+         self.hideKeyboardWhenTappedAround()
         progressHUD = ProgressHUD(text: "Processing")
         getBuyer()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,6 +57,8 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.addBuyerTableView)
         self.addBuyerTableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.addBuyerTableView.allowsSelection = false
+        self.addBuyerTableView.estimatedRowHeight = 90
     }
     
     private func saveBuyer(){
@@ -79,6 +86,20 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
         self.form.category = editBuyerData["category"] as? String
         self.form.notes = editBuyerData["notes"] as? String
         self.addBuyerTableView.reloadData()
+    }
+    @objc func keyboardWillShow(notification:NSNotification){
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.addBuyerTableView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        addBuyerTableView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        addBuyerTableView.contentInset = contentInset
     }
     
     func getBuyer(){
@@ -178,8 +199,14 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
             
         }
     }
-    func buttonTappedCallBack(){
-        openContact()
+    func buttonTappedCallBack(fieldName:String?){
+        if(fieldName == "category"){
+            dpShowCategoryTypeVisible = !dpShowCategoryTypeVisible
+            addBuyerTableView.beginUpdates()
+            addBuyerTableView.endUpdates()
+        }else{
+            openContact()
+        }
     }
     func openContact(){
         contactPicker.delegate = self
@@ -205,6 +232,7 @@ extension AddBuyerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var isSetCaption = true
         let item = self.form.formItems[indexPath.row]
         let name = item.name
         if let val = editBuyerData[name!] as? String {
@@ -228,6 +256,11 @@ extension AddBuyerViewController: UITableViewDataSource {
                 cell = pickerViewCell
            }
            if let buttonViewCell = cell as? FormButtonViewTableViewCell {
+                if(name == "category"){
+                    isSetCaption = true
+                }else{
+                    isSetCaption = false
+                }
                 buttonViewCell.buttonTappedCallBack = buttonTappedCallBack
            }
         }else{
@@ -236,7 +269,7 @@ extension AddBuyerViewController: UITableViewDataSource {
        
         if let formUpdatableCell = cell as? FormUpdatable {
             item.indexPath = indexPath
-            formUpdatableCell.update(with: item)
+            formUpdatableCell.update(with: item,isSetCaption:isSetCaption)
         }
         return cell
     }

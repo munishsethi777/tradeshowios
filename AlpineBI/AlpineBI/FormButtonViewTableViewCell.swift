@@ -11,7 +11,9 @@ import ContactsUI
 class FormButtonViewTableViewCell: UITableViewCell {
     var formItem: FormItem?
     @IBOutlet weak var buttonView: UIButton!
-    var buttonTappedCallBack : (()-> Void)?
+    
+    @IBOutlet weak var labelField: UILabel!
+    var buttonTappedCallBack : ((_ fieldName: String)-> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,15 +24,22 @@ class FormButtonViewTableViewCell: UITableViewCell {
     }
 
     @IBAction func buttonViewTapped(_ sender: Any) {
-       buttonTappedCallBack?()
+        buttonTappedCallBack?(formItem?.name ?? "")
     }
 
 }
 extension FormButtonViewTableViewCell: FormUpdatable {
-    func update(with formItem: FormItem) {
+    func update(with formItem: FormItem,isSetCaption:Bool = false) {
         self.formItem = formItem
         if(self.formItem != nil){
-            buttonView.setTitle(self.formItem?.placeholder, for: .normal)
+            if(isSetCaption){
+                labelField.text = self.formItem?.placeholder
+                buttonView.setTitleColor(.black, for: .normal)
+                //buttonView.setTitle(self.formItem?.placeholder, for: .normal)
+            }
+            //if(self.formItem?.value != nil && self.formItem?.value != ""){
+                buttonView.setTitle(self.formItem?.value, for: .normal)
+            //}
         }
     }
 }

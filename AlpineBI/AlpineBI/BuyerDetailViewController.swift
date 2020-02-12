@@ -39,19 +39,16 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         buyerDetailSt = []
 
         //getBuyerDetail()
-       
-        self.view.addSubview(progressHUD)
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             scrollView.refreshControl = refreshControl
         }
-         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        self.view.addSubview(progressHUD)
     }
     override func viewWillAppear(_ animated: Bool) {
-        buyerDetailSt = []
-        getBuyerDetail()
+       reloadData()
     }
     
     @objc func editTapped(){
@@ -59,6 +56,9 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     }
     
     @objc func refreshView(control:UIRefreshControl){
+        reloadData()
+    }
+    func reloadData(){
         buyerDetailSt = []
         getBuyerDetail()
     }
@@ -216,6 +216,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     }
     
     func getBuyerDetail(){
+        self.view.addSubview(progressHUD)
         let args: [Int] = [self.loggedInUserSeq,self.selectedBuyerSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_BUYER_DETAIL, args: args)
         var success : Int = 0
@@ -291,16 +292,46 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         let refreshAlert = UIAlertController(title: DELETE_BUYER, message: "Are you realy want to delete buyer.", preferredStyle: UIAlertController.Style.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.perfomDeleteBuyer()
+            self.excuteDeleteBuyerCall()
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
         }))
         present(refreshAlert, animated: true, completion: nil)
     }
+  
+    func excuteDeleteBuyerCall(){
+         self.view.addSubview(progressHUD)
+        let args: [Int] = [self.loggedInUserSeq,self.selectedBuyerSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.DELETE_BUYER, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.showAlert(title: "Delete Success", message: message!)
+                        self.progressHUD.hide()
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                GlobalData.showAlert(view: self, message: parseError.description)
+            }
+        })
+    }
     
-    func perfomDeleteBuyer(){
-        
+    func showAlert(title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let secondController = segue.destination as? AddBuyerViewController {

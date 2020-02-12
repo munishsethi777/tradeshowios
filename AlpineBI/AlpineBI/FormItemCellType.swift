@@ -10,7 +10,7 @@ protocol FormValidable {
 
 /// Conform the view receiver to be updated with a form item
 protocol FormUpdatable {
-  func update(with formItem: FormItem)
+    func update(with formItem: FormItem,isSetCaption:Bool)
 }
 
 /// Conform receiver to have a form item property

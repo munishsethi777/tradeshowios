@@ -36,15 +36,19 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         progressHUD = ProgressHUD(text: "Processing")
         self.hideKeyboardWhenTappedAround()
         self.prepareSubViews()
-        hideKeyboardWhenTappedAround()
         ibTableView.dataSource = self
         ibTableView.delegate = self
         getCustomer()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
     private func prepareSubViews() {
        FormItemCellType.registerCells(for: self.ibTableView)
        self.ibTableView.tableFooterView = UIView(frame: CGRect.zero)
-       // self.ibTableView.allowsSelection = false
+        self.ibTableView.allowsSelection = false
        self.ibTableView.estimatedRowHeight = 90
        self.ibTableView.rowHeight = UITableView.automaticDimension
     }
@@ -53,6 +57,24 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     }
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         
+    }
+    @objc func keyboardWillShow(notification:NSNotification){
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.ibTableView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        ibTableView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        ibTableView.contentInset = contentInset
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews();
     }
     
     func saveCustomer(){
@@ -142,6 +164,19 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         ibTableView.endUpdates()
     }
     var isSelectRow = false;
+    
+    func buttonTappedCallBack(fieldName:String?){
+        if(fieldName == "businesstype"){
+             dpShowBusinessTypeVisible = !dpShowBusinessTypeVisible
+        }
+        if(fieldName == "priority"){
+            dpShowPriortyVisible = !dpShowPriortyVisible
+        }
+        ibTableView.beginUpdates()
+        ibTableView.endUpdates()
+    }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 || indexPath.row == 6 {
            selectedIndex = indexPath.row
@@ -158,6 +193,7 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
             return 60
         }
     }
+    
     func UpdateCallback(selectedValue:String,indexPath:IndexPath) //add this extra method
     {
         form.formItems[indexPath.row].value = selectedValue
@@ -211,6 +247,7 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         self.form.storeid = editCustomerData["storeid"] as? String
         self.ibTableView.reloadData()
     }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -224,6 +261,7 @@ extension AddCustomerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var isSetCaption = true
         let item = self.form.formItems[indexPath.row]
         let name = item.name
         if let val = editCustomerData[name!] as? String {
@@ -256,12 +294,15 @@ extension AddCustomerViewController: UITableViewDataSource {
                 pickerViewCell.updateCallback = self.UpdateCallback
                 cell = pickerViewCell
             }
+            if let buttonViewCell = cell as? FormButtonViewTableViewCell {
+                buttonViewCell.buttonTappedCallBack = buttonTappedCallBack
+            }
         } else {
             cell = UITableViewCell() //or anything you want
         }
         if let formUpdatableCell = cell as? FormUpdatable {
             item.indexPath = indexPath
-            formUpdatableCell.update(with: item)
+            formUpdatableCell.update(with: item,isSetCaption: isSetCaption)
         }
         return cell
     }
@@ -289,3 +330,4 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
