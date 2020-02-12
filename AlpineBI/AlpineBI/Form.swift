@@ -58,7 +58,7 @@ class Form {
     
     // Business Type
     let businessTypeItem = FormItem(placeholder: "Business Type")
-    businessTypeItem.uiProperties.cellType = FormItemCellType.labelField
+    businessTypeItem.uiProperties.cellType = FormItemCellType.buttonView
     businessTypeItem.value = self.businesstype
     businessTypeItem.name = "businesstype"
     businessTypeItem.valueCompletion = { [weak self, weak businessTypeItem] value in
@@ -97,7 +97,7 @@ class Form {
     
     // Priority
     let priorityNameItem = FormItem(placeholder: "Priority")
-    priorityNameItem.uiProperties.cellType = FormItemCellType.labelField
+    priorityNameItem.uiProperties.cellType = FormItemCellType.buttonView
     priorityNameItem.value = self.priority
     priorityNameItem.name = "priority"
     priorityNameItem.valueCompletion = { [weak self, weak priorityNameItem] value in

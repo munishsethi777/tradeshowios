@@ -19,7 +19,7 @@ class FormLabelFieldTableViewCell: UITableViewCell, FormConformity,UITextFieldDe
 }
 // MARK: - FormUpdatable
 extension FormLabelFieldTableViewCell: FormUpdatable {
-    func update(with formItem: FormItem) {
+    func update(with formItem: FormItem,isSetCaption:Bool = false) {
         self.formItem = formItem
         if(self.formItem != nil){
             captionLabelField.text = self.formItem?.placeholder

@@ -98,14 +98,15 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
 
 // MARK: - FormUpdatable
 extension FormPickerViewTableViewCell: FormUpdatable {
-    func update(with formItem: FormItem) {
+    func update(with formItem: FormItem,isSetCaption:Bool = false) {
        self.formItem = formItem
        self.pickerView.tintColor = .white
         if(formItem.value != nil){
-            let value = pickerData[formItem.value!]!;
-            let keyIndex = getIndexOfKey(selectedValue: value)
-            pickerView.selectRow(keyIndex, inComponent: 0, animated: true)
-            self.pickerView(self.pickerView, didSelectRow: keyIndex, inComponent: 0)
+            if let value = pickerData[formItem.value!] {
+                let keyIndex = getIndexOfKey(selectedValue: value)
+                pickerView.selectRow(keyIndex, inComponent: 0, animated: true)
+                self.pickerView(self.pickerView, didSelectRow: keyIndex, inComponent: 0)
+            }
         }
     }
 }
