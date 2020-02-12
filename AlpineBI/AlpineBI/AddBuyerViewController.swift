@@ -78,7 +78,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
     }
     func loadFormOnEdit(response:[String:Any]){
         editBuyerData = response["buyer"] as! [String:Any]
-        self.form.lastname = editBuyerData["firstname"] as? String
+        self.form.firstname = editBuyerData["firstname"] as? String
         self.form.lastname = editBuyerData["lastname"] as? String
         self.form.email = editBuyerData["email"] as? String
         self.form.cellphone = editBuyerData["cellphone"] as? String
