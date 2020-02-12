@@ -394,7 +394,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="005310" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P81-q2-JsZ">
                                                             <rect key="frame" x="15" y="31" width="345" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -568,7 +568,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="377" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
@@ -732,6 +732,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="RuM-Ca-0jY" firstAttribute="top" secondItem="0tI-E8-e4j" secondAttribute="bottom" constant="2" id="7yt-AG-Ccv"/>
                                             <constraint firstItem="2DE-6N-wR2" firstAttribute="top" secondItem="RuM-Ca-0jY" secondAttribute="bottom" constant="2" id="bwy-b1-Xcr"/>
@@ -746,17 +747,17 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-of-bPS">
-                                        <rect key="frame" x="0.0" y="288" width="377" height="420"/>
+                                        <rect key="frame" x="0.0" y="280" width="361" height="420"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="420" id="iCu-oH-ifS"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="9" reuseIdentifier="BuyerDetailTableViewCell" id="ncp-PV-is1" customClass="BuyerDetailTableViewCell" customModule="AlpineBI" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1" width="377" height="44"/>
+                                                <rect key="frame" x="0.0" y="1" width="361" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ncp-PV-is1" id="yjS-hr-VIT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="377" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGl-um-Prf">
@@ -768,13 +769,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-j8-6SR">
                                                             <rect key="frame" x="15" y="15" width="362" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.10687923713201472" green="0.56365132582723232" blue="0.91717560279187815" alpha="0.79459199989927487" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lc-rD-Sbj">
                                                             <rect key="frame" x="15" y="17" width="38" height="14"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.1068792371" green="0.56365132579999999" blue="0.91717560279999999" alpha="0.79459199989999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -803,15 +804,15 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Y9O-of-bPS" firstAttribute="leading" secondItem="YS3-fG-FPW" secondAttribute="leading" id="1RC-DM-dbN"/>
-                                    <constraint firstItem="Y9O-of-bPS" firstAttribute="top" secondItem="AdO-fP-mHo" secondAttribute="bottom" constant="8" id="Cmg-pS-CXK"/>
-                                    <constraint firstItem="AdO-fP-mHo" firstAttribute="top" secondItem="YS3-fG-FPW" secondAttribute="top" constant="8" id="DR2-E1-5v3"/>
-                                    <constraint firstItem="AdO-fP-mHo" firstAttribute="leading" secondItem="YS3-fG-FPW" secondAttribute="leading" constant="8" id="G8v-ri-9WF"/>
+                                    <constraint firstItem="Y9O-of-bPS" firstAttribute="top" secondItem="AdO-fP-mHo" secondAttribute="bottom" id="Cmg-pS-CXK"/>
+                                    <constraint firstItem="AdO-fP-mHo" firstAttribute="top" secondItem="YS3-fG-FPW" secondAttribute="top" id="DR2-E1-5v3"/>
+                                    <constraint firstItem="AdO-fP-mHo" firstAttribute="leading" secondItem="YS3-fG-FPW" secondAttribute="leading" id="G8v-ri-9WF"/>
                                     <constraint firstItem="Y9O-of-bPS" firstAttribute="centerX" secondItem="YS3-fG-FPW" secondAttribute="centerX" id="M6f-UB-mAJ"/>
                                     <constraint firstItem="Y9O-of-bPS" firstAttribute="top" secondItem="AdO-fP-mHo" secondAttribute="bottom" constant="8" id="Y31-On-rf8"/>
                                     <constraint firstAttribute="trailing" secondItem="Y9O-of-bPS" secondAttribute="trailing" id="gpS-Kb-Lzm"/>
                                     <constraint firstItem="AdO-fP-mHo" firstAttribute="centerX" secondItem="YS3-fG-FPW" secondAttribute="centerX" id="j4X-rv-24S"/>
                                     <constraint firstItem="Y9O-of-bPS" firstAttribute="top" secondItem="AdO-fP-mHo" secondAttribute="bottom" constant="8" id="t1C-cX-aMg"/>
-                                    <constraint firstAttribute="trailing" secondItem="AdO-fP-mHo" secondAttribute="trailing" constant="8" id="tcJ-9M-GuB"/>
+                                    <constraint firstAttribute="trailing" secondItem="AdO-fP-mHo" secondAttribute="trailing" id="tcJ-9M-GuB"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
