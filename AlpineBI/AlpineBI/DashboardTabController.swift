@@ -28,7 +28,7 @@ class DashboardTabController : UITabBarController,UITabBarControllerDelegate{
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is SignOutViewController {
-            let refreshAlert = UIAlertController(title: "Logout", message: "Are you realy want to logout.", preferredStyle: UIAlertController.Style.alert)
+            let refreshAlert = UIAlertController(title: "Logout", message: StringConstants.LOGOUT_CONFIRM, preferredStyle: UIAlertController.Style.alert)
             
             refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                 PreferencesUtil.sharedInstance.resetDefaults()

@@ -11,6 +11,9 @@ struct StringConstants {
     static var PHONE_NOT_AVAILABLE = "Cell Phone number does not exists for this buyer!";
     static var EMAIL_NOT_AVAILABLE = "Email id does not exists for this buyer!";
     static var WHATS_APP_NOT_INSTALLED = "Whatsapp is not installed on this device. Please install Whatsapp and try again."
+    static var DELETE_BUYER_CONFIRM = "Do you really want to delete this buyer."
+    static var DELETE_CUSTOMER_CONFIRM = "Do you really want to delete this customer."
+    static var LOGOUT_CONFIRM = "Do you really want to logout."
     //Actions URL
     static var ACTION_API_URL = "http://www.alpinebi.com/Actions/Mobile/"
     static let WEB_API_URL = "http://www.alpinebi.com/"

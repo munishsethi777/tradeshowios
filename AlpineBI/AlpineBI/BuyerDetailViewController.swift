@@ -289,7 +289,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     }
     
     func deleteBuyerConfirm(){
-        let refreshAlert = UIAlertController(title: DELETE_BUYER, message: "Are you realy want to delete buyer.", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: DELETE_BUYER, message: StringConstants.DELETE_BUYER_CONFIRM, preferredStyle: UIAlertController.Style.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             self.excuteDeleteBuyerCall()
