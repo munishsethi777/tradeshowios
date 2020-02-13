@@ -36,7 +36,6 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         progressHUD = ProgressHUD(text: "Loading")
-       // getCustomerDetail();
         customerDetailSt = []
         buyerDetailSt = []
         detailTableView.dataSource = self
@@ -182,8 +181,6 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         buyerTableView.reloadData()
         buyerTableHeight.constant = CGFloat(38 * buyerDetailSt.count)
-//        let scrollHeight = customerNameLabel.frame.height + storeNameLabel.frame.height + detailTableView.frame.height + buyerTableView.frame.height + 141.5
-        //scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollHeight)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -219,6 +216,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     }
     
     func excuteDeleteCustomerCall(){
+        self.progressHUD.show()
         let args: [Int] = [self.loggedInUserSeq,self.selectedCustomerSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.DELETE_CUSTOMER, args: args)
         var success : Int = 0

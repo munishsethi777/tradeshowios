@@ -24,21 +24,9 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
         editCustomerData = [:]
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         self.form = Form()
-        businessTypes[""] = "Select Any"
-        businessTypes["direct"] = "Direct"
-        businessTypes["domestic"] = "Domestic"
-        businessTypes["dot_com"] = "Dot Com"
-        
-        priorityTypes[""] = "Select Any"
-        priorityTypes["A"] = "A"
-        priorityTypes["B"] = "B"
-        priorityTypes["C"] = "C"
         progressHUD = ProgressHUD(text: "Processing")
         self.hideKeyboardWhenTappedAround()
-        self.prepareSubViews()
-        ibTableView.dataSource = self
-        ibTableView.delegate = self
-        getCustomer()
+        loadEnumData()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
@@ -48,7 +36,7 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     private func prepareSubViews() {
        FormItemCellType.registerCells(for: self.ibTableView)
        self.ibTableView.tableFooterView = UIView(frame: CGRect.zero)
-        self.ibTableView.allowsSelection = false
+       self.ibTableView.allowsSelection = false
        self.ibTableView.estimatedRowHeight = 90
        self.ibTableView.rowHeight = UITableView.automaticDimension
     }
@@ -148,6 +136,36 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
             }
         })
     }
+    
+    func loadEnumData(){
+        let args: [Int] = [self.loggedInUserSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_BUSINESS_TYPES, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.businessTypes = json["businessTypes"] as! [String:String]
+                        self.priorityTypes = json["priorityTypes"] as! [String:String]
+                        self.prepareSubViews()
+                        self.ibTableView.dataSource = self
+                        self.ibTableView.delegate = self
+                        self.getCustomer()
+                        self.progressHUD.hide()
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                GlobalData.showAlert(view: self, message: parseError.description)
+            }
+        })
+    }
+    
     private var dpShowBusinessTypeVisible = false
     private var dpShowPriortyVisible = false
     private var selectedIndex = 0;
@@ -261,7 +279,7 @@ extension AddCustomerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var isSetCaption = true
+        let isSetCaption = true
         let item = self.form.formItems[indexPath.row]
         let name = item.name
         if let val = editCustomerData[name!] as? String {

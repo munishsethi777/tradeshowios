@@ -28,7 +28,11 @@ struct StringConstants {
     static let SUBMIT_ADD_CUSTOMER = ACTION_API_URL  + "CustomerAction.php?call=addCustomer&userSeq={0}&customer={1}"
     static let SUBMIT_ADD_BUYER = ACTION_API_URL  + "CustomerAction.php?call=addBuyer&userSeq={0}&buyer={1}"
     static let GET_CUSTOMER_BY_SEQ = ACTION_API_URL  + "CustomerAction.php?call=getCustomerBySeq&userSeq={0}&customerseq={1}"
-     static let GET_BUYER_BY_SEQ = ACTION_API_URL  + "CustomerAction.php?call=getBuyerBySeq&userSeq={0}&buyerseq={1}"
-     static let DELETE_CUSTOMER = ACTION_API_URL + "CustomerAction.php?call=deleteCustomers&userSeq={0}&customerseq={1}"
-     static let DELETE_BUYER = ACTION_API_URL + "CustomerAction.php?call=deleteBuyer&userSeq={0}&buyerseq={1}"
+    static let GET_BUYER_BY_SEQ = ACTION_API_URL  + "CustomerAction.php?call=getBuyerBySeq&userSeq={0}&buyerseq={1}"
+    static let DELETE_CUSTOMER = ACTION_API_URL + "CustomerAction.php?call=deleteCustomers&userSeq={0}&customerseq={1}"
+    static let DELETE_BUYER = ACTION_API_URL + "CustomerAction.php?call=deleteBuyer&userSeq={0}&buyerseq={1}"
+    //Enum Action
+    static let GET_BUSINESS_TYPES = ACTION_API_URL + "EnumAction.php?call=getBusinessTypes&userSeq={0}"
+    static let GET_CATEGORY_TYPES = ACTION_API_URL + "EnumAction.php?call=getCategoryTypes&userSeq={0}"
+    static let GET_TIMEZONES = ACTION_API_URL + "EnumAction.php?call=getTimeZones&userSeq={0}"
 }

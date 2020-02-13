@@ -24,14 +24,9 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
     private let contactPicker = CNContactPickerViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        addBuyerTableView.dataSource = self
-        addBuyerTableView.delegate = self
-        prepareSubViews()
-        initPickerViewData()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
-         self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
         progressHUD = ProgressHUD(text: "Processing")
-        getBuyer()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
@@ -39,7 +34,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addBuyerTableView.reloadData()
+        loadEnumData()
     }
     private func initPickerViewData(){
         categoryTypes[""] = "Select Any"
@@ -130,7 +125,33 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
             }
         })
     }
-    
+    func loadEnumData(){
+        let args: [Int] = [self.loggedInUserSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_CATEGORY_TYPES, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.categoryTypes = json["categoryTypes"] as! [String:String]
+                        self.prepareSubViews()
+                        self.addBuyerTableView.dataSource = self
+                        self.addBuyerTableView.delegate = self
+                        self.getBuyer()
+                        self.progressHUD.hide()
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                GlobalData.showAlert(view: self, message: parseError.description)
+            }
+        })
+    }
     private func excecuteSaveBuyerCall(jsonstring: String!){
         self.view.addSubview(progressHUD)
         let json = jsonstring.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

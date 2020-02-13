@@ -65,6 +65,7 @@
 		F6EFBABA23F278D000D4B9EB /* FormButtonViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */; };
 		F6EFBABC23F3F3F600D4B9EB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */; };
 		F6EFBABE23F3F56000D4B9EB /* SettingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */; };
+		F6EFBAC023F50C6800D4B9EB /* EnumUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBABF23F50C6800D4B9EB /* EnumUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +130,7 @@
 		F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButtonViewTableViewCell.swift; sourceTree = "<group>"; };
 		F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingForm.swift; sourceTree = "<group>"; };
+		F6EFBABF23F50C6800D4B9EB /* EnumUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 				F6319ACB23E82FA9003B2DDF /* GlobalData.swift */,
 				F6319ACC23E82FA9003B2DDF /* PreferencesUtil.swift */,
 				F63060BB23F158C60032BCCF /* JsonUtil.swift */,
+				F6EFBABF23F50C6800D4B9EB /* EnumUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				F6319B1823E82FA9003B2DDF /* ServiceHandler.swift in Sources */,
 				F6319B1523E82FA9003B2DDF /* SecondViewController.swift in Sources */,
 				F6319AF023E82FA9003B2DDF /* AddCustomerViewController.swift in Sources */,
+				F6EFBAC023F50C6800D4B9EB /* EnumUtil.swift in Sources */,
 				F6319B0423E82FA9003B2DDF /* ProgressHUD.swift in Sources */,
 				F6319AF123E82FA9003B2DDF /* CustomerDetailViewController.swift in Sources */,
 				F6319B0223E82FA9003B2DDF /* CustomerDetailTableViewCell.swift in Sources */,

@@ -21,10 +21,8 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
-        tableView.delegate = self
-        tableView.dataSource = self
         progressHUD = ProgressHUD(text: "Processing")
-        prepareSubViews()
+        self.view.addSubview(progressHUD)
         hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -54,7 +52,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getUserDetail()
+        loadEnumData()
     }
     
     @IBAction func updateTapped(_ sender: Any) {
@@ -142,8 +140,35 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
             }
         })
     }
+    func loadEnumData(){
+        let args: [Int] = [self.loggedInUserSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_TIMEZONES, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.timeZones = json["timezones"] as! [String:String]
+                        self.prepareSubViews()
+                        self.tableView.dataSource = self
+                        self.tableView.delegate = self
+                        self.getUserDetail()
+                        self.progressHUD.hide()
+                    }else{
+                        GlobalData.showAlert(view: self, message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                GlobalData.showAlert(view: self, message: parseError.description)
+            }
+        })
+    }
     func getUserDetail(){
-        self.view.addSubview(progressHUD)
+        self.progressHUD.show()
         let args: [Int] = [self.loggedInUserSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_USER_DETAIL, args: args)
         var success : Int = 0
