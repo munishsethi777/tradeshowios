@@ -16,7 +16,7 @@ class LoginViewController : UIViewController{
     @IBOutlet weak var scrollView: UIScrollView!
     var gradientLayer: CAGradientLayer!
     
-    
+    var progressHUD: ProgressHUD!
     @IBInspectable var offsetMultiplier: CGFloat = 0.75
     private var keyboardHeight = 0 as CGFloat
     private weak var activeTextField: UITextField?
@@ -28,7 +28,7 @@ class LoginViewController : UIViewController{
         loginButton.isEnabled = false
         setGradientBackground()
         super.hideKeyboardWhenTappedAround()
-        
+        progressHUD = ProgressHUD(text: "Signing in..")
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWasShown),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillBeHidden),
@@ -68,6 +68,7 @@ class LoginViewController : UIViewController{
     }
     
     @IBAction func loginAction(_ sender: UIButton) {
+        self.view.addSubview(progressHUD)
         var username: String = userNameText.text!;
         var password: String = passwordTextfield.text!;
         username = username.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
@@ -86,6 +87,7 @@ class LoginViewController : UIViewController{
                 success = json["success"] as! Int
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.progressHUD.hide()
                     if(success == 1){
                         UserMgr.sharedInstance.saveUser(response: json)
                         self.performSegue(withIdentifier: "MainTabViewController", sender: nil)
