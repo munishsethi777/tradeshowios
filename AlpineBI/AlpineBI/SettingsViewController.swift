@@ -25,6 +25,25 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
         tableView.dataSource = self
         progressHUD = ProgressHUD(text: "Processing")
         prepareSubViews()
+        hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc func keyboardWillShow(notification:NSNotification){
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.tableView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        tableView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        tableView.contentInset = contentInset
     }
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.tableView)
