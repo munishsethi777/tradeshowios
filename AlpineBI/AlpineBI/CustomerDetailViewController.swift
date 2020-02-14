@@ -31,6 +31,11 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
     @IBOutlet weak var customerNameLabel: UILabel!
     var lastIndexOfBuyerArr:Int = 0
     let DELETE_CUSTOMER = "Delete Customer"
+    let SPECIAL_PROGRAM_QUESTIONNAIRE = "Special Program Questionnaire"
+    let SPRING_QUESTIONNAIRE = "Spring Questionnaire"
+    let CHRISTMAS_QUESTIONNAIRE = "Christmas Questionnaire"
+    let OPPURTUNITY_QUESTIONNAIRE = "Oppurtunity Questionnaire"
+    
     var refreshControl:UIRefreshControl!
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -111,6 +116,13 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
                 cell.buyerNameLabel.font = UIFont(name:"Helvetica",size: 15.0)
                 cell.buyerNameLabel.textColor = .red
             }
+            if(buyer.value == SPECIAL_PROGRAM_QUESTIONNAIRE
+                || buyer.value == OPPURTUNITY_QUESTIONNAIRE
+                || buyer.value == CHRISTMAS_QUESTIONNAIRE
+                || buyer.value == SPRING_QUESTIONNAIRE){
+                cell.buyerNameLabel.font = UIFont(name:"Helvetica",size: 15.0)
+                cell.buyerNameLabel.textColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
+            }
             return cell
           }
     }
@@ -175,10 +187,12 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
             detail.value = value
             buyerDetailSt.append(detail)
         }
+        addFormButtonsLinks()
         if(buyers.count > 0){
             addDeleteButtonLink()
             lastIndexOfBuyerArr = buyerDetailSt.count - 1
         }
+        
         buyerTableView.reloadData()
         buyerTableHeight.constant = CGFloat(38 * buyerDetailSt.count)
     }
@@ -201,6 +215,27 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         detail.id = String(selectedCustomerSeq)
         detail.value = DELETE_CUSTOMER
         buyerDetailSt.append(detail)
+    }
+    
+    func addFormButtonsLinks(){
+        var detail = IDNamePair()
+        detail.id = String(selectedCustomerSeq)
+        detail.value = SPECIAL_PROGRAM_QUESTIONNAIRE
+        buyerDetailSt.append(detail)
+        
+        detail.id = String(selectedCustomerSeq)
+        detail.value = SPRING_QUESTIONNAIRE
+        buyerDetailSt.append(detail)
+        
+        detail.id = String(selectedCustomerSeq)
+        detail.value = OPPURTUNITY_QUESTIONNAIRE
+        buyerDetailSt.append(detail)
+        
+        detail.id = String(selectedCustomerSeq)
+        detail.value = CHRISTMAS_QUESTIONNAIRE
+        buyerDetailSt.append(detail)
+        
+        
     }
     
     func deleteCustomerConfirm(){
