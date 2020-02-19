@@ -24,6 +24,8 @@ enum FormItemCellType {
   case pickerView
   case labelField
   case buttonView
+  case datePickerView
+  case yesNoView
   /// Registering methods for all forms items cell types
   ///
   /// - Parameter tableView: TableView where apply cells registration
@@ -36,6 +38,12 @@ enum FormItemCellType {
     tableView.register(nib2, forCellReuseIdentifier: "PickerViewCell")
     let nib3 = UINib.init(nibName: "ButtonViewCell", bundle: nil)
     tableView.register(nib3, forCellReuseIdentifier: "ButtonViewCell")
+    let nib4 = UINib.init(nibName: "ReadOnlyCustomCell", bundle: nil)
+    tableView.register(nib4, forCellReuseIdentifier: "ReadOnlyCustomCell")
+    let nib5 = UINib.init(nibName: "DatePickerViewTableViewCell", bundle: nil)
+    tableView.register(nib5, forCellReuseIdentifier: "DatePickerViewTableViewCell")
+    let nib6 = UINib.init(nibName: "YesNoViewTableViewCell", bundle: nil)
+    tableView.register(nib6, forCellReuseIdentifier: "YesNoViewTableViewCell")
   }
   
   /// Correctly dequeue the UITableViewCell according to the current cell type
@@ -44,31 +52,46 @@ enum FormItemCellType {
   ///   - tableView: TableView where cells previously registered
   ///   - indexPath: indexPath where dequeue
   /// - Returns: a non-nullable UITableViewCell dequeued
-    func dequeueCell(for tableView: UITableView, at indexPath: IndexPath,pickerViewData:[String:String]) -> UITableViewCell {
-    //let cell:UITableViewCell
-    switch self {
-        case .pickerView:
-            let cell:FormPickerViewTableViewCell
-            let cellIdentifier = "PickerViewCell"
-            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormPickerViewTableViewCell
-            cell.setPickerViewData(pickerViewData: pickerViewData)
+    func dequeueCell(for tableView: UITableView, at indexPath: IndexPath,pickerViewData:[String:String],isReadOnlyView:Bool = false) -> UITableViewCell {
+        if(isReadOnlyView){
+            let cell:ReadOnlyTableViewCell
+            let cellIdentifier = "ReadOnlyCustomCell"
+            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ReadOnlyTableViewCell
             return cell
-        case .textField:
-             let cell:FormTextFieldTableViewCell
-            let cellIdentifier = "MyCustomCell"
-            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormTextFieldTableViewCell
-             return cell
-        case .labelField:
-            let cell:FormLabelFieldTableViewCell
-            let cellIdentifier = "LabelViewCell"
-            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormLabelFieldTableViewCell
-            return cell
-        case .buttonView:
-            let cell:FormButtonViewTableViewCell
-            let cellIdentifier = "ButtonViewCell"
-            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormButtonViewTableViewCell
-            return cell
-    }
+        }
+        switch self {
+            case .pickerView:
+                let cell:FormPickerViewTableViewCell
+                let cellIdentifier = "PickerViewCell"
+                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormPickerViewTableViewCell
+                cell.setPickerViewData(pickerViewData: pickerViewData)
+                return cell
+            case .textField:
+                 let cell:FormTextFieldTableViewCell
+                let cellIdentifier = "MyCustomCell"
+                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormTextFieldTableViewCell
+                 return cell
+            case .labelField:
+                let cell:FormLabelFieldTableViewCell
+                let cellIdentifier = "LabelViewCell"
+                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormLabelFieldTableViewCell
+                return cell
+            case .buttonView:
+                let cell:FormButtonViewTableViewCell
+                let cellIdentifier = "ButtonViewCell"
+                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormButtonViewTableViewCell
+                return cell
+            case .datePickerView:
+                let cell:DatePickerViewTableViewCell
+                let cellIdentifier = "DatePickerViewTableViewCell"
+                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DatePickerViewTableViewCell
+                return cell
+            case .yesNoView:
+                let cell:YesNoViewTableViewCell
+                let cellIdentifier = "YesNoViewTableViewCell"
+                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! YesNoViewTableViewCell
+                return cell
+        }
    
   }
 }

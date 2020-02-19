@@ -35,4 +35,9 @@ struct StringConstants {
     static let GET_BUSINESS_TYPES = ACTION_API_URL + "EnumAction.php?call=getBusinessTypes&userSeq={0}"
     static let GET_CATEGORY_TYPES = ACTION_API_URL + "EnumAction.php?call=getCategoryTypes&userSeq={0}"
     static let GET_TIMEZONES = ACTION_API_URL + "EnumAction.php?call=getTimeZones&userSeq={0}"
+    static let GET_ENUMS_SPECIAL_PROG = ACTION_API_URL + "EnumAction.php?call=getEnumsForSpecialProg&userSeq={0}"
+    
+    // CustomerQuestionnaireAction.php
+    static let GET_SPECIAL_PROGRAM_DETAILS = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getSpecialProgramDetails&userSeq={0}&customerSeq={1}"
+     static let SAVE_SPECIAL_PROGRAM_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveAlpineProg&userSeq={0}&specialProg={1}"
 }

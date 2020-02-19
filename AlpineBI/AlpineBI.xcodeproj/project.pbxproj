@@ -65,6 +65,15 @@
 		F6EFBABA23F278D000D4B9EB /* FormButtonViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */; };
 		F6EFBABC23F3F3F600D4B9EB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */; };
 		F6EFBABE23F3F56000D4B9EB /* SettingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */; };
+		F6EFBAC223F534B800D4B9EB /* SpecialProgramForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAC123F534B800D4B9EB /* SpecialProgramForm.swift */; };
+		F6EFBAC423F67E0E00D4B9EB /* SpecialProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAC323F67E0E00D4B9EB /* SpecialProgramViewController.swift */; };
+		F6EFBAC823F681F700D4B9EB /* ReadOnlyCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6EFBAC723F681F700D4B9EB /* ReadOnlyCustomCell.xib */; };
+		F6EFBACA23F6A39700D4B9EB /* ReadOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAC923F6A39700D4B9EB /* ReadOnlyTableViewCell.swift */; };
+		F6EFBACC23F6B05200D4B9EB /* DatePickerViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6EFBACB23F6B05200D4B9EB /* DatePickerViewTableViewCell.xib */; };
+		F6EFBACE23F6B11A00D4B9EB /* DatePickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBACD23F6B11A00D4B9EB /* DatePickerViewTableViewCell.swift */; };
+		F6EFBAD023F8037000D4B9EB /* YesNoViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6EFBACF23F8037000D4B9EB /* YesNoViewTableViewCell.xib */; };
+		F6EFBAD223F8045E00D4B9EB /* YesNoViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAD123F8045E00D4B9EB /* YesNoViewTableViewCell.swift */; };
+		F6EFBAD423F80B8B00D4B9EB /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EFBAD323F80B8B00D4B9EB /* DateUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +138,15 @@
 		F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButtonViewTableViewCell.swift; sourceTree = "<group>"; };
 		F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingForm.swift; sourceTree = "<group>"; };
+		F6EFBAC123F534B800D4B9EB /* SpecialProgramForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialProgramForm.swift; sourceTree = "<group>"; };
+		F6EFBAC323F67E0E00D4B9EB /* SpecialProgramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialProgramViewController.swift; sourceTree = "<group>"; };
+		F6EFBAC723F681F700D4B9EB /* ReadOnlyCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadOnlyCustomCell.xib; sourceTree = "<group>"; };
+		F6EFBAC923F6A39700D4B9EB /* ReadOnlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyTableViewCell.swift; sourceTree = "<group>"; };
+		F6EFBACB23F6B05200D4B9EB /* DatePickerViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerViewTableViewCell.xib; sourceTree = "<group>"; };
+		F6EFBACD23F6B11A00D4B9EB /* DatePickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewTableViewCell.swift; sourceTree = "<group>"; };
+		F6EFBACF23F8037000D4B9EB /* YesNoViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YesNoViewTableViewCell.xib; sourceTree = "<group>"; };
+		F6EFBAD123F8045E00D4B9EB /* YesNoViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoViewTableViewCell.swift; sourceTree = "<group>"; };
+		F6EFBAD323F80B8B00D4B9EB /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +225,14 @@
 				F6EFBAB923F278D000D4B9EB /* FormButtonViewTableViewCell.swift */,
 				F6EFBABB23F3F3F500D4B9EB /* SettingsViewController.swift */,
 				F6EFBABD23F3F56000D4B9EB /* SettingForm.swift */,
+				F6EFBAC123F534B800D4B9EB /* SpecialProgramForm.swift */,
+				F6EFBAC323F67E0E00D4B9EB /* SpecialProgramViewController.swift */,
+				F6EFBAC723F681F700D4B9EB /* ReadOnlyCustomCell.xib */,
+				F6EFBAC923F6A39700D4B9EB /* ReadOnlyTableViewCell.swift */,
+				F6EFBACB23F6B05200D4B9EB /* DatePickerViewTableViewCell.xib */,
+				F6EFBACD23F6B11A00D4B9EB /* DatePickerViewTableViewCell.swift */,
+				F6EFBACF23F8037000D4B9EB /* YesNoViewTableViewCell.xib */,
+				F6EFBAD123F8045E00D4B9EB /* YesNoViewTableViewCell.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -236,6 +262,7 @@
 				F6319ACB23E82FA9003B2DDF /* GlobalData.swift */,
 				F6319ACC23E82FA9003B2DDF /* PreferencesUtil.swift */,
 				F63060BB23F158C60032BCCF /* JsonUtil.swift */,
+				F6EFBAD323F80B8B00D4B9EB /* DateUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -330,11 +357,13 @@
 			files = (
 				F6319B0C23E82FA9003B2DDF /* icons8-whatsapp-100.png in Resources */,
 				F6319B0123E82FA9003B2DDF /* Main.storyboard in Resources */,
+				F6EFBACC23F6B05200D4B9EB /* DatePickerViewTableViewCell.xib in Resources */,
 				F6319B0923E82FA9003B2DDF /* icons8-male-user-100-2.png in Resources */,
 				F6319B0623E82FA9003B2DDF /* icons8-user-account-24-2.png in Resources */,
 				F63060B623F1384C0032BCCF /* MyCustomCell.xib in Resources */,
 				F6319AF423E82FA9003B2DDF /* logo.png in Resources */,
 				F6319AF923E82FA9003B2DDF /* Assets.xcassets in Resources */,
+				F6EFBAD023F8037000D4B9EB /* YesNoViewTableViewCell.xib in Resources */,
 				F6319B0E23E82FA9003B2DDF /* icons8-sign-out-24.png in Resources */,
 				F6319B0A23E82FA9003B2DDF /* rounded-profile-pic.png in Resources */,
 				F63060BA23F150D40032BCCF /* PickerViewCell.xib in Resources */,
@@ -344,6 +373,7 @@
 				F6319B0723E82FA9003B2DDF /* icons8-settings-24.png in Resources */,
 				F6319B0D23E82FA9003B2DDF /* icons8-phone-100-2.png in Resources */,
 				F63060B823F14C7D0032BCCF /* LabelViewCell.xib in Resources */,
+				F6EFBAC823F681F700D4B9EB /* ReadOnlyCustomCell.xib in Resources */,
 				F6319B0523E82FA9003B2DDF /* icons8-add-user-male-24.png in Resources */,
 				F6319B0823E82FA9003B2DDF /* icons8-sms-100.png in Resources */,
 			);
@@ -371,15 +401,18 @@
 				F6319AF523E82FA9003B2DDF /* FirstViewController.swift in Sources */,
 				F63060B423F136DB0032BCCF /* MyCustomeCellTableViewCell.swift in Sources */,
 				F6319AFA23E82FA9003B2DDF /* BuyerTableViewCell.swift in Sources */,
+				F6EFBAC423F67E0E00D4B9EB /* SpecialProgramViewController.swift in Sources */,
 				F6319AEC23E82FA9003B2DDF /* BuyerDetailViewController.swift in Sources */,
 				F6319AF823E82FA9003B2DDF /* UserManager.swift in Sources */,
 				F6319B1123E82FA9003B2DDF /* LoginViewController.swift in Sources */,
 				F694CF6023ED279500895D48 /* FormLabelFieldTableViewCell.swift in Sources */,
 				F6319AEF23E82FA9003B2DDF /* DashboardTabController.swift in Sources */,
+				F6EFBAC223F534B800D4B9EB /* SpecialProgramForm.swift in Sources */,
 				F6319B1423E82FA9003B2DDF /* AppDelegate.swift in Sources */,
 				F6319AFD23E82FA9003B2DDF /* MessageFormat.swift in Sources */,
 				F6EFBABE23F3F56000D4B9EB /* SettingForm.swift in Sources */,
 				F6319B0323E82FA9003B2DDF /* BuyerDetailTableViewCell.swift in Sources */,
+				F6EFBACA23F6A39700D4B9EB /* ReadOnlyTableViewCell.swift in Sources */,
 				F6EFBABC23F3F3F600D4B9EB /* SettingsViewController.swift in Sources */,
 				E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */,
 				F6319AFF23E82FA9003B2DDF /* PreferencesUtil.swift in Sources */,
@@ -387,15 +420,18 @@
 				F63060BC23F158C60032BCCF /* JsonUtil.swift in Sources */,
 				F6319B2D23E83CC1003B2DDF /* Form.swift in Sources */,
 				F6319B2E23E83CC1003B2DDF /* FormItemUIProperties.swift in Sources */,
+				F6EFBACE23F6B11A00D4B9EB /* DatePickerViewTableViewCell.swift in Sources */,
 				F6319AED23E82FA9003B2DDF /* SignOutViewController.swift in Sources */,
 				F6319B3023E83DAB003B2DDF /* FormTextFieldTableViewCell.swift in Sources */,
 				F6319B1623E82FA9003B2DDF /* CustomerTableViewCell.swift in Sources */,
 				F63060B023F1148F0032BCCF /* AddBuyerViewController.swift in Sources */,
+				F6EFBAD223F8045E00D4B9EB /* YesNoViewTableViewCell.swift in Sources */,
 				F6319AFB23E82FA9003B2DDF /* IDNamePair.swift in Sources */,
 				F6EFBABA23F278D000D4B9EB /* FormButtonViewTableViewCell.swift in Sources */,
 				F6319B1023E82FA9003B2DDF /* alpinebi.xcdatamodeld in Sources */,
 				F6319AF723E82FA9003B2DDF /* CoreDataManager.swift in Sources */,
 				F6319AEE23E82FA9003B2DDF /* CustomerTableViewController.swift in Sources */,
+				F6EFBAD423F80B8B00D4B9EB /* DateUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
