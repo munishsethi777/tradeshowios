@@ -10,6 +10,7 @@ class FormItem: FormValidable {
     
     var isMandatory = true
     var isPicker = false
+    var isLabel = false
     var isValid = true //FormValidable
     
     var uiProperties = FormItemUIProperties()

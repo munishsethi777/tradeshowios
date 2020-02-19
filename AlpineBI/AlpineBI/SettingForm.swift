@@ -5,8 +5,6 @@
 //  Created by Baljeet Gaheer on 12/02/20.
 //  Copyright © 2020 Munish Sethi. All rights reserved.
 //
-
-import Foundation
 //
 //  BuyerForm.swift
 //  AlpineBI

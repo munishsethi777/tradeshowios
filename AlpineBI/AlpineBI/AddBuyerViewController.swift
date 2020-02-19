@@ -36,18 +36,6 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
         super.viewWillAppear(animated)
         loadEnumData()
     }
-    private func initPickerViewData(){
-        categoryTypes[""] = "Select Any"
-        categoryTypes["fountains"] = "Fountains"
-        categoryTypes["bird_bath"] = "Bird Bath"
-        categoryTypes["furniture"] = "Furniture"
-        categoryTypes["other"] = "Other"
-        categoryTypes["christmas_lighted"] = "Christmas Lighted"
-        categoryTypes["outdoor_lighted"] = "Outdoor Lighted"
-        categoryTypes["christmas"] = "Christmas"
-        categoryTypes["outdoor_decor"] = "Outdoor Decor"
-        categoryTypes["patriotic"] = "Patriotic"
-    }
     
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.addBuyerTableView)
@@ -332,20 +320,18 @@ extension AddBuyerViewController: CNContactPickerDelegate {
     }
     
     func setNumberFromContact(contactNumber: String) {
-        
         //UPDATE YOUR NUMBER SELECTION LOGIC AND PERFORM ACTION WITH THE SELECTED NUMBER
-        
-        var contactNumber = contactNumber.replacingOccurrences(of: "-", with: "")
-        contactNumber = contactNumber.replacingOccurrences(of: "+", with: "")
-        contactNumber = contactNumber.replacingOccurrences(of: "(", with: "")
-        contactNumber = contactNumber.replacingOccurrences(of: ")", with: "")
-        //contactNumber = contactNumber.removeWhitespacesInBetween()
-        guard contactNumber.count >= 10 else {
-            dismiss(animated: true) {
-                   GlobalData.showAlert(view: self, message: "Selected contact does not have a valid number")
-            }
-            return
-        }
+//        var contactNumber = contactNumber.replacingOccurrences(of: "-", with: "")
+//        contactNumber = contactNumber.replacingOccurrences(of: "+", with: "")
+//        contactNumber = contactNumber.replacingOccurrences(of: "(", with: "")
+//        contactNumber = contactNumber.replacingOccurrences(of: ")", with: "")
+//        contactNumber = contactNumber.removeWhitespacesInBetween()
+//        guard contactNumber.count >= 10 else {
+//            dismiss(animated: true) {
+//                   GlobalData.showAlert(view: self, message: "Selected contact does not have a valid number")
+//            }
+//            return
+//        }
         editBuyerData["cellphone"] = contactNumber
         self.form.cellphone = contactNumber;
     }

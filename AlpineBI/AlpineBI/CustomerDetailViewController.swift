@@ -88,7 +88,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         let selectedBuyer = buyerDetailSt[indexPath.row]
         if(selectedBuyer.value == DELETE_CUSTOMER && lastIndexOfBuyerArr == indexPath.row){
             deleteCustomerConfirm()
-        }else{
+        }else if(selectedBuyer.value == SPECIAL_PROGRAM_QUESTIONNAIRE){
+            self.performSegue(withIdentifier: "SpecialProgramViewController", sender: self)
+        }
+        else{
             selectedBuyerSeq = Int(selectedBuyer.id)!
             self.performSegue(withIdentifier: "BuyerDetailViewController", sender: self)
         }
@@ -206,6 +209,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
             secondController.editCustomerSeq =  selectedCustomerSeq
         }
         if let secondController = segue.destination as? AddBuyerViewController {
+            secondController.customerSeq =  selectedCustomerSeq
+        }
+        if let secondController = segue.destination as? SpecialProgramViewContorller {
+            secondController.customerName = customerNameLabel.text!
             secondController.customerSeq =  selectedCustomerSeq
         }
     }

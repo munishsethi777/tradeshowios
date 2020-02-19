@@ -31,7 +31,6 @@ extension FormLabelFieldTableViewCell: FormUpdatable {
                 self.labelField.font = UIFont(name:"Helvetica",size: 13.0)
                 self.labelField.textColor = .init(white: 0.740, alpha: 1.0)
             }
-           
             self.labelField.tintColor = self.formItem?.uiProperties.tintColor
         }
     }

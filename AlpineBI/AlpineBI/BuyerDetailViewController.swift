@@ -89,7 +89,19 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     
     func makeAPhoneCall()  {
         if(selectedBuyerPhone != nil && selectedBuyerPhone != ""){
-            let url: NSURL = URL(string: "TEL://" + selectedBuyerPhone!)! as NSURL
+            var contactNumber = selectedBuyerPhone!.replacingOccurrences(of: "-", with: "")
+            contactNumber = contactNumber.replacingOccurrences(of: "+", with: "")
+            contactNumber = contactNumber.replacingOccurrences(of: "(", with: "")
+            contactNumber = contactNumber.replacingOccurrences(of: ")", with: "")
+            contactNumber = contactNumber.trimmingCharacters(in: .whitespaces)
+            contactNumber = contactNumber.replacingOccurrences(of: " ", with: "")
+            guard contactNumber.count >= 10 else {
+                dismiss(animated: true) {
+                       GlobalData.showAlert(view: self, message: "Selected contact does not have a valid number")
+                }
+                return
+            }
+            let url: NSURL = URL(string: "TEL://" + contactNumber)! as NSURL
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         }else{
             GlobalData.showAlert(view: self, message: StringConstants.PHONE_NOT_AVAILABLE)

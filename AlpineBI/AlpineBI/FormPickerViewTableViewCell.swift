@@ -38,7 +38,7 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
        if(key == ""){
             value = key
        }
-       updateCallback?(value,labelFieldCellIndex)
+       updateCallback?(key,labelFieldCellIndex)
        self.formItem?.valueCompletion?(key)
     }
     
