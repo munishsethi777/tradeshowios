@@ -36,7 +36,7 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
     @objc func editTapped(){
         isReadOnly = false
         tableView.reloadData()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "DONE", style: .plain, target: self, action: #selector(saveSpecialProg))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveSpecialProg))
     }
     override func viewWillAppear(_ animated: Bool) {
         isReadOnly = true
