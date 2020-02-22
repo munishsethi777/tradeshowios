@@ -237,28 +237,28 @@ class SpecialProgramForm {
         otherAllowance.value = self.otherallowance
         otherAllowance.name = "otherallowance"
         otherAllowance.valueCompletion = { [weak self, weak otherAllowance] value in
-            self?.howpayingbackcustomer = value
+            self?.otherallowance = value
             otherAllowance?.value = value
         }
         
         let additionalRemarks = FormItem(placeholder: "Additional Remarks")
         additionalRemarks.uiProperties.cellType = FormItemCellType.textField
-        additionalRemarks.value = self.otherallowance
+        additionalRemarks.value = self.additionalremarks
         additionalRemarks.name = "additionalremarks"
         additionalRemarks.valueCompletion = { [weak self, weak additionalRemarks] value in
-            self?.otherallowance = value
+            self?.additionalremarks = value
             additionalRemarks?.value = value
         }
         
-        let isbackorderAccepted = FormItem(placeholder: "Is back Order Accepted?")
-        isbackorderAccepted.uiProperties.cellType = FormItemCellType.yesNoView
-        isbackorderAccepted.value = self.isbackorderaccepted
-        isbackorderAccepted.name = "isbackorderaccepted"
-        isbackorderAccepted.valueCompletion = { [weak self, weak isbackorderAccepted] value in
-            self?.otherallowance = value
-            isbackorderAccepted?.value = value
+        let isbackorderAcceptedItem = FormItem(placeholder: "Is back Order Accepted?")
+        isbackorderAcceptedItem.uiProperties.cellType = FormItemCellType.yesNoView
+        isbackorderAcceptedItem.value = self.isbackorderaccepted
+        isbackorderAcceptedItem.name = "isbackorderaccepted"
+        isbackorderAcceptedItem.valueCompletion = {[weak self, weak isbackorderAcceptedItem] value in
+            self?.isbackorderaccepted = value
+            isbackorderAcceptedItem?.value = value
         }
         
-        self.formItems = [startDateLabelItem,startDateItem,endDateLabelItem,endDateItem, priceProgramItem,regularTermsLabelItem,regularTermsItem,inseasonTerms,freightLabelTerms,freightTerms,isEDICustomer,isDefectiveAllowance,defectivePercent,rebateProgramandPaymentMethod,howPayingBackBustomer,defectiveAllowanceLabel,defectiveAllowance,promotionalAllowance,otherAllowance,additionalRemarks,isbackorderAccepted]
+        self.formItems = [startDateLabelItem,startDateItem,endDateLabelItem,endDateItem, priceProgramItem,regularTermsLabelItem,regularTermsItem,inseasonTerms,freightLabelTerms,freightTerms,isEDICustomer,isDefectiveAllowance,defectivePercent,rebateProgramandPaymentMethod,howPayingBackBustomer,defectiveAllowanceLabel,defectiveAllowance,promotionalAllowance,otherAllowance,additionalRemarks,isbackorderAcceptedItem]
     }
 }
