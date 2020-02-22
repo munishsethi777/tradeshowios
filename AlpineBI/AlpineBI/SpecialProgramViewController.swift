@@ -186,6 +186,7 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
+                        self.resetPickerState()
                         self.isReadOnly = true
                         self.loadEnumData()
                         self.addEditButton()
@@ -197,6 +198,13 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
                 GlobalData.showAlert(view: self, message: parseError.description)
             }
         })
+    }
+    private func resetPickerState(){
+        dpShowDatePickerVisible = false
+        dpShowEndDatePickerVisible = false
+        dpShowRegulerItemPickerVisible = false
+        dpFreightTypesPickerVisible = false
+        dpAllowanceDeductionsTypesPickerVisible = false
     }
     func loadFormOnEdit(response:[String:Any]){
         if let editProgData = response["specialProg"] as? [String:Any]{
