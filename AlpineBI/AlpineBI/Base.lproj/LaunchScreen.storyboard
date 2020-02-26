@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -562,20 +562,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EWB-Hw-FkW">
-                                <rect key="frame" x="0.0" y="82" width="375" height="563"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EWB-Hw-FkW">
+                                <rect key="frame" x="0.0" y="93" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="customer name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-8m-DdH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="19.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="customer name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-8m-DdH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hf6-8m-DdH" firstAttribute="top" secondItem="vfC-QX-hZ9" secondAttribute="top" id="0fs-Ry-Zje"/>
+                            <constraint firstItem="hf6-8m-DdH" firstAttribute="width" secondItem="vfC-QX-hZ9" secondAttribute="width" id="1SX-9e-XdA"/>
+                            <constraint firstItem="EWB-Hw-FkW" firstAttribute="top" secondItem="hf6-8m-DdH" secondAttribute="bottom" constant="8" id="5rn-kr-T2S"/>
+                            <constraint firstItem="EWB-Hw-FkW" firstAttribute="height" secondItem="vfC-QX-hZ9" secondAttribute="height" id="6YM-yo-Frm"/>
+                            <constraint firstItem="EWB-Hw-FkW" firstAttribute="leading" secondItem="vfC-QX-hZ9" secondAttribute="leading" id="8cN-Ev-DbT"/>
+                            <constraint firstAttribute="bottom" secondItem="EWB-Hw-FkW" secondAttribute="bottom" constant="20" symbolic="YES" id="MdZ-iR-tUZ"/>
+                            <constraint firstItem="EWB-Hw-FkW" firstAttribute="trailing" secondItem="vfC-QX-hZ9" secondAttribute="trailing" id="hlH-re-15k"/>
+                            <constraint firstItem="EWB-Hw-FkW" firstAttribute="width" secondItem="vfC-QX-hZ9" secondAttribute="width" id="t41-II-Lbh"/>
+                            <constraint firstItem="hf6-8m-DdH" firstAttribute="trailing" secondItem="vfC-QX-hZ9" secondAttribute="trailing" id="tHO-vw-eFh"/>
+                            <constraint firstItem="hf6-8m-DdH" firstAttribute="leading" secondItem="vfC-QX-hZ9" secondAttribute="leading" id="xsQ-f5-cul"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vfC-QX-hZ9"/>
                     </view>
                     <connections>

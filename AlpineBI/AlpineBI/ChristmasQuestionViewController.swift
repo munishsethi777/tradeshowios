@@ -45,7 +45,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.allowsSelection = false
-        self.tableView.estimatedRowHeight = 90
+        //self.tableView.estimatedRowHeight = 90
     }
     override func viewWillAppear(_ animated: Bool) {
         isReadOnly = true
@@ -237,7 +237,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
         if (isHiddenCell(row: indexPath.row)) {
             return 0
         } else {
-            return 60
+            return UITableView.automaticDimension
         }
      }
     
