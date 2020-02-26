@@ -43,7 +43,7 @@ extension YesNoViewTableViewCell: FormUpdatable {
         if(self.formItem != nil){
             captionLabelField.text = self.formItem?.placeholder
             if let value = formItem.value{
-               switcher.setOn(value == "Yes", animated: true)
+               switcher.setOn(value == "Yes", animated: false)
             }
         }
     }
