@@ -17,10 +17,8 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
     @IBOutlet weak var pickerView: UIPickerView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        pickerData = [:]
-        pickerDataLabel = []
-        pickerView.dataSource = self
-        pickerView.delegate = self
+        //pickerData = [:]
+        //pickerDataLabel = []
     }
     
 
@@ -91,6 +89,8 @@ class FormPickerViewTableViewCell :UITableViewCell, FormConformity,UIPickerViewD
                 pickerDataLabel.append(value)
             }
         }
+        pickerView.dataSource = self
+        pickerView.delegate = self
         pickerDataLabel = pickerDataLabel.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
         pickerDataLabel.insert("Select Any", at: 0)
     }

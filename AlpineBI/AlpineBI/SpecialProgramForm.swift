@@ -8,9 +8,7 @@
 import Foundation
 class SpecialProgramForm {
     var formItems = [FormItem]()
-    
     var title: String?
-    
     var startdate: String?
     var enddate: String?
     var priceprogram: String?

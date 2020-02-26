@@ -28,7 +28,7 @@ class DateUtil{
     
     static func convertToFormat(dateString:String?,fromFomat:String,toFormat:String)->String{
         var dateStr = "";
-        if(dateString != nil){
+        if(dateString != nil && !dateString!.isEmpty){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = fromFomat
             let date = dateFormatter.date(from:dateString!)!

@@ -10,8 +10,8 @@ import UIKit
 
 class YesNoViewTableViewCell: UITableViewCell,FormConformity {
     var formItem: FormItem?
-    
-   
+    var updateCallback : ((_ selectedValue: String,_ indexPath: IndexPath)-> Void)?
+    var labelFieldCellIndex: IndexPath!
     @IBOutlet weak var switcher: UISwitch!
     
     override func awakeFromNib() {
@@ -26,6 +26,7 @@ class YesNoViewTableViewCell: UITableViewCell,FormConformity {
            value = "Yes"
         }
         self.formItem?.valueCompletion?(value)
+        updateCallback?(value,labelFieldCellIndex)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

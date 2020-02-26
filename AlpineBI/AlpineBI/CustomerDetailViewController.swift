@@ -90,6 +90,8 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
             deleteCustomerConfirm()
         }else if(selectedBuyer.value == SPECIAL_PROGRAM_QUESTIONNAIRE){
             self.performSegue(withIdentifier: "SpecialProgramViewController", sender: self)
+        }else if(selectedBuyer.value == CHRISTMAS_QUESTIONNAIRE){
+            self.performSegue(withIdentifier: "ChristmasQuestionViewController", sender: self)
         }
         else{
             selectedBuyerSeq = Int(selectedBuyer.id)!
@@ -211,10 +213,15 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         if let secondController = segue.destination as? AddBuyerViewController {
             secondController.customerSeq =  selectedCustomerSeq
         }
+        if let secondController = segue.destination as? ChristmasQuestionViewController {
+            secondController.customerName = customerNameLabel.text!
+            secondController.customerSeq =  selectedCustomerSeq
+        }
         if let secondController = segue.destination as? SpecialProgramViewContorller {
             secondController.customerName = customerNameLabel.text!
             secondController.customerSeq =  selectedCustomerSeq
         }
+        
     }
     
     func addDeleteButtonLink(){

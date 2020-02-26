@@ -65,6 +65,9 @@ enum FormItemCellType {
                 let cellIdentifier = "PickerViewCell"
                 cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormPickerViewTableViewCell
                 cell.setPickerViewData(pickerViewData: pickerViewData)
+                cell.formItem = nil
+                cell.labelFieldCellIndex = nil
+                cell.updateCallback = nil
                 return cell
             case .textField:
                  let cell:FormTextFieldTableViewCell
