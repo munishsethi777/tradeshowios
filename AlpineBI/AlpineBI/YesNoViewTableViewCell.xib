@@ -13,30 +13,36 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="RUe-W7-VCX" customClass="YesNoViewTableViewCell" customModule="AlpineBI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="421" height="76"/>
+            <rect key="frame" x="0.0" y="0.0" width="421" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycI-qP-yZu">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycI-qP-yZu">
                     <rect key="frame" x="0.0" y="0.0" width="421" height="64"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3s-jN-J6d">
-                            <rect key="frame" x="14" y="2" width="254" height="62"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O9Y-8h-2co">
-                            <rect key="frame" x="364" y="15" width="51" height="31"/>
-                            <connections>
-                                <action selector="switchChanged:" destination="RUe-W7-VCX" eventType="valueChanged" id="byU-of-ke0"/>
-                            </connections>
-                        </switch>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="304" translatesAutoresizingMaskIntoConstraints="NO" id="DUh-lg-Rhe">
+                            <rect key="frame" x="18" y="7" width="385" height="47"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label Label Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3s-jN-J6d">
+                                    <rect key="frame" x="0.0" y="0.0" width="40.5" height="47"/>
+                                    <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hzD-H5-ea8">
+                                    <rect key="frame" x="344.5" y="0.0" width="42.5" height="31"/>
+                                    <connections>
+                                        <action selector="switchChanged:" destination="RUe-W7-VCX" eventType="valueChanged" id="gCd-nQ-sEL"/>
+                                    </connections>
+                                </switch>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="O9Y-8h-2co" firstAttribute="top" secondItem="ycI-qP-yZu" secondAttribute="top" constant="15" id="DJG-nL-aQK"/>
-                        <constraint firstAttribute="trailing" secondItem="O9Y-8h-2co" secondAttribute="trailing" constant="8" id="RMv-Yu-zGj"/>
+                        <constraint firstAttribute="trailing" secondItem="DUh-lg-Rhe" secondAttribute="trailing" constant="18" id="GZ1-ZT-kpR"/>
+                        <constraint firstItem="DUh-lg-Rhe" firstAttribute="top" secondItem="ycI-qP-yZu" secondAttribute="top" constant="7" id="otW-Lc-pmz"/>
+                        <constraint firstItem="DUh-lg-Rhe" firstAttribute="leading" secondItem="ycI-qP-yZu" secondAttribute="leading" constant="18" id="tZ2-c6-t5p"/>
                     </constraints>
                 </view>
             </subviews>
@@ -45,7 +51,7 @@
                 <constraint firstItem="ycI-qP-yZu" firstAttribute="top" secondItem="RUe-W7-VCX" secondAttribute="top" id="WCs-O6-c6F"/>
                 <constraint firstAttribute="trailing" secondItem="ycI-qP-yZu" secondAttribute="trailing" id="Zmm-OG-fOU"/>
                 <constraint firstItem="ycI-qP-yZu" firstAttribute="leading" secondItem="RUe-W7-VCX" secondAttribute="leading" id="pxd-Qb-7Vo"/>
-                <constraint firstItem="sxK-9k-Pdy" firstAttribute="bottom" secondItem="ycI-qP-yZu" secondAttribute="bottom" id="vXS-Y5-vDe"/>
+                <constraint firstAttribute="bottom" secondItem="ycI-qP-yZu" secondAttribute="bottom" id="su1-Dj-8tu"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -53,9 +59,9 @@
             <viewLayoutGuide key="safeArea" id="sxK-9k-Pdy"/>
             <connections>
                 <outlet property="captionLabelField" destination="W3s-jN-J6d" id="fWG-Ui-Uqs"/>
-                <outlet property="switcher" destination="O9Y-8h-2co" id="gxD-Yn-fPW"/>
+                <outlet property="switcher" destination="hzD-H5-ea8" id="Gad-JL-La2"/>
             </connections>
-            <point key="canvasLocation" x="126.81159420289856" y="-705.80357142857144"/>
+            <point key="canvasLocation" x="100.72463768115942" y="-865.17857142857144"/>
         </view>
     </objects>
 </document>

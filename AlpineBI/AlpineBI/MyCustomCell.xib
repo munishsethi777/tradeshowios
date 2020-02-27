@@ -13,28 +13,35 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="FKK-vr-Did" customClass="FormTextFieldTableViewCell" customModule="AlpineBI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="449" height="71"/>
+            <rect key="frame" x="0.0" y="0.0" width="449" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rj-hf-8r2">
-                    <rect key="frame" x="0.0" y="0.0" width="449" height="71"/>
+                    <rect key="frame" x="0.0" y="0.0" width="449" height="53"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd8-XG-HA9">
-                            <rect key="frame" x="14" y="9" width="433" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd8-XG-HA9">
+                            <rect key="frame" x="18" y="7" width="413" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHi-Ro-1jF">
-                            <rect key="frame" x="14" y="25" width="430" height="41"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHi-Ro-1jF">
+                            <rect key="frame" x="18" y="23" width="413" height="23"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Pd8-XG-HA9" firstAttribute="leading" secondItem="1rj-hf-8r2" secondAttribute="leading" constant="18" id="6Rm-0U-6SY"/>
+                        <constraint firstItem="xHi-Ro-1jF" firstAttribute="leading" secondItem="1rj-hf-8r2" secondAttribute="leading" constant="18" id="BOO-sq-3cB"/>
+                        <constraint firstAttribute="trailing" secondItem="xHi-Ro-1jF" secondAttribute="trailing" constant="18" id="RAl-4K-mlZ"/>
+                        <constraint firstItem="Pd8-XG-HA9" firstAttribute="top" secondItem="1rj-hf-8r2" secondAttribute="top" constant="7" id="ZyL-xg-gTy"/>
+                        <constraint firstAttribute="bottom" secondItem="xHi-Ro-1jF" secondAttribute="bottom" constant="7" id="euh-dn-Cqq"/>
+                        <constraint firstItem="xHi-Ro-1jF" firstAttribute="top" secondItem="Pd8-XG-HA9" secondAttribute="bottom" constant="7" id="kc7-Bx-a4r"/>
+                        <constraint firstAttribute="trailing" secondItem="Pd8-XG-HA9" secondAttribute="trailing" constant="18" id="kpX-qH-0kx"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,7 +59,7 @@
                 <outlet property="ibTextField" destination="xHi-Ro-1jF" id="Oms-ng-dAm"/>
                 <outlet property="labelField" destination="Pd8-XG-HA9" id="fK2-mc-iyI"/>
             </connections>
-            <point key="canvasLocation" x="-134.05797101449275" y="-924.44196428571422"/>
+            <point key="canvasLocation" x="-134.05797101449275" y="-926.45089285714278"/>
         </view>
     </objects>
 </document>

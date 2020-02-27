@@ -12,6 +12,8 @@ class YesNoViewTableViewCell: UITableViewCell,FormConformity {
     var formItem: FormItem?
     var updateCallback : ((_ selectedValue: String,_ indexPath: IndexPath)-> Void)?
     var labelFieldCellIndex: IndexPath!
+   
+    
     @IBOutlet weak var switcher: UISwitch!
     
     override func awakeFromNib() {
@@ -19,15 +21,17 @@ class YesNoViewTableViewCell: UITableViewCell,FormConformity {
         // Initialization code
     }
 
-    @IBOutlet weak var captionLabelField: UILabel!
     @IBAction func switchChanged(_ sender: UISwitch) {
-        var value = "No";
-        if sender.isOn {
-           value = "Yes"
-        }
-        self.formItem?.valueCompletion?(value)
-        updateCallback?(value,labelFieldCellIndex)
+      
+            var value = "No";
+            if sender.isOn {
+               value = "Yes"
+            }
+            self.formItem?.valueCompletion?(value)
+            updateCallback?(value,labelFieldCellIndex)
     }
+    
+    @IBOutlet weak var captionLabelField: UILabel!
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
