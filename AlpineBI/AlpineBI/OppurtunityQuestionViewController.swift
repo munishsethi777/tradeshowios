@@ -168,7 +168,7 @@ class OppurtunityQuestionViewController: UIViewController {
                         self.addEditButton()
                     }
                     self.progressHUD.hide()
-                    GlobalData.showAlert(view: self, message: message!)
+                    GlobalData.showAlert(view: self, message: message!,success: success)
                 }
             } catch let parseError as NSError {
                 GlobalData.showAlert(view: self, message: parseError.description)

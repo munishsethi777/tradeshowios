@@ -326,7 +326,7 @@ extension AddCustomerViewController: UITableViewDataSource {
     }
     
     func showAlertMessage(view:UIViewController,message:String,nextViewControllerSegueId:String? = nil){
-        let alert = UIAlertController(title: "Validation", message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Success", message: message, preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
             self.goToDetailView()
         }

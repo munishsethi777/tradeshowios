@@ -106,7 +106,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
                         self.addEditButton()
                     }
                     self.progressHUD.hide()
-                    GlobalData.showAlert(view: self, message: message!)
+                    GlobalData.showAlert(view: self, message: message!,success: success)
                 }
             } catch let parseError as NSError {
                 GlobalData.showAlert(view: self, message: parseError.description)
@@ -258,7 +258,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.emums["year"] = json["year"] as! [String:String]
-                        self.emums["tradeshowsgoingto"] = json["customerselectxmasitemsfrom"] as! [String:String]
+                        self.emums["customerselectxmasitemsfrom"] = json["customerselectxmasitemsfrom"] as! [String:String]
                         self.prepareSubViews()
                         self.tableView.dataSource = self
                         self.tableView.delegate = self

@@ -104,8 +104,10 @@ extension RSSelectionMenuCellView: FormUpdatable {
             buttonView.setTitle(self.formItem?.value, for: .normal)
             self.crossButtonView.isHidden = true
             if let value = self.formItem?.value {
-                selectedValues = value.components(separatedBy: ",")
-                self.crossButtonView.isHidden = false
+                if(!value.isEmpty){
+                    selectedValues = value.components(separatedBy: ",")
+                    self.crossButtonView.isHidden = false
+                }
             }
         }
     }
