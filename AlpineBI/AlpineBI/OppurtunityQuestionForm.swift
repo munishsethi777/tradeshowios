@@ -1,5 +1,5 @@
 //
-//  SettingForm.swift
+//  OppurtunityQuestionForm.swift
 //  AlpineBI
 //
 //  Created by Baljeet Gaheer on 12/02/20.
@@ -14,19 +14,16 @@
 //
 
 import Foundation
-class SettingForm {
+class OppurtunityQuestionForm:ObjectConvertor{
     var formItems = [FormItem]()
+    var year: String?
+    var tradeshowsgoingto: String?
+    var isxmascateloglinksent: String?
+    var closeoutleftoversincedate: String?
     
-    var title: String?
-    
-    var fullname: String?
-    var email: String?
-    var mobile: String?
-    var usertimezone: String?
-    
-    init() {
+    override init() {
+        super.init()
         self.configureItems()
-        self.title = "Settings"
     }
     
     // MARK: Form Validation
@@ -45,55 +42,46 @@ class SettingForm {
     
     /// Prepare all form Items ViewModels for the DirectStudioForm
     private func configureItems() {
-        // first Name
-        let fullNameItem = FormItem(placeholder: "Full Name")
-        fullNameItem.uiProperties.cellType = FormItemCellType.textField
-        fullNameItem.value = self.fullname
-        fullNameItem.name = "fullname"
-        fullNameItem.valueCompletion = { [weak self, weak fullNameItem] value in
-            self?.fullname = value
-            fullNameItem?.value = value
+        let yearItem = FormItem(placeholder: "Data Saving for Year")
+        yearItem.uiProperties.cellType = FormItemCellType.selectionView
+        yearItem.value = self.year
+        yearItem.isLabel = true
+        yearItem.name = "year"
+        yearItem.valueCompletion = { [weak self, weak yearItem] value in
+            self?.year = value
+            yearItem?.value = value
         }
         
-        // Email
-        let emailItem = FormItem(placeholder: "Email")
-        emailItem.uiProperties.cellType = FormItemCellType.textField
-        emailItem.value = self.email
-        emailItem.name = "email"
-        emailItem.valueCompletion = { [weak self, weak emailItem] value in
-            self?.email = value
-            emailItem?.value = value
+        let tradeShowsGoInTtoItem = FormItem(placeholder: "What trade shows are they going to in 2021?")
+        tradeShowsGoInTtoItem.uiProperties.cellType = FormItemCellType.selectionView
+        tradeShowsGoInTtoItem.value = self.tradeshowsgoingto
+        tradeShowsGoInTtoItem.name = "tradeshowsgoingto"
+        tradeShowsGoInTtoItem.isMultiSelect = true
+        tradeShowsGoInTtoItem.isLabel = true
+        tradeShowsGoInTtoItem.valueCompletion = { [weak self, weak tradeShowsGoInTtoItem] value in
+            self?.tradeshowsgoingto = value
+            tradeShowsGoInTtoItem?.value = value
         }
         
-        // mobile
-        let mobileitem = FormItem(placeholder: "Mobile")
-        mobileitem.uiProperties.cellType = FormItemCellType.textField
-        mobileitem.value = self.mobile
-        mobileitem.name = "mobile"
-        mobileitem.valueCompletion = { [weak self, weak mobileitem] value in
-            self?.mobile = value
-            mobileitem?.value = value
+        let iscatelogLinkSentitem = FormItem(placeholder: "Have you sent them xmas catalog link?")
+        iscatelogLinkSentitem.uiProperties.cellType = FormItemCellType.yesNoView
+        iscatelogLinkSentitem.value = self.isxmascateloglinksent
+        iscatelogLinkSentitem.name = "isxmascateloglinksent"
+        iscatelogLinkSentitem.valueCompletion = { [weak self, weak iscatelogLinkSentitem] value in
+            self?.isxmascateloglinksent = value
+            iscatelogLinkSentitem?.value = value
         }
         
-        // TimeZone
-        let timezoneLabelItem = FormItem(placeholder: "Time Zone")
-        timezoneLabelItem.uiProperties.cellType = FormItemCellType.buttonView
-        timezoneLabelItem.value = self.usertimezone
-        timezoneLabelItem.name = "usertimezone"
-        timezoneLabelItem.valueCompletion = { [weak self, weak timezoneLabelItem] value in
-            self?.usertimezone = value
-            timezoneLabelItem?.value = value
+        let closeOutleftOverSinceDateItem = FormItem(placeholder: "Closeout and left over List Sent Date")
+        closeOutleftOverSinceDateItem.uiProperties.cellType = FormItemCellType.selectionView
+        closeOutleftOverSinceDateItem.value = self.closeoutleftoversincedate
+        closeOutleftOverSinceDateItem.isLabel = true
+        closeOutleftOverSinceDateItem.isDatePickerView = true
+        closeOutleftOverSinceDateItem.name = "closeoutleftoversincedate"
+        closeOutleftOverSinceDateItem.valueCompletion = { [weak self, weak closeOutleftOverSinceDateItem] value in
+            self?.closeoutleftoversincedate = value
+            closeOutleftOverSinceDateItem?.value = value
         }
-        // Time Zone
-        let timezoneItem = FormItem(placeholder: "Time Zone")
-        timezoneItem.uiProperties.cellType = FormItemCellType.pickerView
-        timezoneItem.value = self.usertimezone
-        timezoneItem.name = "usertimezonepicker"
-        timezoneItem.isPicker = true
-        timezoneItem.valueCompletion = { [weak self, weak timezoneItem] value in
-            self?.usertimezone = value
-            timezoneItem?.value = value
-        }
-        self.formItems = [fullNameItem, emailItem, mobileitem,timezoneLabelItem,timezoneItem]
+        self.formItems = [yearItem, tradeShowsGoInTtoItem, iscatelogLinkSentitem,closeOutleftOverSinceDateItem]
     }
 }

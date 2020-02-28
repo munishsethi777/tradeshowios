@@ -34,7 +34,7 @@ extension DatePickerViewTableViewCell: FormUpdatable {
         if let value = formItem.value{
             if(value != ""){
                     let date = DateUtil.stringToDate(dateString: value, dateFormat: DateUtil.dateFormat2);
-                datePickerView.date = date
+                datePickerView.date = date!
             }
         }
     }

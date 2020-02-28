@@ -24,6 +24,7 @@ enum FormItemCellType {
   case pickerView
   case labelField
   case buttonView
+  case selectionView
   case datePickerView
   case yesNoView
   /// Registering methods for all forms items cell types
@@ -44,6 +45,8 @@ enum FormItemCellType {
     tableView.register(nib5, forCellReuseIdentifier: "DatePickerViewTableViewCell")
     let nib6 = UINib.init(nibName: "YesNoViewTableViewCell", bundle: nil)
     tableView.register(nib6, forCellReuseIdentifier: "YesNoViewTableViewCell")
+    let nib7 = UINib.init(nibName: "RSSelectionMenuCellView", bundle: nil)
+    tableView.register(nib7, forCellReuseIdentifier: "RSSelectionMenuCellView")
   }
   
   /// Correctly dequeue the UITableViewCell according to the current cell type
@@ -83,6 +86,12 @@ enum FormItemCellType {
                 let cell:FormButtonViewTableViewCell
                 let cellIdentifier = "ButtonViewCell"
                 cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormButtonViewTableViewCell
+                return cell
+            case .selectionView:
+                let cell:RSSelectionMenuCellView
+                let cellIdentifier = "RSSelectionMenuCellView"
+                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RSSelectionMenuCellView
+                cell.setMenuData(menuData: pickerViewData)
                 return cell
             case .datePickerView:
                 let cell:DatePickerViewTableViewCell

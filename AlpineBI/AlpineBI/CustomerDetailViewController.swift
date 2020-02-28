@@ -93,6 +93,9 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }else if(selectedBuyer.value == CHRISTMAS_QUESTIONNAIRE){
             self.performSegue(withIdentifier: "ChristmasQuestionViewController", sender: self)
         }
+        else if(selectedBuyer.value == OPPURTUNITY_QUESTIONNAIRE){
+            self.performSegue(withIdentifier: "OppurtunityQuestionViewController", sender: self)
+        }
         else{
             selectedBuyerSeq = Int(selectedBuyer.id)!
             self.performSegue(withIdentifier: "BuyerDetailViewController", sender: self)
@@ -221,7 +224,11 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
             secondController.customerName = customerNameLabel.text!
             secondController.customerSeq =  selectedCustomerSeq
         }
-        
+        if let secondController = segue.destination as? OppurtunityQuestionViewController {
+            secondController.customerNameStr = customerNameLabel.text!
+            secondController.customerSeq =  selectedCustomerSeq
+        }
+    
     }
     
     func addDeleteButtonLink(){

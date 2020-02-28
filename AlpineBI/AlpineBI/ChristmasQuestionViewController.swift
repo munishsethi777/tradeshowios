@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RSSelectionMenu
 class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
@@ -41,6 +42,9 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewDidLoad()
     }
+    
+    
+    
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -254,7 +258,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.emums["year"] = json["year"] as! [String:String]
-                        self.emums["customerselectxmasitemsfrom"] = json["customerselectxmasitemsfrom"] as! [String:String]
+                        self.emums["tradeshowsgoingto"] = json["customerselectxmasitemsfrom"] as! [String:String]
                         self.prepareSubViews()
                         self.tableView.dataSource = self
                         self.tableView.delegate = self

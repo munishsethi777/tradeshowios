@@ -12,7 +12,8 @@ class FormItem: FormValidable {
     var isPicker = false
     var isLabel = false
     var isValid = true //FormValidable
-    
+    var isMultiSelect = false
+    var isDatePickerView = false
     var uiProperties = FormItemUIProperties()
     
     // MARK: Init

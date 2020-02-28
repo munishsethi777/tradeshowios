@@ -37,11 +37,15 @@ struct StringConstants {
     static let GET_TIMEZONES = ACTION_API_URL + "EnumAction.php?call=getTimeZones&userSeq={0}"
     static let GET_ENUMS_SPECIAL_PROG = ACTION_API_URL + "EnumAction.php?call=getEnumsForSpecialProg&userSeq={0}"
     static let GET_ENUMS_FOR_QUESTIONNARIE = ACTION_API_URL + "EnumAction.php?call=getQuestionnaireEnums&userSeq={0}"
+    static let GET_ENUMS_FOR_OPPURTUNITY_QUESTION = ACTION_API_URL + "EnumAction.php?call=getOppurtunityQuestionEnums&userSeq={0}"
+    
     
     // CustomerQuestionnaireAction.php
     static let GET_SPECIAL_PROGRAM_DETAILS = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getSpecialProgramDetails&userSeq={0}&customerSeq={1}"
-     static let SAVE_SPECIAL_PROGRAM_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveAlpineProg&userSeq={0}&specialProg={1}"
+    static let SAVE_SPECIAL_PROGRAM_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveAlpineProg&userSeq={0}&specialProg={1}"
     static let SAVE_CHRISTMAS_QUESTION_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveChristmasQuestionDetail&userSeq={0}&christmasQues={1}"
+    static let SAVE_OPPURTUNITY_QUESTION_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveOppurtunityQuestionDetail&userSeq={0}&customerOppurtunityQues={1}"
     
     static let GET_CHRISTMAS_QUESTIONS_DETAILS = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getChristmasQuestionDetails&userSeq={0}&customerSeq={1}"
+    static let GET_OPPURTUNITY_QUESTIONS_DETAILS = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getOppurtunityBuysDetails&userSeq={0}&customerSeq={1}"
 }

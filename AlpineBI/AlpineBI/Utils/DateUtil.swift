@@ -12,11 +12,14 @@ class DateUtil{
     static var dateFormat2 = "dd-MMM-yyyy"
     static var dateFormat3 = "MM-dd-yyyy"
     
-    static func stringToDate(dateString:String,dateFormat:String)->Date{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = dateFormat
-        let date = dateFormatter.date(from:dateString)!
-        return date;
+    static func stringToDate(dateString:String?,dateFormat:String)->Date?{
+        if(dateString != nil && !dateString!.isEmpty){
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = dateFormat
+            let date = dateFormatter.date(from:dateString!)!
+            return date;
+        }
+        return nil;
     }
     
     static func dateToString(date:Date,toFormat:String)->String{
