@@ -28,7 +28,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
     private var dpShowXmassShowroomReminderDatePickerVisible = false
     private var dpShowChristmas2020DatePickerVisible = false
     private var dpShowQuoteChristmasDatePickerVisible = false
-    var emums:[String:Any] = [:]
+    var enums:[String:Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareSubViews()
@@ -36,6 +36,8 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
         progressHUD = ProgressHUD(text: "Processing")
         customerNameLabel.text = customerName
         addEditButton()
+        isReadOnly = true
+        loadEnumData()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
@@ -52,9 +54,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
         self.tableView.estimatedRowHeight = 90
     }
     override func viewWillAppear(_ animated: Bool) {
-        isReadOnly = true
         super.viewWillAppear(animated)
-        loadEnumData()
     }
     
     @objc func keyboardWillShow(notification:NSNotification){
@@ -82,6 +82,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
     @objc func saveChritmasQuestion(){
         var arr = self.form.toArray();
         arr["customerseq"] = self.customerSeq
+        arr["customerselectxmasitemsfrom"] = getSelectedNameForMenu(fieldName: "customerselectxmasitemsfrom",value:form.customerselectxmasitemsfrom)
         let jsonString = JsonUtil.toJsonString(jsonObject: arr);
         excecuteSaveCall(jsonstring: jsonString)
     }
@@ -100,7 +101,6 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        self.resetPickerState()
                         self.isReadOnly = true
                         self.loadEnumData()
                         self.addEditButton()
@@ -114,138 +114,17 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
         })
     }
     
-    private func resetPickerState(){
-        dpShowYearPickerVisible = false
-        dpShowXmasItemPickerVisible = false
-        dpShowMeetingDatePickerVisible = false
-        dpShowInvitedXmassShowroomDatePickerVisible = false
-        dpShowXmassShowroomReminderDatePickerVisible = false
-        dpShowChristmas2020DatePickerVisible = false
-        dpShowQuoteChristmasDatePickerVisible = false
-    }
     func getPickerViewData(formItem:FormItem)->[String:String]{
         if(formItem.isPicker || formItem.isLabel){
-            var name = formItem.name!
-            if(name.contains("picker")){
-                name.removeLast(6)
-            }
-            if let pickerData = emums[name]{
+            let name = formItem.name!
+            if let pickerData = enums[name]{
                 return pickerData as! [String : String]
             }
         }
         return [:]
     }
     
-    
-    
-    func getPickerViewSelectedValue(formItem:FormItem)->String?{
-        var name = formItem.name!
-        if(name.contains("picker")){
-            name.removeLast(6)
-        }
-        return editProgData[name] as? String
-    }
-    
-    func buttonTappedCallBack(fieldName:String?){
-        if(fieldName == "year"){
-            dpShowYearPickerVisible = !dpShowYearPickerVisible
-            //dpShowXmasItemPickerVisible = false
-        }
-        if(fieldName == "customerselectxmasitemsfrom"){
-            dpShowXmasItemPickerVisible = !dpShowXmasItemPickerVisible
-            //dpShowYearPickerVisible = false
-        }
-        if(fieldName == "strategicplanningmeetdate"){
-            dpShowMeetingDatePickerVisible = !dpShowMeetingDatePickerVisible
-        }
-        if(fieldName == "invitedtoxmasshowroomdate"){
-            dpShowInvitedXmassShowroomDatePickerVisible = !dpShowInvitedXmassShowroomDatePickerVisible
-        }
-        if(fieldName == "invitedtoxmasshowroomreminderdate"){
-            dpShowXmassShowroomReminderDatePickerVisible = !dpShowXmassShowroomReminderDatePickerVisible
-        }
-        if(fieldName == "christmas2020reviewingdate"){
-            dpShowChristmas2020DatePickerVisible = !dpShowChristmas2020DatePickerVisible
-        }
-        if(fieldName == "christmasquotebydate"){
-            dpShowQuoteChristmasDatePickerVisible = !dpShowQuoteChristmasDatePickerVisible
-        }
-        tableView.reloadData()
-        //let indexPath = IndexPath(row: 19, section: 0)
-        //self.tableView.reloadRows(at:[indexPath], with: .none)
-    }
-    
-    func UpdateCallback(selectedValue:String,indexPath:IndexPath) //add this extra method
-    {
-        form.formItems[indexPath.row].value = selectedValue
-        if(form.formItems[indexPath.row].name == "year"){
-            form.year = selectedValue
-            editProgData["year"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "customerselectxmasitemsfrom"){
-            form.customerselectxmasitemsfrom = selectedValue
-            editProgData["customerselectxmasitemsfrom"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "strategicplanningmeetdate"){
-            form.strategicplanningmeetdate = selectedValue
-            editProgData["strategicplanningmeetdate"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "invitedtoxmasshowroomdate"){
-            form.invitedtoxmasshowroomdate = selectedValue
-            editProgData["invitedtoxmasshowroomdate"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "invitedtoxmasshowroomreminderdate"){
-            form.invitedtoxmasshowroomreminderdate = selectedValue
-            editProgData["invitedtoxmasshowroomreminderdate"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "christmas2020reviewingdate"){
-            form.christmas2020reviewingdate = selectedValue
-            editProgData["christmas2020reviewingdate"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "christmasquotebydate"){
-            form.christmasquotebydate = selectedValue
-            editProgData["christmasquotebydate"] = selectedValue
-        }
-        editProgData[form.formItems[indexPath.row].name!] = selectedValue
-        self.tableView.reloadRows(at:[indexPath], with: .none)
-        //reloadTable()
-    }
-    
-    private func isHiddenCell(row:Int)->Bool{
-        var isHidden:Bool = false
-        if(row == 1 && !dpShowYearPickerVisible){
-            isHidden = true
-        }
-        if(row == 8 && !dpShowMeetingDatePickerVisible){
-            isHidden = true
-        }
-        if(row == 11 && !dpShowInvitedXmassShowroomDatePickerVisible){
-            isHidden = true
-        }
-        if(row == 13 && !dpShowXmassShowroomReminderDatePickerVisible){
-            isHidden = true
-        }
-        if(row == 17 && !dpShowChristmas2020DatePickerVisible){
-            isHidden = true
-        }
-        if(row == 19 && !dpShowXmasItemPickerVisible){
-            isHidden = true
-        }
-        if(row == 27 && !dpShowQuoteChristmasDatePickerVisible){
-            isHidden = true
-        }
-        return isHidden
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (isHiddenCell(row: indexPath.row)) {
-            return 0
-        } else {
-            return UITableView.automaticDimension
-        }
-     }
-    
-     func loadEnumData(){
+    func loadEnumData(){
         let args: [Int] = [self.loggedInUserSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_ENUMS_FOR_QUESTIONNARIE, args: args)
         var success : Int = 0
@@ -257,8 +136,8 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        self.emums["year"] = json["year"] as! [String:String]
-                        self.emums["customerselectxmasitemsfrom"] = json["customerselectxmasitemsfrom"] as! [String:String]
+                        self.enums["year"] = json["year"] as! [String:String]
+                        self.enums["customerselectxmasitemsfrom"] = json["customerselectxmasitemsfrom"] as! [String:String]
                         self.prepareSubViews()
                         self.tableView.dataSource = self
                         self.tableView.delegate = self
@@ -275,7 +154,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
     }
     func getChristmasQuestionDetails(){
         if(self.customerSeq == 0){
-            reloadTable()
+            tableView.reloadData()
             return
         }
         self.view.addSubview(progressHUD)
@@ -317,7 +196,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
             self.form.christmasquotebydate = getDateString(dateStr: christmasQuoteByDate)
             self.editProgData["christmasquotebydate"] =  self.form.christmasquotebydate
             
-            self.form.customerselectxmasitemsfrom = editProgData["customerselectxmasitemsfrom"] as? String
+            self.form.customerselectxmasitemsfrom = getSelectedValueForMenu(fieldName: "customerselectxmasitemsfrom")
             
             let invitedToXmasShowroomDate = editProgData["invitedtoxmasshowroomdate"] as? String
             self.form.invitedtoxmasshowroomdate = getDateString(dateStr: invitedToXmasShowroomDate)
@@ -348,13 +227,36 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
             self.form.xmasbuylastyearamount = editProgData["xmasbuylastyearamount"] as? String
             self.form.year = editProgData["year"] as? String
         }
-       reloadTable()
+       tableView.reloadData()
     }
-    func reloadTable(){
-        let contentOffset = self.tableView.contentOffset
-        self.tableView.reloadData()
-        self.tableView.layoutIfNeeded()
-        self.tableView.setContentOffset(contentOffset, animated: false)
+    func getSelectedValueForMenu(fieldName:String)->String?{
+        if let selectedValueStr = editProgData[fieldName] as? String{
+            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
+            var selectedValues:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for value in selctedValuesArr {
+                selectedValues.append(enumData[value]!)
+            }
+            let valueStr = selectedValues.joined(separator: ",")
+            self.editProgData[fieldName] = valueStr
+            return valueStr
+        }
+        return nil
+    }
+    func getSelectedNameForMenu(fieldName:String,value:String?)->String?{
+        if value != nil && !value!.isEmpty{
+            let selctedValuesNameArr = value!.components(separatedBy: ",")
+            var selectedValuesName:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for value in selctedValuesNameArr {
+                let selectedValueName =  enumData.keysForValue(value:value).first
+                selectedValuesName.append(selectedValueName!)
+            }
+            let nameStr = selectedValuesName.joined(separator: ",")
+            //self.editProgData[fieldName] = nameStr
+            return nameStr
+        }
+        return nil
     }
 }
 
@@ -374,42 +276,17 @@ extension ChristmasQuestionViewController: UITableViewDataSource {
         let name = item.name
         if let val = editProgData[name!] as? String {
             item.value = val
-            if(item.isLabel && val != ""){
-                if let v = pickerViewData[val] {
-                    item.value = v;
-                }
-            }
         }
         var cell: UITableViewCell
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
-            if(item.isPicker  && (cellType == FormItemCellType.pickerView || cellType == FormItemCellType.datePickerView)){
-                item.value = getPickerViewSelectedValue(formItem: item)
-            }
             cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData,isReadOnlyView: isReadOnly)
-            if let pickerViewCell = cell as? DatePickerViewTableViewCell {
-                pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                pickerViewCell.updateCallback = self.UpdateCallback
-                cell = pickerViewCell
-            }
-            if let pickerViewCell = cell as? FormPickerViewTableViewCell {
-                pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                pickerViewCell.updateCallback = self.UpdateCallback
-                cell = pickerViewCell
-            }
-            
-            if let pickerViewCell = cell as? YesNoViewTableViewCell {
-                pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row, section: indexPath.section)
-                pickerViewCell.updateCallback = self.UpdateCallback
-                cell = pickerViewCell
-            }
-            
-            if let buttonViewCell = cell as? FormButtonViewTableViewCell {
+            if let selectionViewCell = cell as? RSSelectionMenuCellView {
                 if(item.isLabel){
                     isSetCaption = true
                 }else{
                     isSetCaption = false
                 }
-                buttonViewCell.buttonTappedCallBack = buttonTappedCallBack
+                selectionViewCell.parentViewController = self
             }
         }else{
             cell = UITableViewCell()

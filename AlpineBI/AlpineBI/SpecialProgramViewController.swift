@@ -133,9 +133,9 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
     @objc func saveSpecialProg(){
         var arr = self.form.toArray(swiftClass: self.form);
         arr["customerseq"] = self.customerSeq
-        arr["freight"] = getSelectedNameForMenu(fieldName: "freight")
-        arr["regularterms"] = getSelectedNameForMenu(fieldName: "regularterms")
-        arr["howdefectiveallowancededucted"] = getSelectedNameForMenu(fieldName: "howdefectiveallowancededucted")
+        arr["freight"] = getSelectedNameForMenu(fieldName: "freight",value:form.freight)
+        arr["regularterms"] = getSelectedNameForMenu(fieldName: "regularterms",value:form.regularterms)
+        arr["howdefectiveallowancededucted"] = getSelectedNameForMenu(fieldName: "howdefectiveallowancededucted",value:form.howdefectiveallowancededucted)
         let jsonString = JsonUtil.toJsonString(jsonObject: arr)
         excecuteSaveCall(jsonstring: jsonString)
     }
@@ -192,7 +192,6 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
             self.form.promotionalallowance = editProgData["priceprogram"] as? String
             self.form.rebateprogramandpaymentmethod = editProgData["rebateprogramandpaymentmethod"] as? String
             self.form.regularterms = getSelectedValueForMenu(fieldName:"regularterms")
-            self.form.howdefectiveallowancededucted = editProgData["howdefectiveallowancededucted"] as? String
             self.form.howpayingbackcustomer = editProgData["howpayingbackcustomer"] as? String
         }
         self.tableView.reloadData()
@@ -220,13 +219,13 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
         }
         return nil
     }
-    func getSelectedNameForMenu(fieldName:String)->String?{
-        if let selectedValueNameStr = editProgData[fieldName] as? String{
-            let selctedValuesNameArr = selectedValueNameStr.components(separatedBy: ",")
+    func getSelectedNameForMenu(fieldName:String,value:String?)->String?{
+        if value != nil && !value!.isEmpty{
+            let selctedValuesNameArr = value!.components(separatedBy: ",")
             var selectedValuesName:[String] = []
             let enumData = enums[fieldName] as! [String:String];
             for value in selctedValuesNameArr {
-                let selectedValueName =  enumData.someKey(forValue: value)
+                let selectedValueName =  enumData.keysForValue(value:value).first
                 selectedValuesName.append(selectedValueName!)
             }
             let nameStr = selectedValuesName.joined(separator: ",")

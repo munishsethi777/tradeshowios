@@ -52,7 +52,7 @@ class ChristmasQuestionForm {
     private func configureItems() {
         // Start Date
         let yearLabelItem = FormItem(placeholder: "Data Saving for Year")
-        yearLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        yearLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         yearLabelItem.value = self.year
         yearLabelItem.name = "year"
         yearLabelItem.isLabel = true
@@ -60,15 +60,7 @@ class ChristmasQuestionForm {
             self?.year = value
             yearLabelItem?.value = value
         }
-        let yearItem = FormItem(placeholder: "Data Saving for Year")
-        yearItem.uiProperties.cellType = FormItemCellType.pickerView
-        yearItem.value = self.year
-        yearItem.isPicker = true
-        yearItem.name = "yearpicker"
-        yearItem.valueCompletion = { [weak self, weak yearItem] value in
-            self?.year = value
-            yearItem?.value = value
-        }
+    
         
         let isIntrestedtem = FormItem(placeholder: "Are you Interested in Christmas?")
         isIntrestedtem.uiProperties.cellType = FormItemCellType.yesNoView
@@ -116,23 +108,14 @@ class ChristmasQuestionForm {
         }
       
         let strategicPlanningMeetDateLabel = FormItem(placeholder: "If Yes, Date?")
-        strategicPlanningMeetDateLabel.uiProperties.cellType = FormItemCellType.buttonView
+        strategicPlanningMeetDateLabel.uiProperties.cellType = FormItemCellType.selectionView
         strategicPlanningMeetDateLabel.value = self.strategicplanningmeetdate
         strategicPlanningMeetDateLabel.name = "strategicplanningmeetdate"
         strategicPlanningMeetDateLabel.isLabel = true
+        strategicPlanningMeetDateLabel.isDatePickerView = true
         strategicPlanningMeetDateLabel.valueCompletion = { [weak self, weak strategicPlanningMeetDateLabel] value in
             self?.strategicplanningmeetdate = value
             strategicPlanningMeetDateLabel?.value = value
-        }
-        
-        let strategicPlanningMeetDate = FormItem(placeholder: "If Yes, Date?")
-        strategicPlanningMeetDate.uiProperties.cellType = FormItemCellType.datePickerView
-        strategicPlanningMeetDate.value = self.strategicplanningmeetdate
-        strategicPlanningMeetDate.name = "strategicplanningmeetdatepicker"
-        strategicPlanningMeetDate.isPicker = true
-        strategicPlanningMeetDate.valueCompletion = { [weak self, weak strategicPlanningMeetDate] value in
-            self?.strategicplanningmeetdate = value
-            strategicPlanningMeetDate?.value = value
         }
         
         let isInvitedtoXmasShowroomItem = FormItem(placeholder: "Have we invited them to xmas showroom?")
@@ -145,43 +128,26 @@ class ChristmasQuestionForm {
         }
         
         let invitedToXmasShowroomDateLabelItem = FormItem(placeholder: "If Yes, Date?")
-        invitedToXmasShowroomDateLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        invitedToXmasShowroomDateLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         invitedToXmasShowroomDateLabelItem.value = self.invitedtoxmasshowroomdate
         invitedToXmasShowroomDateLabelItem.name = "invitedtoxmasshowroomdate"
         invitedToXmasShowroomDateLabelItem.isLabel = true
+        invitedToXmasShowroomDateLabelItem.isDatePickerView = true
         invitedToXmasShowroomDateLabelItem.valueCompletion = {[weak self, weak invitedToXmasShowroomDateLabelItem] value in
             self?.invitedtoxmasshowroomdate = value
             invitedToXmasShowroomDateLabelItem?.value = value
         }
         
-        let invitedToXmasShowroomDateItem = FormItem(placeholder: "If Yes, Date?")
-        invitedToXmasShowroomDateItem.uiProperties.cellType = FormItemCellType.datePickerView
-        invitedToXmasShowroomDateItem.value = self.invitedtoxmasshowroomdate
-        invitedToXmasShowroomDateItem.name = "invitedtoxmasshowroomdatepicker"
-        invitedToXmasShowroomDateItem.isPicker = true
-        invitedToXmasShowroomDateItem.valueCompletion = {[weak self, weak invitedToXmasShowroomDateItem] value in
-            self?.invitedtoxmasshowroomdate = value
-            invitedToXmasShowroomDateItem?.value = value
-        }
         
         let invitedToXmasShowroomReminderDateLabelItem = FormItem(placeholder: "No, Reminder Date?")
-        invitedToXmasShowroomReminderDateLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        invitedToXmasShowroomReminderDateLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         invitedToXmasShowroomReminderDateLabelItem.value = self.invitedtoxmasshowroomreminderdate
         invitedToXmasShowroomReminderDateLabelItem.name = "invitedtoxmasshowroomreminderdate"
         invitedToXmasShowroomReminderDateLabelItem.isLabel = true
+        invitedToXmasShowroomReminderDateLabelItem.isDatePickerView = true
         invitedToXmasShowroomReminderDateLabelItem.valueCompletion = { [weak self, weak invitedToXmasShowroomReminderDateLabelItem] value in
             self?.invitedtoxmasshowroomreminderdate = value
             invitedToXmasShowroomReminderDateLabelItem?.value = value
-        }
-        
-        let invitedToXmasShowroomReminderDateItem = FormItem(placeholder: "No, Reminder Date?")
-        invitedToXmasShowroomReminderDateItem.uiProperties.cellType = FormItemCellType.datePickerView
-        invitedToXmasShowroomReminderDateItem.value = self.invitedtoxmasshowroomreminderdate
-        invitedToXmasShowroomReminderDateItem.name = "invitedtoxmasshowroomreminderdatepicker"
-        invitedToXmasShowroomReminderDateItem.isPicker = true
-        invitedToXmasShowroomReminderDateItem.valueCompletion = { [weak self, weak invitedToXmasShowroomReminderDateItem] value in
-            self?.invitedtoxmasshowroomreminderdate = value
-            invitedToXmasShowroomReminderDateItem?.value = value
         }
         
         let isHolidayShopCompletedItem = FormItem(placeholder: "Holiday 2019 Comp Shop Completed?")
@@ -204,28 +170,18 @@ class ChristmasQuestionForm {
         
         
         let christmas2020ReviewingDateLabelItem = FormItem(placeholder: "When are you reviewing christmas 2020")
-        christmas2020ReviewingDateLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        christmas2020ReviewingDateLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         christmas2020ReviewingDateLabelItem.value = self.christmas2020reviewingdate
         christmas2020ReviewingDateLabelItem.name = "christmas2020reviewingdate"
+        christmas2020ReviewingDateLabelItem.isDatePickerView = true
         christmas2020ReviewingDateLabelItem.isLabel = true
         christmas2020ReviewingDateLabelItem.valueCompletion = { [weak self, weak christmas2020ReviewingDateLabelItem] value in
             self?.christmas2020reviewingdate = value
             christmas2020ReviewingDateLabelItem?.value = value
         }
         
-        let christmas2020ReviewingDateItem = FormItem(placeholder: "When are you reviewing christmas 2020")
-        christmas2020ReviewingDateItem.uiProperties.cellType = FormItemCellType.datePickerView
-        christmas2020ReviewingDateItem.value = self.christmas2020reviewingdate
-        christmas2020ReviewingDateItem.isPicker = true
-        christmas2020ReviewingDateItem.name = "christmas2020reviewingdatepicker"
-        christmas2020ReviewingDateItem.valueCompletion = { [weak self, weak christmas2020ReviewingDateItem] value in
-            self?.christmas2020reviewingdate = value
-            christmas2020ReviewingDateItem?.value = value
-        }
-        
-        
         let customerSelectXmasItemsFromLabelItem = FormItem(placeholder: "Where is the customer going to select the xmas items?")
-        customerSelectXmasItemsFromLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        customerSelectXmasItemsFromLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         customerSelectXmasItemsFromLabelItem.value = self.customerselectxmasitemsfrom
         customerSelectXmasItemsFromLabelItem.name = "customerselectxmasitemsfrom"
         customerSelectXmasItemsFromLabelItem.isLabel = true
@@ -234,16 +190,8 @@ class ChristmasQuestionForm {
             customerSelectXmasItemsFromLabelItem?.value = value
         }
         
-        let customerSelectXmasItemsFromItem = FormItem(placeholder: "Where is the customer going to select the xmas items?")
-        customerSelectXmasItemsFromItem.uiProperties.cellType = FormItemCellType.pickerView
-        customerSelectXmasItemsFromItem.value = self.customerselectxmasitemsfrom
-        customerSelectXmasItemsFromItem.name = "customerselectxmasitemsfrompicker"
-        customerSelectXmasItemsFromItem.isPicker = true
-        customerSelectXmasItemsFromItem.valueCompletion = { [weak self, weak customerSelectXmasItemsFromItem] value in
-            self?.customerselectxmasitemsfrom = value
-            customerSelectXmasItemsFromItem?.value = value
-        }
-        
+       
+
         let isMainVendorItem = FormItem(placeholder: "Did we pitch that we want to be your main vendor of Holiday and Décor? And my customers are vendor consolidating?")
         isMainVendorItem.uiProperties.cellType = FormItemCellType.yesNoView
         isMainVendorItem.value = self.ismainvendor
@@ -310,22 +258,14 @@ class ChristmasQuestionForm {
         christmasquotebydateLabelItem.uiProperties.cellType = FormItemCellType.buttonView
         christmasquotebydateLabelItem.value = self.christmasquotebydate
         christmasquotebydateLabelItem.isLabel = true
+        christmasquotebydateLabelItem.isDatePickerView = true
         christmasquotebydateLabelItem.name = "christmasquotebydate"
         christmasquotebydateLabelItem.valueCompletion = { [weak self, weak christmasquotebydateLabelItem] value in
             self?.christmasquotebydate = value
             christmasquotebydateLabelItem?.value = value
         }
         
-        let christmasquotebydateItem  = FormItem(placeholder: "")
-        christmasquotebydateItem.uiProperties.cellType = FormItemCellType.datePickerView
-        christmasquotebydateItem.value = self.christmasquotebydate
-        christmasquotebydateItem.name = "christmasquotebydatepicker"
-        christmasquotebydateItem.isPicker = true
-        christmasquotebydateItem.valueCompletion = { [weak self, weak christmasquotebydateItem] value in
-            self?.christmasquotebydate = value
-            christmasquotebydateItem?.value = value
-        }
-        self.formItems = [yearLabelItem,yearItem,isIntrestedtem,catelogLinkSentItem,catalogLinkSentNotesItem,isXmassamplessentItem,isStrategicPlanningMeetingAppointmentItem,strategicPlanningMeetDateLabel,strategicPlanningMeetDate,isInvitedtoXmasShowroomItem,invitedToXmasShowroomDateLabelItem,invitedToXmasShowroomDateItem,invitedToXmasShowroomReminderDateLabelItem,invitedToXmasShowroomReminderDateItem,isHolidayShopCompletedItem,isHolidayShopcomSummaryEmailSentItem,christmas2020ReviewingDateLabelItem,christmas2020ReviewingDateItem,customerSelectXmasItemsFromLabelItem,customerSelectXmasItemsFromItem,isMainVendorItem,mainVendorNotesItem,isXmasBuyLastYearItem,xmasbuylastyearamountItem,isReceivingSellThruItem,isrobbyreviewedsellthroughItem,christmasquotebydateLabelItem,christmasquotebydateItem,isvisitcustomerin4qtrItem]
+        self.formItems = [yearLabelItem,isIntrestedtem,catelogLinkSentItem,catalogLinkSentNotesItem,isXmassamplessentItem,isStrategicPlanningMeetingAppointmentItem,strategicPlanningMeetDateLabel,isInvitedtoXmasShowroomItem,invitedToXmasShowroomDateLabelItem,invitedToXmasShowroomReminderDateLabelItem,isHolidayShopCompletedItem,isHolidayShopcomSummaryEmailSentItem,christmas2020ReviewingDateLabelItem,customerSelectXmasItemsFromLabelItem,isMainVendorItem,mainVendorNotesItem,isXmasBuyLastYearItem,xmasbuylastyearamountItem,isReceivingSellThruItem,isrobbyreviewedsellthroughItem,christmasquotebydateLabelItem,isvisitcustomerin4qtrItem]
     }
     
     func toArray() -> [String:Any]{
