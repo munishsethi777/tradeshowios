@@ -91,6 +91,20 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
         }
         dataArray = dataArray.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
     }
+    func setSelectedValue(value:String?){
+        if let selectedValueStr = value{
+            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
+            if(formItem?.isDatePickerView ?? false){
+                selectedValues = selctedValuesArr
+            }else{
+                for value in selctedValuesArr {
+                    selectedValues.append(dataKeyValueArray[value]!)
+                }
+            }
+            let valueStr = selectedValues.joined(separator: ",")
+            buttonView.setTitle(valueStr, for: .normal)
+        }
+    }
 }
 
 extension RSSelectionMenuCellView: FormUpdatable {
@@ -106,6 +120,7 @@ extension RSSelectionMenuCellView: FormUpdatable {
             if let value = self.formItem?.value {
                 if(!value.isEmpty){
                     selectedValues = value.components(separatedBy: ",")
+                    //setSelectedValue(value:value)
                     self.crossButtonView.isHidden = false
                 }
             }

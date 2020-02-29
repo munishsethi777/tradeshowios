@@ -6,9 +6,8 @@
 //  Copyright © 2020 Munish Sethi. All rights reserved.
 //
 import Foundation
-class SpecialProgramForm {
+class SpecialProgramForm:ObjectConvertor {
     var formItems = [FormItem]()
-    var title: String?
     var startdate: String?
     var enddate: String?
     var priceprogram: String?
@@ -25,9 +24,9 @@ class SpecialProgramForm {
     var otherallowance: String?
     var additionalremarks: String?
     var isbackorderaccepted: String?
-    init() {
+    override init() {
+        super.init()
         self.configureItems()
-        self.title = "Alpine Special Program"
     }
     
     // MARK: Form Validation
@@ -48,44 +47,46 @@ class SpecialProgramForm {
     private func configureItems() {
         // Start Date
         let startDateLabelItem = FormItem(placeholder: "Start Date")
-        startDateLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        startDateLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         startDateLabelItem.value = self.startdate
         startDateLabelItem.name = "startdate"
         startDateLabelItem.isLabel = true
+        startDateLabelItem.isDatePickerView = true
         startDateLabelItem.valueCompletion = { [weak self, weak startDateLabelItem] value in
             self?.startdate = value
             startDateLabelItem?.value = value
         }
-        let startDateItem = FormItem(placeholder: "Start Date")
-        startDateItem.uiProperties.cellType = FormItemCellType.datePickerView
-        startDateItem.value = self.startdate
-        startDateItem.isPicker = true
-        startDateItem.name = "startdatepicker"
-        startDateItem.valueCompletion = { [weak self, weak startDateItem] value in
-            self?.startdate = value
-            startDateItem?.value = value
-        }
+//        let startDateItem = FormItem(placeholder: "Start Date")
+//        startDateItem.uiProperties.cellType = FormItemCellType.datePickerView
+//        startDateItem.value = self.startdate
+//        startDateItem.isPicker = true
+//        startDateItem.name = "startdatepicker"
+//        startDateItem.valueCompletion = { [weak self, weak startDateItem] value in
+//            self?.startdate = value
+//            startDateItem?.value = value
+//        }
         
         // End Date
         let endDateLabelItem = FormItem(placeholder: "End Date")
-        endDateLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        endDateLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         endDateLabelItem.value = self.enddate
         endDateLabelItem.isLabel = true
+        endDateLabelItem.isDatePickerView = true
         endDateLabelItem.name = "enddate"
         endDateLabelItem.valueCompletion = { [weak self, weak endDateLabelItem] value in
             self?.enddate = value
             endDateLabelItem?.value = value
         }
         
-        let endDateItem = FormItem(placeholder: "")
-        endDateItem.uiProperties.cellType = FormItemCellType.datePickerView
-        endDateItem.value = self.enddate
-        endDateItem.name = "enddatepicker"
-        endDateItem.isPicker = true
-        endDateItem.valueCompletion = { [weak self, weak endDateItem] value in
-            self?.enddate = value
-            endDateItem?.value = value
-        }
+//        let endDateItem = FormItem(placeholder: "")
+//        endDateItem.uiProperties.cellType = FormItemCellType.datePickerView
+//        endDateItem.value = self.enddate
+//        endDateItem.name = "enddatepicker"
+//        endDateItem.isPicker = true
+//        endDateItem.valueCompletion = { [weak self, weak endDateItem] value in
+//            self?.enddate = value
+//            endDateItem?.value = value
+//        }
 
         // price Program Item
         let priceProgramItem = FormItem(placeholder: "Price Program")
@@ -99,7 +100,7 @@ class SpecialProgramForm {
         
         // Regular Terms Label
         let regularTermsLabelItem = FormItem(placeholder: "Regular Terms")
-        regularTermsLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        regularTermsLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         regularTermsLabelItem.value = self.regularterms
         regularTermsLabelItem.name = "regularterms"
         regularTermsLabelItem.isLabel = true
@@ -108,16 +109,16 @@ class SpecialProgramForm {
             regularTermsLabelItem?.value = value
         }
         
-        // Regular Terms
-        let regularTermsItem = FormItem(placeholder: "")
-        regularTermsItem.uiProperties.cellType = FormItemCellType.pickerView
-        regularTermsItem.value = self.regularterms
-        regularTermsItem.name = "regulartermspicker"
-        regularTermsItem.isPicker = true
-        regularTermsItem.valueCompletion = { [weak self, weak regularTermsItem] value in
-            self?.regularterms = value
-            regularTermsItem?.value = value
-        }
+//        // Regular Terms
+//        let regularTermsItem = FormItem(placeholder: "")
+//        regularTermsItem.uiProperties.cellType = FormItemCellType.pickerView
+//        regularTermsItem.value = self.regularterms
+//        regularTermsItem.name = "regulartermspicker"
+//        regularTermsItem.isPicker = true
+//        regularTermsItem.valueCompletion = { [weak self, weak regularTermsItem] value in
+//            self?.regularterms = value
+//            regularTermsItem?.value = value
+//        }
         
         // InSeason Terms
         let inseasonTerms = FormItem(placeholder: "InSeason Terms")
@@ -131,7 +132,7 @@ class SpecialProgramForm {
         
         // Freight Label
         let freightLabelTerms = FormItem(placeholder: "Freight")
-        freightLabelTerms.uiProperties.cellType = FormItemCellType.buttonView
+        freightLabelTerms.uiProperties.cellType = FormItemCellType.selectionView
         freightLabelTerms.value = self.inseasonterms
         freightLabelTerms.name = "freight"
         freightLabelTerms.isLabel = true
@@ -139,16 +140,16 @@ class SpecialProgramForm {
             self?.freight = value
             freightLabelTerms?.value = value
         }
-        // Freight
-        let freightTerms = FormItem(placeholder: "")
-        freightTerms.uiProperties.cellType = FormItemCellType.pickerView
-        freightTerms.value = self.inseasonterms
-        freightTerms.name = "freightpicker"
-        freightTerms.isPicker = true
-        freightTerms.valueCompletion = { [weak self, weak freightTerms] value in
-            self?.freight = value
-            freightTerms?.value = value
-        }
+//        // Freight
+//        let freightTerms = FormItem(placeholder: "")
+//        freightTerms.uiProperties.cellType = FormItemCellType.pickerView
+//        freightTerms.value = self.inseasonterms
+//        freightTerms.name = "freightpicker"
+//        freightTerms.isPicker = true
+//        freightTerms.valueCompletion = { [weak self, weak freightTerms] value in
+//            self?.freight = value
+//            freightTerms?.value = value
+//        }
         
         // EDI Customer
         let isEDICustomer = FormItem(placeholder: "EDI Customer")
@@ -201,7 +202,7 @@ class SpecialProgramForm {
         
         
         let defectiveAllowanceLabel = FormItem(placeholder: "Defective Allowance Deductions")
-        defectiveAllowanceLabel.uiProperties.cellType = FormItemCellType.buttonView
+        defectiveAllowanceLabel.uiProperties.cellType = FormItemCellType.selectionView
         defectiveAllowanceLabel.value = self.howdefectiveallowancededucted
         defectiveAllowanceLabel.name = "howdefectiveallowancededucted"
         defectiveAllowanceLabel.isLabel = true
@@ -210,15 +211,15 @@ class SpecialProgramForm {
             defectiveAllowanceLabel?.value = value
         }
         
-        let defectiveAllowance = FormItem(placeholder: "")
-        defectiveAllowance.uiProperties.cellType = FormItemCellType.pickerView
-        defectiveAllowance.value = self.howdefectiveallowancededucted
-        defectiveAllowance.name = "howdefectiveallowancedeductedpicker"
-        defectiveAllowance.isPicker = true
-        defectiveAllowance.valueCompletion = { [weak self, weak defectiveAllowance] value in
-            self?.howdefectiveallowancededucted = value
-            defectiveAllowance?.value = value
-        }
+//        let defectiveAllowance = FormItem(placeholder: "")
+//        defectiveAllowance.uiProperties.cellType = FormItemCellType.pickerView
+//        defectiveAllowance.value = self.howdefectiveallowancededucted
+//        defectiveAllowance.name = "howdefectiveallowancedeductedpicker"
+//        defectiveAllowance.isPicker = true
+//        defectiveAllowance.valueCompletion = { [weak self, weak defectiveAllowance] value in
+//            self?.howdefectiveallowancededucted = value
+//            defectiveAllowance?.value = value
+//        }
         
         
         let promotionalAllowance = FormItem(placeholder: "Promotional Allowance")
@@ -257,6 +258,6 @@ class SpecialProgramForm {
             isbackorderAcceptedItem?.value = value
         }
         
-        self.formItems = [startDateLabelItem,startDateItem,endDateLabelItem,endDateItem, priceProgramItem,regularTermsLabelItem,regularTermsItem,inseasonTerms,freightLabelTerms,freightTerms,isEDICustomer,isDefectiveAllowance,defectivePercent,rebateProgramandPaymentMethod,howPayingBackBustomer,defectiveAllowanceLabel,defectiveAllowance,promotionalAllowance,otherAllowance,additionalRemarks,isbackorderAcceptedItem]
+        self.formItems = [startDateLabelItem,endDateLabelItem, priceProgramItem,regularTermsLabelItem,inseasonTerms,freightLabelTerms,isEDICustomer,isDefectiveAllowance,defectivePercent,rebateProgramandPaymentMethod,howPayingBackBustomer,defectiveAllowanceLabel,promotionalAllowance,otherAllowance,additionalRemarks,isbackorderAcceptedItem]
     }
 }

@@ -16,22 +16,22 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
     var editProgSeq:Int = 0
     var form = SpecialProgramForm()
     var isReadOnly = true;
-    var regularTermsTypes:[String:String]=[:]
-    var freightTypes:[String:String]=[:]
-    var allowanceDeductionsTypes:[String:String]=[:]
     @IBOutlet weak var customerNameLabel: UILabel!
     var editProgData:[String:Any] = [:]
+    var enums:[String:Any] = [:]
     override func viewDidLoad() {
         prepareSubViews()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         progressHUD = ProgressHUD(text: "Processing")
         customerNameLabel.text = customerName
-         addEditButton()
+        addEditButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewDidLoad()
+        isReadOnly = true
+        loadEnumData()
     }
     func addEditButton(){
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
@@ -42,45 +42,16 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
         tableView.reloadData()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveSpecialProg))
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        isReadOnly = true
         super.viewWillAppear(animated)
-        loadEnumData()
     }
+    
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.allowsSelection = false
         self.tableView.estimatedRowHeight = 90
-    }
-    private var dpShowDatePickerVisible = false
-    private var dpShowEndDatePickerVisible = false
-    private var dpShowRegulerItemPickerVisible = false
-    private var dpFreightTypesPickerVisible = false
-    private var dpAllowanceDeductionsTypesPickerVisible = false
-    
-    private var selectedIndex:Int = 0
-    
-    var isSelectRow = false;
-    
-    private func isHiddenCell(row:Int)->Bool{
-        var isHidden:Bool = false
-        if(row == 1 && !dpShowDatePickerVisible){
-            isHidden = true
-        }
-        if(row == 3 && !dpShowEndDatePickerVisible){
-            isHidden = true
-        }
-        if(row == 6 && !dpShowRegulerItemPickerVisible){
-            isHidden = true
-        }
-        if(row == 9 && !dpFreightTypesPickerVisible){
-            isHidden = true
-        }
-        if(row == 16 && !dpAllowanceDeductionsTypesPickerVisible){
-            isHidden = true
-        }
-        return isHidden
     }
     
     @objc func keyboardWillShow(notification:NSNotification){
@@ -97,13 +68,8 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         tableView.contentInset = contentInset
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (isHiddenCell(row: indexPath.row)) {
-            return 0
-        } else {
-            return 60
-        }
+            return UITableView.automaticDimension
     }
     func loadEnumData(){
         let args: [Int] = [self.loggedInUserSeq]
@@ -117,9 +83,9 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        self.regularTermsTypes = json["regularterms"] as! [String:String]
-                        self.freightTypes = json["freighttypes"] as! [String:String]
-                        self.allowanceDeductionsTypes = json["allowancedeductionstype"] as! [String:String]
+                        self.enums["regularterms"] = json["regularterms"] as! [String:String]
+                        self.enums["freight"] = json["freighttypes"] as! [String:String]
+                        self.enums["howdefectiveallowancededucted"] = json["allowancedeductionstype"] as! [String:String]
                         self.prepareSubViews()
                         self.tableView.dataSource = self
                         self.tableView.delegate = self
@@ -165,29 +131,12 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
     }
     
     @objc func saveSpecialProg(){
-        var splProgArr:[String: Any] = [:]
-        splProgArr["additionalremarks"] = self.form.additionalremarks
-        splProgArr["defectivepercent"] = self.form.defectivepercent
-        var endDate = self.form.enddate
-        endDate = DateUtil.convertToFormat(dateString: endDate, fromFomat: DateUtil.dateFormat2, toFormat: DateUtil.dateFormat3)
-        splProgArr["enddate"] = endDate
-        var startDate = self.form.startdate
-        startDate = DateUtil.convertToFormat(dateString: startDate, fromFomat: DateUtil.dateFormat2, toFormat: DateUtil.dateFormat3)
-        splProgArr["startdate"] = startDate
-        splProgArr["freight"] = self.form.freight
-        splProgArr["howdefectiveallowancededucted"] = self.form.howdefectiveallowancededucted
-        splProgArr["howpayingbackcustomer"] = self.form.howpayingbackcustomer
-        splProgArr["customerseq"] = customerSeq
-        splProgArr["inseasonterms"] = self.form.inseasonterms
-        splProgArr["isbackorderaccepted"] = self.form.isbackorderaccepted == "Yes" ? "1" : "0"
-        splProgArr["isdefectiveallowancesigned"] = self.form.isdefectiveallowancesigned == "Yes" ? "1" : "0"
-        splProgArr["isedicustomer"] = self.form.isedicustomer == "Yes" ? "1" : "0"
-        splProgArr["otherallowance"] = self.form.otherallowance
-        splProgArr["priceprogram"] = self.form.priceprogram
-        splProgArr["promotionalallowance"] = self.form.promotionalallowance
-        splProgArr["rebateprogramandpaymentmethod"] = self.form.rebateprogramandpaymentmethod
-        splProgArr["regularterms"] = self.form.regularterms
-        let jsonString = JsonUtil.toJsonString(jsonObject: splProgArr);
+        var arr = self.form.toArray(swiftClass: self.form);
+        arr["customerseq"] = self.customerSeq
+        arr["freight"] = getSelectedNameForMenu(fieldName: "freight")
+        arr["regularterms"] = getSelectedNameForMenu(fieldName: "regularterms")
+        arr["howdefectiveallowancededucted"] = getSelectedNameForMenu(fieldName: "howdefectiveallowancededucted")
+        let jsonString = JsonUtil.toJsonString(jsonObject: arr)
         excecuteSaveCall(jsonstring: jsonString)
     }
     
@@ -205,7 +154,6 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        self.resetPickerState()
                         self.isReadOnly = true
                         self.loadEnumData()
                         self.addEditButton()
@@ -218,13 +166,7 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
             }
         })
     }
-    private func resetPickerState(){
-        dpShowDatePickerVisible = false
-        dpShowEndDatePickerVisible = false
-        dpShowRegulerItemPickerVisible = false
-        dpFreightTypesPickerVisible = false
-        dpAllowanceDeductionsTypesPickerVisible = false
-    }
+    
     func loadFormOnEdit(response:[String:Any]){
         if let editProgData = response["specialProg"] as? [String:Any]{
             self.editProgData = editProgData
@@ -238,8 +180,8 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
             startdate = DateUtil.convertToFormat(dateString:startdate, fromFomat: DateUtil.dateFormat1, toFormat: DateUtil.dateFormat2)
             self.form.startdate = startdate
             self.editProgData["startdate"] = startdate
-            self.form.freight = editProgData["freight"] as? String
-            self.form.howdefectiveallowancededucted = editProgData["howdefectiveallowancededucted"] as? String
+            self.form.freight = getSelectedValueForMenu(fieldName: "freight")
+            self.form.howdefectiveallowancededucted = getSelectedValueForMenu(fieldName:"howdefectiveallowancededucted")
             self.form.howpayingbackcustomer = editProgData["howpayingbackcustomer"] as? String
             self.form.inseasonterms = editProgData["inseasonterms"] as? String
             self.form.isbackorderaccepted = editProgData["isbackorderaccepted"] as? String
@@ -249,89 +191,50 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
             self.form.priceprogram = editProgData["priceprogram"] as? String
             self.form.promotionalallowance = editProgData["priceprogram"] as? String
             self.form.rebateprogramandpaymentmethod = editProgData["rebateprogramandpaymentmethod"] as? String
-            self.form.regularterms = editProgData["regularterms"] as? String
+            self.form.regularterms = getSelectedValueForMenu(fieldName:"regularterms")
             self.form.howdefectiveallowancededucted = editProgData["howdefectiveallowancededucted"] as? String
             self.form.howpayingbackcustomer = editProgData["howpayingbackcustomer"] as? String
         }
         self.tableView.reloadData()
     }
-    func buttonTappedCallBack(fieldName:String?){
-        if(fieldName == "startdate"){
-            dpShowDatePickerVisible = !dpShowDatePickerVisible
-        }
-        if(fieldName == "enddate"){
-            dpShowEndDatePickerVisible = !dpShowEndDatePickerVisible
-        }
-        if(fieldName == "regularterms"){
-            dpShowRegulerItemPickerVisible = !dpShowRegulerItemPickerVisible
-        }
-        if(fieldName == "howdefectiveallowancededucted"){
-            dpAllowanceDeductionsTypesPickerVisible = !dpAllowanceDeductionsTypesPickerVisible
-        }
-        if(fieldName == "freight"){
-            dpFreightTypesPickerVisible = !dpFreightTypesPickerVisible
-        }
-        tableView.reloadData()
-      //  tableView.endUpdates()
-    }
-    func UpdateCallback(selectedValue:String,indexPath:IndexPath) //add this extra method
-    {
-        form.formItems[indexPath.row].value = selectedValue
-        if(form.formItems[indexPath.row].name == "startdate"){
-            form.startdate = selectedValue
-            editProgData["startdate"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "enddate"){
-            form.enddate = selectedValue
-            editProgData["enddate"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "regularterms"){
-            form.regularterms = selectedValue
-            editProgData["regularterms"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "freight"){
-            form.freight = selectedValue
-            editProgData["freight"] = selectedValue
-        }
-        if(form.formItems[indexPath.row].name == "howdefectiveallowancededucted"){
-            form.howdefectiveallowancededucted = selectedValue
-            editProgData["howdefectiveallowancededucted"] = selectedValue
-        }
-        self.tableView.reloadRows(at:[indexPath], with: .none)
-    }
-    
     func getPickerViewData(formItem:FormItem)->[String:String]{
-            if(formItem.name == "regularterms" || formItem.name == "regulartermspicker"){
-                return regularTermsTypes
-            }else  if(formItem.name == "howdefectiveallowancededucted" || formItem.name == "howdefectiveallowancedeductedpicker"){
-                return allowanceDeductionsTypes
-            }else  if(formItem.name == "freight" || formItem.name == "freightpicker"){
-                return freightTypes
-            }else{
-                return [:]
+        if(formItem.isPicker || formItem.isLabel){
+            let name = formItem.name!
+            if let pickerData = enums[name]{
+                return pickerData as! [String : String]
             }
-    }
-    
-    func getPickerViewSelectedValue(formItem:FormItem)->String?{
-        if(formItem.name == "regulartermspicker"){
-            return editProgData["regularterms"] as? String
-        }else if (formItem.name == "howdefectiveallowancedeductedpicker"){
-            return editProgData["howdefectiveallowancededucted"] as? String
-        }else if (formItem.name == "freightpicker"){
-            return editProgData["freight"] as? String
-        }else if(formItem.name == "startdatepicker"){
-            return editProgData["startdate"] as? String
-        }else if(formItem.name == "enddatepicker"){
-            return editProgData["enddate"] as? String
         }
-        else{
-            return nil
-        }
+        return [:]
     }
-    
-    
-    
-    
+    func getSelectedValueForMenu(fieldName:String)->String?{
+        if let selectedValueStr = editProgData[fieldName] as? String{
+            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
+            var selectedValues:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for value in selctedValuesArr {
+                selectedValues.append(enumData[value]!)
+            }
+            let valueStr = selectedValues.joined(separator: ",")
+            self.editProgData[fieldName] = valueStr
+            return valueStr
+        }
+        return nil
+    }
+    func getSelectedNameForMenu(fieldName:String)->String?{
+        if let selectedValueNameStr = editProgData[fieldName] as? String{
+            let selctedValuesNameArr = selectedValueNameStr.components(separatedBy: ",")
+            var selectedValuesName:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for value in selctedValuesNameArr {
+                let selectedValueName =  enumData.someKey(forValue: value)
+                selectedValuesName.append(selectedValueName!)
+            }
+            let nameStr = selectedValuesName.joined(separator: ",")
+            //self.editProgData[fieldName] = nameStr
+            return nameStr
+        }
+        return nil
+    }
 }
 extension SpecialProgramViewContorller: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -349,37 +252,17 @@ extension SpecialProgramViewContorller: UITableViewDataSource {
         let name = item.name
         if let val = editProgData[name!] as? String {
             item.value = val
-            if(item.isLabel && val != ""){
-                if let v = pickerViewData[val] {
-                    item.value = v;
-                }
-            }
         }
         var cell: UITableViewCell
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
-            if(item.isPicker  && (cellType == FormItemCellType.pickerView || cellType == FormItemCellType.datePickerView)){
-                item.value = getPickerViewSelectedValue(formItem: item)
-            }
             cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData,isReadOnlyView: isReadOnly)
-            
-            if let pickerViewCell = cell as? DatePickerViewTableViewCell {
-                pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                pickerViewCell.updateCallback = self.UpdateCallback
-                cell = pickerViewCell
-            }
-            if let pickerViewCell = cell as? FormPickerViewTableViewCell {
-                pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                pickerViewCell.updateCallback = self.UpdateCallback
-                cell = pickerViewCell
-            }
-            
-            if let buttonViewCell = cell as? FormButtonViewTableViewCell {
+            if let selectionViewCell = cell as? RSSelectionMenuCellView {
                 if(item.isLabel){
                     isSetCaption = true
                 }else{
                     isSetCaption = false
                 }
-                buttonViewCell.buttonTappedCallBack = buttonTappedCallBack
+                selectionViewCell.parentViewController = self
             }
         }else{
             cell = UITableViewCell()
@@ -391,4 +274,17 @@ extension SpecialProgramViewContorller: UITableViewDataSource {
         return cell
     }
     
+}
+extension Dictionary where Value: Equatable {
+    func keysForValue(value: Value) -> [Key] {
+        return compactMap { (key: Key, val: Value) -> Key? in
+            value == val ? key : nil
+        }
+    }
+}
+
+extension Dictionary where Value: Equatable {
+    func someKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
+    }
 }

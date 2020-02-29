@@ -58,10 +58,7 @@ class OppurtunityQuestionViewController: UIViewController {
     }
     func getPickerViewData(formItem:FormItem)->[String:String]{
         if(formItem.isPicker || formItem.isLabel){
-            var name = formItem.name!
-            if(name.contains("picker")){
-                name.removeLast(6)
-            }
+            let name = formItem.name!
             if let pickerData = emums[name]{
                 return pickerData as! [String : String]
             }
