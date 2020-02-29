@@ -19,22 +19,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-0V-fGs">
                     <rect key="frame" x="0.0" y="0.0" width="489" height="60"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjP-Rb-nk9">
-                            <rect key="frame" x="18" y="7" width="453" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjP-Rb-nk9">
+                            <rect key="frame" x="18" y="7" width="461" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAa-Z8-GaV">
-                            <rect key="frame" x="18" y="23" width="421" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="buttonViewTapped:" destination="c6h-M4-Nbh" eventType="touchUpInside" id="eCA-0m-EDT"/>
-                            </connections>
-                        </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ny-T8-g55">
-                            <rect key="frame" x="447" y="30" width="24" height="23"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ny-T8-g55">
+                            <rect key="frame" x="448" y="30" width="31" height="23"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="31" id="N6H-YA-ske"/>
+                            </constraints>
                             <state key="normal" title="X">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -42,22 +37,25 @@
                                 <action selector="crossButtonTapped:" destination="c6h-M4-Nbh" eventType="touchUpInside" id="A05-gI-HND"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lh-nZ-i6S">
+                            <rect key="frame" x="18" y="30" width="422" height="23"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="5Ny-T8-g55" firstAttribute="leading" secondItem="lAa-Z8-GaV" secondAttribute="trailing" constant="18" id="4EE-mh-jb8"/>
-                        <constraint firstItem="lAa-Z8-GaV" firstAttribute="top" secondItem="YjP-Rb-nk9" secondAttribute="bottom" constant="7" id="4XL-96-N1z"/>
-                        <constraint firstAttribute="bottom" secondItem="lAa-Z8-GaV" secondAttribute="bottom" constant="7" id="5Mt-Eu-vNs"/>
-                        <constraint firstItem="5Ny-T8-g55" firstAttribute="leading" secondItem="lAa-Z8-GaV" secondAttribute="trailing" constant="8" id="8M2-l9-Wt8"/>
+                        <constraint firstItem="5Ny-T8-g55" firstAttribute="leading" secondItem="7lh-nZ-i6S" secondAttribute="trailing" constant="8" id="3Qm-lR-FEh"/>
+                        <constraint firstItem="7lh-nZ-i6S" firstAttribute="leading" secondItem="cXi-0V-fGs" secondAttribute="leading" constant="18" id="Di7-KP-Zem"/>
                         <constraint firstItem="YjP-Rb-nk9" firstAttribute="top" secondItem="cXi-0V-fGs" secondAttribute="top" constant="7" id="IUU-Kk-9aD"/>
-                        <constraint firstAttribute="trailing" secondItem="5Ny-T8-g55" secondAttribute="trailing" constant="18" id="P94-rc-NKX"/>
+                        <constraint firstItem="7lh-nZ-i6S" firstAttribute="top" secondItem="YjP-Rb-nk9" secondAttribute="bottom" constant="7" id="P2n-KH-spR"/>
+                        <constraint firstAttribute="trailing" secondItem="5Ny-T8-g55" secondAttribute="trailing" constant="10" id="P94-rc-NKX"/>
+                        <constraint firstAttribute="bottom" secondItem="7lh-nZ-i6S" secondAttribute="bottom" constant="7" id="PGb-NQ-mlo"/>
                         <constraint firstAttribute="trailing" secondItem="YjP-Rb-nk9" secondAttribute="trailing" constant="18" id="Pc0-QE-QgE"/>
-                        <constraint firstItem="lAa-Z8-GaV" firstAttribute="leading" secondItem="cXi-0V-fGs" secondAttribute="leading" constant="18" id="VGm-e3-D4M"/>
-                        <constraint firstItem="lAa-Z8-GaV" firstAttribute="top" secondItem="YjP-Rb-nk9" secondAttribute="bottom" id="Xb8-pc-THj"/>
                         <constraint firstItem="5Ny-T8-g55" firstAttribute="top" secondItem="YjP-Rb-nk9" secondAttribute="bottom" constant="7" id="Ypj-Gy-Fdr"/>
                         <constraint firstItem="YjP-Rb-nk9" firstAttribute="leading" secondItem="cXi-0V-fGs" secondAttribute="leading" constant="18" id="i53-rI-ZCl"/>
-                        <constraint firstAttribute="trailing" secondItem="lAa-Z8-GaV" secondAttribute="trailing" constant="50" id="sLY-Yk-bHg"/>
-                        <constraint firstAttribute="bottom" secondItem="5Ny-T8-g55" secondAttribute="bottom" constant="7" id="sO7-vR-rFX"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5Ny-T8-g55" secondAttribute="bottom" constant="7" id="sO7-vR-rFX"/>
                     </constraints>
                 </view>
             </subviews>
@@ -73,8 +71,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="ImA-6l-1zZ"/>
             <connections>
-                <outlet property="buttonView" destination="lAa-Z8-GaV" id="MNg-zB-sWs"/>
                 <outlet property="crossButtonView" destination="5Ny-T8-g55" id="ewL-Tr-BSb"/>
+                <outlet property="detailLabel" destination="7lh-nZ-i6S" id="oE8-X2-tS7"/>
                 <outlet property="labelField" destination="YjP-Rb-nk9" id="98v-Lc-kua"/>
             </connections>
             <point key="canvasLocation" x="-781.8840579710145" y="-1066.0714285714284"/>

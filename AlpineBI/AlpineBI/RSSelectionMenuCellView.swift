@@ -19,32 +19,38 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
     var dataKeyValueArray: [String:String] = [:]
     private var selectedValues:[String] = [String]()
     
+    @IBOutlet weak var detailLabel: UILabel!
     @IBAction func crossButtonTapped(_ sender: UIButton) {
-        self.buttonView.setTitle(nil, for: .normal)
+        detailLabel.text = nil
         self.formItem?.valueCompletion?(nil)
         crossButtonView.isHidden = true
         selectedValues = []
     }
     @IBOutlet weak var crossButtonView: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
+        detailLabel.isUserInteractionEnabled = true
+        detailLabel.addGestureRecognizer(tap)
     }
-
-    @IBOutlet weak var labelField: UILabel!
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    @IBOutlet weak var buttonView: UIButton!
-    @IBAction func buttonViewTapped(_ sender: Any) {
+    
+    @objc
+    func tapFunction(sender:UITapGestureRecognizer) {
         if(formItem?.isDatePickerView ?? false){
             loadDatePicker()
         }else{
             loadMultiSelect()
         }
     }
+
+    @IBOutlet weak var labelField: UILabel!
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
     
     func setDate(valueSent: String){
-        self.buttonView.setTitle(valueSent, for: .normal)
+        detailLabel.text = valueSent
         self.formItem?.valueCompletion?(valueSent)
         self.crossButtonView.isHidden = false
     }
@@ -65,7 +71,7 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
         selectionMenu.onDismiss = { [weak self] selectedItems in
             self?.selectedValues = selectedItems
             let selectedValue = self?.selectedValues.joined(separator: ",")
-            self?.buttonView.setTitle(selectedValue, for: .normal)
+            self?.detailLabel.text = selectedValue
             self?.formItem?.valueCompletion?(selectedValue)
             self!.crossButtonView.isHidden = true
             if(selectedValue != nil && !selectedValue!.isEmpty){
@@ -102,7 +108,7 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
                 }
             }
             let valueStr = selectedValues.joined(separator: ",")
-            buttonView.setTitle(valueStr, for: .normal)
+            detailLabel.text = valueStr
         }
     }
 }
@@ -113,9 +119,8 @@ extension RSSelectionMenuCellView: FormUpdatable {
         if(self.formItem != nil){
             if(isSetCaption){
                 labelField.text = self.formItem?.placeholder
-                buttonView.setTitleColor(.black, for: .normal)
             }
-            buttonView.setTitle(self.formItem?.value, for: .normal)
+            detailLabel.text = self.formItem?.value
             self.crossButtonView.isHidden = true
             if let value = self.formItem?.value {
                 if(!value.isEmpty){

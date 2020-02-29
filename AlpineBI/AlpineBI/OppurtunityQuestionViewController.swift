@@ -33,7 +33,7 @@ class OppurtunityQuestionViewController: UIViewController {
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.allowsSelection = false
-        self.tableView.estimatedRowHeight = 90
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
         progressHUD = ProgressHUD(text: "Processing")
     }
     override func viewWillAppear(_ animated: Bool) {
