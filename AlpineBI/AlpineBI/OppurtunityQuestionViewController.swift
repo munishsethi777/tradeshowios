@@ -38,6 +38,8 @@ class OppurtunityQuestionViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView?.beginUpdates()
+        tableView?.endUpdates()
     }
     
     func addEditButton(){
