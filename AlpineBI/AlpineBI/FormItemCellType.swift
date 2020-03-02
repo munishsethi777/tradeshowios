@@ -12,6 +12,9 @@ protocol FormValidable {
 protocol FormUpdatable {
     func update(with formItem: FormItem,isSetCaption:Bool)
 }
+protocol CallBackProtocol {
+    func updateValue(valueSent: String,indexPath:IndexPath)
+}
 
 /// Conform receiver to have a form item property
 protocol FormConformity {
@@ -92,6 +95,7 @@ enum FormItemCellType {
                 let cellIdentifier = "RSSelectionMenuCellView"
                 cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RSSelectionMenuCellView
                 cell.setMenuData(menuData: pickerViewData)
+                cell.indexPath = indexPath
                 return cell
             case .datePickerView:
                 let cell:DatePickerViewTableViewCell
@@ -102,6 +106,7 @@ enum FormItemCellType {
                 let cell:YesNoViewTableViewCell
                 let cellIdentifier = "YesNoViewTableViewCell"
                 cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! YesNoViewTableViewCell
+                cell.indexPath = indexPath
                 return cell
         }
    

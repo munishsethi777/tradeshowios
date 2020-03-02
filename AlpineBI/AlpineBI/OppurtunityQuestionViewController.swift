@@ -8,7 +8,7 @@
 
 import UIKit
 import RSSelectionMenu
-class OppurtunityQuestionViewController: UIViewController {
+class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerNameStr:String = "";
@@ -139,11 +139,12 @@ class OppurtunityQuestionViewController: UIViewController {
                 for value in selctedValuesArr {
                     selectedValues.append(tradeShowsGoingtoTypes[value]!)
                 }
-                let valueStr = selectedValues.joined(separator: ",")
+                let valueStr = selectedValues.joined(separator: StringConstants.SEPRATOR)
                 self.form.tradeshowsgoingto = valueStr
                 self.editProgData["tradeshowsgoingto"] = valueStr
             }
             self.form.year = editProgData["year"] as? String
+            self.form.reload()
         }
         tableView.reloadData()
     }
@@ -174,6 +175,9 @@ class OppurtunityQuestionViewController: UIViewController {
             }
         })
     }
+    func updateValue(valueSent: String, indexPath: IndexPath) {
+        self.form.formItems[indexPath.row].value = valueSent;
+    }
 }
 
 extension OppurtunityQuestionViewController: UITableViewDataSource {
@@ -189,20 +193,17 @@ extension OppurtunityQuestionViewController: UITableViewDataSource {
         var isSetCaption = true
         let item = self.form.formItems[indexPath.row]
         let pickerViewData:[String:String] = self.getPickerViewData(formItem: item)
-        let name = item.name
-        if let val = editProgData[name!] as? String {
-            item.value = val
-        }
         var cell: UITableViewCell
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
             cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData,isReadOnlyView: isReadOnly)
-            if let selectionViewCell = cell as? RSSelectionMenuCellView {
+            if var selectionViewCell = cell as? CustomCell {
                 if(item.isLabel){
                     isSetCaption = true
                 }else{
                     isSetCaption = false
                 }
-                selectionViewCell.parentViewController = self
+                selectionViewCell.parent = self
+                selectionViewCell.delegate = self
             }
         }else{
             cell = UITableViewCell()

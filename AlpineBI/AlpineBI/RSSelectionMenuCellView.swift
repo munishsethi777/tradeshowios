@@ -9,16 +9,16 @@
 import UIKit
 import ContactsUI
 import RSSelectionMenu
-class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
-    
-    
+class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol,CustomCell {
+    var delegate: CallBackProtocol!
+    var parent: UIViewController!
     var formItem: FormItem?
-    var parentViewController:UIViewController!
     var buttonTappedCallBack : ((_ fieldName: String)-> Void)?
     var dataArray: [String] = [String]()
     var dataKeyValueArray: [String:String] = [:]
+    var indexPath: IndexPath!
     private var selectedValues:[String] = [String]()
-    
+   
     @IBOutlet weak var detailLabel: UILabel!
     @IBAction func crossButtonTapped(_ sender: UIButton) {
         detailLabel.text = nil
@@ -30,6 +30,7 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        parent = UIViewController()
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         detailLabel.isUserInteractionEnabled = true
         detailLabel.addGestureRecognizer(tap)
@@ -67,13 +68,14 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
         selectionMenu.setSelectedItems(items: selectedValues) { [weak self] (item, index, isSelected, selectedItems) in
               self?.selectedValues = selectedItems
         }
-        selectionMenu.show(style: .push, from: parentViewController)
+        selectionMenu.show(style: .push, from: parent)
         selectionMenu.onDismiss = { [weak self] selectedItems in
             self?.selectedValues = selectedItems
-            let selectedValue = self?.selectedValues.joined(separator: ",")
+            let selectedValue = self?.selectedValues.joined(separator: StringConstants.SEPRATOR)
             self?.detailLabel.text = selectedValue
             self?.formItem?.valueCompletion?(selectedValue)
             self!.crossButtonView.isHidden = true
+            self!.delegate.updateValue(valueSent: selectedValue!, indexPath: self!.indexPath)
             if(selectedValue != nil && !selectedValue!.isEmpty){
                 self!.crossButtonView.isHidden = false
             }
@@ -85,7 +87,7 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
         let selectedDateStr = self.formItem?.value
         viewController.selectedDate = selectedDateStr
         viewController.delegate = self
-        parentViewController.navigationController?.pushViewController(viewController, animated: true)
+        parent.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func setMenuData(menuData:[String:String]){
@@ -97,20 +99,20 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol {
         }
         dataArray = dataArray.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
     }
-    func setSelectedValue(value:String?){
-        if let selectedValueStr = value{
-            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
-            if(formItem?.isDatePickerView ?? false){
-                selectedValues = selctedValuesArr
-            }else{
-                for value in selctedValuesArr {
-                    selectedValues.append(dataKeyValueArray[value]!)
-                }
-            }
-            let valueStr = selectedValues.joined(separator: ",")
-            detailLabel.text = valueStr
-        }
-    }
+//    func setSelectedValue(value:String?){
+//        if let selectedValueStr = value{
+//            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
+//            if(formItem?.isDatePickerView ?? false){
+//                selectedValues = selctedValuesArr
+//            }else{
+//                for value in selctedValuesArr {
+//                    selectedValues.append(dataKeyValueArray[value]!)
+//                }
+//            }
+//            let valueStr = selectedValues.joined(separator: ",")
+//            detailLabel.text = valueStr
+//        }
+//    }
 }
 
 extension RSSelectionMenuCellView: FormUpdatable {
@@ -124,7 +126,7 @@ extension RSSelectionMenuCellView: FormUpdatable {
             self.crossButtonView.isHidden = true
             if let value = self.formItem?.value {
                 if(!value.isEmpty){
-                    selectedValues = value.components(separatedBy: ",")
+                    selectedValues = value.components(separatedBy:StringConstants.SEPRATOR)
                     //setSelectedValue(value:value)
                     self.crossButtonView.isHidden = false
                 }

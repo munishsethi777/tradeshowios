@@ -61,6 +61,7 @@
 		F6319B2E23E83CC1003B2DDF /* FormItemUIProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B2623E83CC0003B2DDF /* FormItemUIProperties.swift */; };
 		F6319B3023E83DAB003B2DDF /* FormTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */; };
 		F6319B3223EADDBC003B2DDF /* FormPickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */; };
+		F65C5ACD240CC05600DC7A89 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C5ACC240CC05600DC7A89 /* CustomCell.swift */; };
 		F67CC39F24012C0700964DB7 /* SpringQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67CC39E24012C0700964DB7 /* SpringQuestionViewController.swift */; };
 		F67CC3A3240131DA00964DB7 /* SpringQuestionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67CC3A2240131DA00964DB7 /* SpringQuestionForm.swift */; };
 		F67CC3A5240133CC00964DB7 /* ChristmasQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67CC3A4240133CC00964DB7 /* ChristmasQuestionViewController.swift */; };
@@ -148,6 +149,7 @@
 		F6319B2623E83CC0003B2DDF /* FormItemUIProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItemUIProperties.swift; sourceTree = "<group>"; };
 		F6319B2F23E83DAB003B2DDF /* FormTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		F6319B3123EADDBC003B2DDF /* FormPickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerViewTableViewCell.swift; sourceTree = "<group>"; };
+		F65C5ACC240CC05600DC7A89 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		F67CC39E24012C0700964DB7 /* SpringQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringQuestionViewController.swift; sourceTree = "<group>"; };
 		F67CC3A2240131DA00964DB7 /* SpringQuestionForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringQuestionForm.swift; sourceTree = "<group>"; };
 		F67CC3A4240133CC00964DB7 /* ChristmasQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChristmasQuestionViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				F69E0B2D2407C165001033A7 /* RSSelectionMenuCellView.swift */,
 				F69E0B2B2407C129001033A7 /* RSSelectionMenuCellView.xib */,
 				F67F83D72408D6950074C8B3 /* DatePickerViewController.swift */,
+				F65C5ACC240CC05600DC7A89 /* CustomCell.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				F6319AF723E82FA9003B2DDF /* CoreDataManager.swift in Sources */,
 				F6319AEE23E82FA9003B2DDF /* CustomerTableViewController.swift in Sources */,
 				F6EFBAD423F80B8B00D4B9EB /* DateUtil.swift in Sources */,
+				F65C5ACD240CC05600DC7A89 /* CustomCell.swift in Sources */,
 				F69E0B282407A6FC001033A7 /* OppurtunityQuestionForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

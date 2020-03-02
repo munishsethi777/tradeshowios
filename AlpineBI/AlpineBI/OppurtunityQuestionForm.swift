@@ -26,6 +26,10 @@ class OppurtunityQuestionForm:ObjectConvertor{
         self.configureItems()
     }
     
+    func reload() {
+        self.configureItems()
+    }
+    
     // MARK: Form Validation
     @discardableResult
     func isValid() -> (Bool, String?) {

@@ -8,27 +8,25 @@
 
 import UIKit
 
-class YesNoViewTableViewCell: UITableViewCell,FormConformity {
+class YesNoViewTableViewCell: UITableViewCell,FormConformity,CustomCell {
+    var parent: UIViewController!
     var formItem: FormItem?
     var updateCallback : ((_ selectedValue: String,_ indexPath: IndexPath)-> Void)?
-    var labelFieldCellIndex: IndexPath!
-   
-    
+    var indexPath: IndexPath!
+    var delegate:CallBackProtocol!
     @IBOutlet weak var switcher: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     @IBAction func switchChanged(_ sender: UISwitch) {
-      
             var value = "No";
             if sender.isOn {
                value = "Yes"
             }
-            self.formItem?.valueCompletion?(value)
-            updateCallback?(value,labelFieldCellIndex)
+           self.formItem?.valueCompletion?(value)
+           delegate.updateValue(valueSent: value, indexPath: indexPath)
     }
     
     @IBOutlet weak var captionLabelField: UILabel!

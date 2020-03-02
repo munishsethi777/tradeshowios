@@ -28,6 +28,9 @@ class SpecialProgramForm:ObjectConvertor {
         super.init()
         self.configureItems()
     }
+    func reload() {
+        self.configureItems()
+    }
     
     // MARK: Form Validation
     @discardableResult

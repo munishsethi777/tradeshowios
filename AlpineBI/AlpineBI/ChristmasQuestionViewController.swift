@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import RSSelectionMenu
-class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
+class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,CallBackProtocol{
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
@@ -85,6 +85,10 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
         arr["customerselectxmasitemsfrom"] = getSelectedNameForMenu(fieldName: "customerselectxmasitemsfrom",value:form.customerselectxmasitemsfrom)
         let jsonString = JsonUtil.toJsonString(jsonObject: arr);
         excecuteSaveCall(jsonstring: jsonString)
+    }
+    
+    func updateCallback(selectedValue: String,indexPath: IndexPath){
+        form.formItems[indexPath.row].value = selectedValue
     }
     
     private func excecuteSaveCall(jsonstring: String!){
@@ -226,6 +230,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
             self.editProgData["strategicplanningmeetdate"] =  self.form.strategicplanningmeetdate
             self.form.xmasbuylastyearamount = editProgData["xmasbuylastyearamount"] as? String
             self.form.year = editProgData["year"] as? String
+            self.form.reload()
         }
        tableView.reloadData()
     }
@@ -258,6 +263,9 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate{
         }
         return nil
     }
+    func updateValue(valueSent: String, indexPath: IndexPath) {
+        self.form.formItems[indexPath.row].value = valueSent;
+    }
 }
 
 extension ChristmasQuestionViewController: UITableViewDataSource {
@@ -273,20 +281,17 @@ extension ChristmasQuestionViewController: UITableViewDataSource {
         var isSetCaption = true
         let item = self.form.formItems[indexPath.row]
         let pickerViewData:[String:String] = self.getPickerViewData(formItem: item)
-        let name = item.name
-        if let val = editProgData[name!] as? String {
-            item.value = val
-        }
         var cell: UITableViewCell
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
             cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData,isReadOnlyView: isReadOnly)
-            if let selectionViewCell = cell as? RSSelectionMenuCellView {
+            if var selectionViewCell = cell as? CustomCell {
                 if(item.isLabel){
                     isSetCaption = true
                 }else{
                     isSetCaption = false
                 }
-                selectionViewCell.parentViewController = self
+                selectionViewCell.parent = self
+                selectionViewCell.delegate = self
             }
         }else{
             cell = UITableViewCell()
@@ -298,3 +303,4 @@ extension ChristmasQuestionViewController: UITableViewDataSource {
         return cell
     }
 }
+

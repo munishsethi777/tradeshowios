@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
+class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBackProtocol{
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
@@ -193,6 +193,7 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
             self.form.rebateprogramandpaymentmethod = editProgData["rebateprogramandpaymentmethod"] as? String
             self.form.regularterms = getSelectedValueForMenu(fieldName:"regularterms")
             self.form.howpayingbackcustomer = editProgData["howpayingbackcustomer"] as? String
+            self.form.reload()
         }
         self.tableView.reloadData()
     }
@@ -234,6 +235,9 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate {
         }
         return nil
     }
+    func updateValue(valueSent: String, indexPath: IndexPath) {
+        self.form.formItems[indexPath.row].value = valueSent;
+    }
 }
 extension SpecialProgramViewContorller: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -248,20 +252,17 @@ extension SpecialProgramViewContorller: UITableViewDataSource {
         var isSetCaption = true
         let item = self.form.formItems[indexPath.row]
         let pickerViewData:[String:String] = self.getPickerViewData(formItem: item)
-        let name = item.name
-        if let val = editProgData[name!] as? String {
-            item.value = val
-        }
         var cell: UITableViewCell
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
             cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData,isReadOnlyView: isReadOnly)
-            if let selectionViewCell = cell as? RSSelectionMenuCellView {
+            if var selectionViewCell = cell as? CustomCell {
                 if(item.isLabel){
                     isSetCaption = true
                 }else{
                     isSetCaption = false
                 }
-                selectionViewCell.parentViewController = self
+                selectionViewCell.parent = self
+                selectionViewCell.delegate = self
             }
         }else{
             cell = UITableViewCell()

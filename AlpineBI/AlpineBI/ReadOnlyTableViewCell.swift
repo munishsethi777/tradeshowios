@@ -11,6 +11,7 @@ class ReadOnlyTableViewCell: UITableViewCell, FormConformity,UITextFieldDelegate
     var formItem: FormItem?
     
     @IBOutlet weak var captionLabelField: UILabel!
+    
     @IBOutlet weak var labelField: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

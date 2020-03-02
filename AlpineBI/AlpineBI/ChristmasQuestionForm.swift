@@ -34,6 +34,9 @@ class ChristmasQuestionForm {
         self.configureItems()
     }
     
+    func reload(){
+        self.configureItems()
+    }
     // MARK: Form Validation
     @discardableResult
     func isValid() -> (Bool, String?) {
@@ -255,7 +258,7 @@ class ChristmasQuestionForm {
             isvisitcustomerin4qtrItem?.value = value
         }
         let christmasquotebydateLabelItem  = FormItem(placeholder: "When do we need to quote you christmas by?")
-        christmasquotebydateLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        christmasquotebydateLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         christmasquotebydateLabelItem.value = self.christmasquotebydate
         christmasquotebydateLabelItem.isLabel = true
         christmasquotebydateLabelItem.isDatePickerView = true
