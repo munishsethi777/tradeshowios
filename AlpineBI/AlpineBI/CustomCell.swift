@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import UIKit
+protocol CustomCell {
+     var delegate: CallBackProtocol! { get set }
+     var parent: UIViewController! {get set}
+}
