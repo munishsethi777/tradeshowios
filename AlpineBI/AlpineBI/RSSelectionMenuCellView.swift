@@ -25,6 +25,7 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol,CustomCell {
         self.formItem?.valueCompletion?(nil)
         crossButtonView.isHidden = true
         selectedValues = []
+        self.delegate.updateValue(valueSent: "", indexPath: indexPath)
     }
     @IBOutlet weak var crossButtonView: UIButton!
     
@@ -119,9 +120,7 @@ extension RSSelectionMenuCellView: FormUpdatable {
     func update(with formItem: FormItem,isSetCaption:Bool = false) {
         self.formItem = formItem
         if(self.formItem != nil){
-            if(isSetCaption){
-                labelField.text = self.formItem?.placeholder
-            }
+            labelField.text = self.formItem?.placeholder
             detailLabel.text = self.formItem?.value
             self.crossButtonView.isHidden = true
             if let value = self.formItem?.value {

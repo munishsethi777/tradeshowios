@@ -38,8 +38,6 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView?.beginUpdates()
-        tableView?.endUpdates()
     }
     
     func addEditButton(){
@@ -177,6 +175,8 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     }
     func updateValue(valueSent: String, indexPath: IndexPath) {
         self.form.formItems[indexPath.row].value = valueSent;
+        tableView?.beginUpdates()
+        tableView?.endUpdates()
     }
 }
 

@@ -14,6 +14,7 @@ struct StringConstants {
     static var SEPRATOR = ", ";
     static var DELETE_BUYER_CONFIRM = "Do you really want to delete this buyer."
     static var DELETE_CUSTOMER_CONFIRM = "Do you really want to delete this customer."
+    static var DELETES_SPRING_QUESTION_CONFIRM = "Do you really want to delete spring questionnaire?"
     static var LOGOUT_CONFIRM = "Do you really want to logout."
     //Actions URL
     static var ACTION_API_URL = "http://www.alpinebi.com/Actions/Mobile/"
@@ -39,6 +40,7 @@ struct StringConstants {
     static let GET_ENUMS_SPECIAL_PROG = ACTION_API_URL + "EnumAction.php?call=getEnumsForSpecialProg&userSeq={0}"
     static let GET_ENUMS_FOR_QUESTIONNARIE = ACTION_API_URL + "EnumAction.php?call=getQuestionnaireEnums&userSeq={0}"
     static let GET_ENUMS_FOR_OPPURTUNITY_QUESTION = ACTION_API_URL + "EnumAction.php?call=getOppurtunityQuestionEnums&userSeq={0}"
+     static let GET_ENUMS_FOR_SPRING_QUESTION = ACTION_API_URL + "EnumAction.php?call=getSpringQuestionEnums&userSeq={0}"
     
     
     // CustomerQuestionnaireAction.php
@@ -46,7 +48,11 @@ struct StringConstants {
     static let SAVE_SPECIAL_PROGRAM_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveAlpineProg&userSeq={0}&specialProg={1}"
     static let SAVE_CHRISTMAS_QUESTION_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveChristmasQuestionDetail&userSeq={0}&christmasQues={1}"
     static let SAVE_OPPURTUNITY_QUESTION_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveOppurtunityQuestionDetail&userSeq={0}&customerOppurtunityQues={1}"
+     static let SAVE_SPRING_QUESTION_DETAILS = ACTION_API_URL  + "CustomerQuestionnaireAction.php?call=saveSpringQuestionDetail&userSeq={0}&springQues={1}"
     
     static let GET_CHRISTMAS_QUESTIONS_DETAILS = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getChristmasQuestionDetails&userSeq={0}&customerSeq={1}"
     static let GET_OPPURTUNITY_QUESTIONS_DETAILS = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getOppurtunityBuysDetails&userSeq={0}&customerSeq={1}"
+    static let GET_SPRING_QUESTIONS_DETAILS = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getSpringQuestionDetails&userSeq={0}&customerSeq={1}"
+    static let GET_SPRING_QUESTIONS_DETAILS_BY_SEQ = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=getSpringQuestionDetailBySeq&userSeq={0}&seq={1}"
+    static let DELETE_SPRING_QUESTIONS_DETAILS_BY_SEQ = ACTION_API_URL + "CustomerQuestionnaireAction.php?call=deleteSpringQuestion&userSeq={0}&seq={1}"
 }

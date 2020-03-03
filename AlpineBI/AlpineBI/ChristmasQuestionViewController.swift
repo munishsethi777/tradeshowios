@@ -19,15 +19,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
     var isReadOnly = true;
     var editProgData:[String:Any] = [:]
     @IBOutlet weak var customerNameLabel: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
-    private var dpShowYearPickerVisible = false
-    private var dpShowXmasItemPickerVisible = false
-    private var dpShowMeetingDatePickerVisible = false
-    private var dpShowInvitedXmassShowroomDatePickerVisible = false
-    private var dpShowXmassShowroomReminderDatePickerVisible = false
-    private var dpShowChristmas2020DatePickerVisible = false
-    private var dpShowQuoteChristmasDatePickerVisible = false
     var enums:[String:Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -93,6 +93,9 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }else if(selectedBuyer.value == CHRISTMAS_QUESTIONNAIRE){
             self.performSegue(withIdentifier: "ChristmasQuestionViewController", sender: self)
         }
+        else if(selectedBuyer.value == SPRING_QUESTIONNAIRE){
+            self.performSegue(withIdentifier: "ShowSpringQuestionViewController", sender: self)
+        }
         else if(selectedBuyer.value == OPPURTUNITY_QUESTIONNAIRE){
             self.performSegue(withIdentifier: "OppurtunityQuestionViewController", sender: self)
         }
@@ -226,6 +229,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDataSource, U
         }
         if let secondController = segue.destination as? OppurtunityQuestionViewController {
             secondController.customerNameStr = customerNameLabel.text!
+            secondController.customerSeq =  selectedCustomerSeq
+        }
+        if let secondController = segue.destination as? ShowSpringQestionsViewController {
+            secondController.customerName = customerNameLabel.text!
             secondController.customerSeq =  selectedCustomerSeq
         }
     

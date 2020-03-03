@@ -10,6 +10,7 @@ import UIKit
 
 class ShowSpringQuestionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var labelView: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +21,7 @@ class ShowSpringQuestionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

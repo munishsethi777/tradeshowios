@@ -67,6 +67,9 @@
 		F67CC3A5240133CC00964DB7 /* ChristmasQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67CC3A4240133CC00964DB7 /* ChristmasQuestionViewController.swift */; };
 		F67CC3A72401355E00964DB7 /* ChristmasQuestionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67CC3A62401355E00964DB7 /* ChristmasQuestionForm.swift */; };
 		F67F83D82408D6950074C8B3 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F83D72408D6950074C8B3 /* DatePickerViewController.swift */; };
+		F68D79C0240D13CA00592826 /* ShowSpringQestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D79BF240D13CA00592826 /* ShowSpringQestionsViewController.swift */; };
+		F68D79C2240D20B200592826 /* ShowSpringQuestionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D79C1240D20B200592826 /* ShowSpringQuestionForm.swift */; };
+		F68D79C4240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D79C3240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift */; };
 		F694CF6023ED279500895D48 /* FormLabelFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */; };
 		F69E0B2124079C2F001033A7 /* RSSelectionMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69E0B2024079C2F001033A7 /* RSSelectionMenu.framework */; };
 		F69E0B262407A2BA001033A7 /* OppurtunityQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E0B252407A2BA001033A7 /* OppurtunityQuestionViewController.swift */; };
@@ -155,6 +158,9 @@
 		F67CC3A4240133CC00964DB7 /* ChristmasQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChristmasQuestionViewController.swift; sourceTree = "<group>"; };
 		F67CC3A62401355E00964DB7 /* ChristmasQuestionForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChristmasQuestionForm.swift; sourceTree = "<group>"; };
 		F67F83D72408D6950074C8B3 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		F68D79BF240D13CA00592826 /* ShowSpringQestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSpringQestionsViewController.swift; sourceTree = "<group>"; };
+		F68D79C1240D20B200592826 /* ShowSpringQuestionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSpringQuestionForm.swift; sourceTree = "<group>"; };
+		F68D79C3240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSpringQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabelFieldTableViewCell.swift; sourceTree = "<group>"; };
 		F69E0B2024079C2F001033A7 /* RSSelectionMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSSelectionMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69E0B252407A2BA001033A7 /* OppurtunityQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OppurtunityQuestionViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 				F69E0B2B2407C129001033A7 /* RSSelectionMenuCellView.xib */,
 				F67F83D72408D6950074C8B3 /* DatePickerViewController.swift */,
 				F65C5ACC240CC05600DC7A89 /* CustomCell.swift */,
+				F68D79BF240D13CA00592826 /* ShowSpringQestionsViewController.swift */,
+				F68D79C1240D20B200592826 /* ShowSpringQuestionForm.swift */,
+				F68D79C3240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -493,11 +502,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6319B2923E83CC1003B2DDF /* FormItem.swift in Sources */,
+				F68D79C2240D20B200592826 /* ShowSpringQuestionForm.swift in Sources */,
 				F6319B3223EADDBC003B2DDF /* FormPickerViewTableViewCell.swift in Sources */,
 				F6319B2723E83CC1003B2DDF /* FormItemCellType.swift in Sources */,
 				F6319AFE23E82FA9003B2DDF /* GlobalData.swift in Sources */,
 				F67CC3A72401355E00964DB7 /* ChristmasQuestionForm.swift in Sources */,
 				F6319B1823E82FA9003B2DDF /* ServiceHandler.swift in Sources */,
+				F68D79C4240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift in Sources */,
 				F6319B1523E82FA9003B2DDF /* SecondViewController.swift in Sources */,
 				F6319AF023E82FA9003B2DDF /* AddCustomerViewController.swift in Sources */,
 				F6319B0423E82FA9003B2DDF /* ProgressHUD.swift in Sources */,
@@ -530,6 +541,7 @@
 				E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */,
 				F6319AFF23E82FA9003B2DDF /* PreferencesUtil.swift in Sources */,
 				F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */,
+				F68D79C0240D13CA00592826 /* ShowSpringQestionsViewController.swift in Sources */,
 				F63060BC23F158C60032BCCF /* JsonUtil.swift in Sources */,
 				F6319B2D23E83CC1003B2DDF /* Form.swift in Sources */,
 				F67CC3A3240131DA00964DB7 /* SpringQuestionForm.swift in Sources */,
