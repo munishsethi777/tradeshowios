@@ -47,7 +47,8 @@ class ShowSpringQestionsViewController:UIViewController,UITableViewDelegate{
     }
     
     @objc func addTapped(){
-         self.performSegue(withIdentifier: "AddSpringQuestion", sender: self)
+        selectedCategory = 0
+        self.performSegue(withIdentifier: "AddSpringQuestion", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

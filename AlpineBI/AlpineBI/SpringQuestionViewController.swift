@@ -33,7 +33,6 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         progressHUD = ProgressHUD(text: "Processing")
         customerNameLabel.text = customerName
-        addEditButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
@@ -73,8 +72,12 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
     }
     @objc func editTapped(){
         isReadOnly = false
-         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveSpringQuestion))
+        addDoneButton()
         tableView.reloadData()
+    }
+    
+    func addDoneButton(){
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveSpringQuestion))
     }
     
     @objc private func saveSpringQuestion(){
@@ -171,6 +174,7 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
+                        self.selectedCategorySeq = Int(json["seq"] as! Int)
                         self.isReadOnly = true
                         self.loadEnumData()
                         self.addEditButton()
@@ -211,6 +215,10 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
                         self.tableView.delegate = self
                         if(self.selectedCategorySeq > 0){
                             self.getSpringQuestionDetail()
+                            self.addEditButton()
+                        }else{
+                            self.isReadOnly = false
+                            self.addDoneButton()
                         }
                         self.progressHUD.hide()
                         self.tableView.reloadData()
