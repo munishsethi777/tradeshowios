@@ -70,6 +70,7 @@
 		F68D79C0240D13CA00592826 /* ShowSpringQestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D79BF240D13CA00592826 /* ShowSpringQestionsViewController.swift */; };
 		F68D79C2240D20B200592826 /* ShowSpringQuestionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D79C1240D20B200592826 /* ShowSpringQuestionForm.swift */; };
 		F68D79C4240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D79C3240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift */; };
+		F68D79C6240E587600592826 /* dummy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F68D79C5240E587600592826 /* dummy.jpg */; };
 		F694CF6023ED279500895D48 /* FormLabelFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */; };
 		F69E0B2124079C2F001033A7 /* RSSelectionMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69E0B2024079C2F001033A7 /* RSSelectionMenu.framework */; };
 		F69E0B262407A2BA001033A7 /* OppurtunityQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E0B252407A2BA001033A7 /* OppurtunityQuestionViewController.swift */; };
@@ -161,6 +162,7 @@
 		F68D79BF240D13CA00592826 /* ShowSpringQestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSpringQestionsViewController.swift; sourceTree = "<group>"; };
 		F68D79C1240D20B200592826 /* ShowSpringQuestionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSpringQuestionForm.swift; sourceTree = "<group>"; };
 		F68D79C3240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSpringQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		F68D79C5240E587600592826 /* dummy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dummy.jpg; sourceTree = "<group>"; };
 		F694CF5F23ED279500895D48 /* FormLabelFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabelFieldTableViewCell.swift; sourceTree = "<group>"; };
 		F69E0B2024079C2F001033A7 /* RSSelectionMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSSelectionMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69E0B252407A2BA001033A7 /* OppurtunityQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OppurtunityQuestionViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		F6319ABE23E82FA9003B2DDF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F68D79C5240E587600592826 /* dummy.jpg */,
 				F6319ABF23E82FA9003B2DDF /* logo.png */,
 			);
 			path = images;
@@ -434,6 +437,7 @@
 				F6319B0923E82FA9003B2DDF /* icons8-male-user-100-2.png in Resources */,
 				F6319B0623E82FA9003B2DDF /* icons8-user-account-24-2.png in Resources */,
 				F63060B623F1384C0032BCCF /* MyCustomCell.xib in Resources */,
+				F68D79C6240E587600592826 /* dummy.jpg in Resources */,
 				F6319AF423E82FA9003B2DDF /* logo.png in Resources */,
 				F6319AF923E82FA9003B2DDF /* Assets.xcassets in Resources */,
 				F6EFBAD023F8037000D4B9EB /* YesNoViewTableViewCell.xib in Resources */,
