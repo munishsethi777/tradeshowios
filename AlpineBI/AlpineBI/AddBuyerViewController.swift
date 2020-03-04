@@ -105,16 +105,14 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
     func presentCropViewController() {
         let cropViewController = CropViewController(image: uiImage)
         cropViewController.delegate = self
+        cropViewController.isModalInPopover = true
         self.present(cropViewController, animated: true, completion: nil)
     }
     
     func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-        uiImageView.contentMode = .scaleAspectFit
-        uiImageView.layer.cornerRadius = (uiImageView.frame.height) / 2
-        uiImageView.clipsToBounds = true
         uiImageView.image = image
         isImageSet = true
-        dismiss(animated: true)
+        dismiss(animated: true,completion: nil)
         addBuyerTableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
