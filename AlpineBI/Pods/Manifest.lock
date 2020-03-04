@@ -1,16 +1,20 @@
 PODS:
+  - CropViewController (2.5.2)
   - RSSelectionMenu (6.1.0)
 
 DEPENDENCIES:
+  - CropViewController
   - RSSelectionMenu (~> 6.1.0)
 
 SPEC REPOS:
   trunk:
+    - CropViewController
     - RSSelectionMenu
 
 SPEC CHECKSUMS:
+  CropViewController: 1aac40093c5739e60d992b04724a55d12a689a4c
   RSSelectionMenu: dac4fa365e4bbd95c0eccd0b6ff51a623a22a1c6
 
-PODFILE CHECKSUM: b252d1878a80f863c8e5337f41d45d6c6eee721c
+PODFILE CHECKSUM: a490d0539492793de9c595f3adc128683a27bd0c
 
 COCOAPODS: 1.8.4
