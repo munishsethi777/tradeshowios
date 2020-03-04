@@ -16,6 +16,7 @@ struct StringConstants {
     static var DELETE_CUSTOMER_CONFIRM = "Do you really want to delete this customer."
     static var DELETES_SPRING_QUESTION_CONFIRM = "Do you really want to delete spring questionnaire?"
     static var LOGOUT_CONFIRM = "Do you really want to logout."
+    static var BUYER_IMAGE_URL = "http://www.alpinebi.com/images/buyerimages/"
     //Actions URL
     static var ACTION_API_URL = "http://www.alpinebi.com/Actions/Mobile/"
     static let WEB_API_URL = "http://www.alpinebi.com/"

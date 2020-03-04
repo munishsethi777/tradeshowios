@@ -627,11 +627,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EWB-Hw-FkW">
-                                <rect key="frame" x="0.0" y="47.5" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="93" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="customer name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-8m-DdH">
-                                <rect key="frame" x="0.0" y="20" width="375" height="19.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -670,7 +670,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fCs-3c-H9s">
-                                <rect key="frame" x="0.0" y="47.5" width="375" height="619.5"/>
+                                <rect key="frame" x="0.0" y="91.5" width="375" height="575.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="customer name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xmv-sP-SED">
@@ -750,10 +750,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-dr-va0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3r-ag-l8u">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
@@ -771,26 +767,32 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-dr-va0">
+                                <rect key="frame" x="0.0" y="205" width="375" height="462"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dummy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cN0-Pd-eC6">
+                                <rect key="frame" x="0.0" y="69" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="U3r-ag-l8u" firstAttribute="leading" secondItem="eKf-dr-va0" secondAttribute="leading" id="9Zb-fZ-ZLz"/>
-                            <constraint firstItem="eKf-dr-va0" firstAttribute="bottom" secondItem="3cA-lz-4or" secondAttribute="bottom" id="IdE-zf-mG6"/>
-                            <constraint firstItem="eKf-dr-va0" firstAttribute="trailing" secondItem="3cA-lz-4or" secondAttribute="trailing" id="LOT-84-sOD"/>
-                            <constraint firstItem="eKf-dr-va0" firstAttribute="leading" secondItem="3cA-lz-4or" secondAttribute="leading" id="QSd-bv-jRf"/>
-                            <constraint firstItem="U3r-ag-l8u" firstAttribute="trailing" secondItem="eKf-dr-va0" secondAttribute="trailing" id="bXz-F9-Yiq"/>
-                            <constraint firstItem="U3r-ag-l8u" firstAttribute="top" secondItem="3cA-lz-4or" secondAttribute="top" id="q98-Y9-Zxt"/>
-                            <constraint firstItem="eKf-dr-va0" firstAttribute="top" secondItem="U3r-ag-l8u" secondAttribute="bottom" id="rbm-Hz-GxW"/>
+                            <constraint firstItem="U3r-ag-l8u" firstAttribute="top" secondItem="3cA-lz-4or" secondAttribute="top" id="0uL-S4-sYF"/>
+                            <constraint firstItem="U3r-ag-l8u" firstAttribute="trailing" secondItem="3cA-lz-4or" secondAttribute="trailing" id="CUg-PF-o4e"/>
+                            <constraint firstItem="U3r-ag-l8u" firstAttribute="leading" secondItem="3cA-lz-4or" secondAttribute="leading" id="wSD-71-PZ1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3cA-lz-4or"/>
                     </view>
                     <connections>
                         <outlet property="addBuyerTableView" destination="eKf-dr-va0" id="9vL-Ql-Ne4"/>
+                        <outlet property="uiImageView" destination="cN0-Pd-eC6" id="uAt-6S-7cV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inb-CM-rQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1279" y="2332"/>
+            <point key="canvasLocation" x="-940" y="2329.385307346327"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="W2q-2L-WGZ">
@@ -981,7 +983,7 @@
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rounded-profile-pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="0tI-E8-e4j">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dummy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0tI-E8-e4j">
                                                 <rect key="frame" x="109" y="8" width="125" height="125"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="125" id="9MF-zt-ZMF"/>
@@ -1088,6 +1090,7 @@
                         <outlet property="buyerActionView" destination="AdO-fP-mHo" id="1KH-xc-csA"/>
                         <outlet property="buyerDetailTableView" destination="Y9O-of-bPS" id="HxN-xm-k2e"/>
                         <outlet property="buyerNameLabel" destination="2DE-6N-wR2" id="S9m-P8-glB"/>
+                        <outlet property="imageView" destination="0tI-E8-e4j" id="hGJ-Z0-eZS"/>
                         <outlet property="scrollView" destination="YS3-fG-FPW" id="Tdx-ki-B7B"/>
                         <segue destination="8JO-6o-ccg" kind="showDetail" identifier="showAddBuyer" id="ltV-YN-AjY"/>
                     </connections>
@@ -1251,6 +1254,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dummy.jpg" width="128" height="128"/>
         <image name="icons8-add-user-male-24.png" width="24" height="24"/>
         <image name="icons8-new-post-100-2.png" width="100" height="100"/>
         <image name="icons8-phone-100-2.png" width="100" height="100"/>
@@ -1260,12 +1264,11 @@
         <image name="icons8-user-account-24-2.png" width="24" height="24"/>
         <image name="icons8-whatsapp-100.png" width="100" height="100"/>
         <image name="logo.png" width="180" height="72"/>
-        <image name="rounded-profile-pic.png" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ofG-vq-LUI"/>
         <segue reference="xoE-aw-Hmz"/>
-        <segue reference="i13-P3-HGp"/>
+        <segue reference="ltV-YN-AjY"/>
         <segue reference="u4q-D7-ZL6"/>
     </inferredMetricsTieBreakers>
 </document>

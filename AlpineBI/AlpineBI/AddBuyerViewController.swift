@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 import ContactsUI
-class AddBuyerViewController: UIViewController,UITableViewDelegate{
+import CropViewController
+class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate{
     let totalRowsCount:Int = 0
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
@@ -22,6 +23,10 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
     private var selectedIndex = 0;
     private var editBuyerData:[String:Any] = [:]
     private let contactPicker = CNContactPickerViewController()
+    var uiImage:UIImage! = UIImage()
+    var picker:UIImagePickerController?=UIImagePickerController()
+    var isImageSet:Bool = false
+    @IBOutlet weak var uiImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
@@ -31,10 +36,89 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
+        uiImageView.isUserInteractionEnabled = true
+        
+        picker?.delegate = self
+        //setbackround()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(connected(_:)))
+        uiImageView.isUserInteractionEnabled = true
+        uiImageView.addGestureRecognizer(tapGestureRecognizer)
+        uiImageView.layer.cornerRadius = (uiImageView.frame.height) / 2
+        uiImageView.clipsToBounds = true
+        self.view.addSubview(progressHUD)
+        loadEnumData()
+    }
+    
+    @objc func connected(_ sender:AnyObject){
+        editImage()
+    }
+    func cancel(){
+        print("Cancel Clicked")
+    }
+    
+    func editImage(){
+        let alert:UIAlertController = UIAlertController(title: "Profile Picture Options", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        let gallaryAction = UIAlertAction(title: "Open Gallery", style: UIAlertAction.Style.default) {
+            UIAlertAction in self.openGallary()
+        }
+        let cameraAction = UIAlertAction(title: "Open Camera", style: UIAlertAction.Style.default) {
+            UIAlertAction in self.openCamera()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+            UIAlertAction in self.cancel()
+        }
+        alert.addAction(gallaryAction)
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+        if let popoverPresentationController = alert.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .down
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+    func tapGesture(gesture: UIGestureRecognizer) {
+        editImage()
+    }
+    
+    func openGallary() {
+        picker!.allowsEditing = false
+        picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
+        present(picker!, animated: true, completion: nil)
+    }
+    func openCamera() {
+        picker!.allowsEditing = false
+        picker!.delegate = self
+        picker!.sourceType = .camera
+        present(picker!, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            uiImage = pickedImage
+            dismiss(animated: true)
+            presentCropViewController()
+        }else{
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    func presentCropViewController() {
+        let cropViewController = CropViewController(image: uiImage)
+        cropViewController.delegate = self
+        self.present(cropViewController, animated: true, completion: nil)
+    }
+    
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        uiImageView.contentMode = .scaleAspectFit
+        uiImageView.layer.cornerRadius = (uiImageView.frame.height) / 2
+        uiImageView.clipsToBounds = true
+        uiImageView.image = image
+        isImageSet = true
+        dismiss(animated: true)
+        addBuyerTableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadEnumData()
     }
     
     private func prepareSubViews() {
@@ -69,6 +153,18 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
         self.form.category = editBuyerData["category"] as? String
         self.form.notes = editBuyerData["notes"] as? String
         self.addBuyerTableView.reloadData()
+        let buyerImageName = editBuyerData["imageextension"] as? String
+        if(buyerImageName != nil){
+            let userImageUrl = StringConstants.BUYER_IMAGE_URL + buyerImageName!
+            if let url = NSURL(string: userImageUrl) {
+                if let data = NSData(contentsOf: url as URL) {
+                    let img = UIImage(data: data as Data)
+                    uiImageView.image = img
+                    uiImageView.layer.cornerRadius = (uiImageView.frame.height) / 2
+                    uiImageView.clipsToBounds = true
+                }
+            }
+        }
     }
     @objc func keyboardWillShow(notification:NSNotification){
         var userInfo = notification.userInfo!
@@ -113,6 +209,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
             }
         })
     }
+    
     func loadEnumData(){
         let args: [Int] = [self.loggedInUserSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_CATEGORY_TYPES, args: args)
@@ -140,14 +237,16 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate{
             }
         })
     }
+    
     private func excecuteSaveBuyerCall(jsonstring: String!){
-        self.view.addSubview(progressHUD)
+       
+        self.progressHUD.show()
         let json = jsonstring.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let args: [Any] = [self.loggedInUserSeq,json]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.SUBMIT_ADD_BUYER, args: args)
         var success : Int = 0
         var message : String? = nil
-        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+         ServiceHandler.instance().makeAPICallImage(url: apiUrl, method: HttpMethod.POST,chosenImage:uiImageView.image!, completionHandler: { (data, response, error) in
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
                 success = json["success"] as! Int

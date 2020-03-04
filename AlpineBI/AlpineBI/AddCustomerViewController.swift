@@ -17,6 +17,8 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     var businessTypes:[String:String] = [:]
     var priorityTypes:[String:String] = [:]
     var editCustomerData:[String:Any] = [:]
+    var picker:UIImagePickerController?=UIImagePickerController()
+    var uiImage:UIImage! = UIImage()
     var editCustomerSeq:Int = 0
     @IBOutlet weak var ibTableView: UITableView!
     override func viewDidLoad() {

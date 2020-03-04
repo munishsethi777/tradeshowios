@@ -46,10 +46,13 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         self.view.addSubview(progressHUD)
+        imageView.layer.cornerRadius = (imageView.frame.height) / 2
+        imageView.clipsToBounds = true
     }
     override func viewWillAppear(_ animated: Bool) {
        reloadData()
     }
+    @IBOutlet weak var imageView: UIImageView!
     
     @objc func editTapped(){
         self.performSegue(withIdentifier: "showAddBuyer", sender: self)
@@ -256,6 +259,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
     func loadBuyerDetail(jsonResponse: [String: Any]){
         let buyer = jsonResponse["buyer"] as! [Any]
         let buyerName = jsonResponse["buyername"] as! String
+        let buyerImage = jsonResponse["buyerimage"] as? String
         selectedBuyerFName = jsonResponse["buyerfirstname"] as? String
         selectedBuyerLName = jsonResponse["buyerlastname"] as? String
         selectedBuyerPhone = jsonResponse["buyercellphone"] as? String
@@ -282,8 +286,17 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,UITableVi
         buyerDetailTableView.reloadData()
         let scrollViewHeight = buyerActionView.frame.height + buyerDetailTableView.frame.height + 12;
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight)
-
-        
+        if(buyerImage != nil){
+            let userImageUrl = StringConstants.BUYER_IMAGE_URL + buyerImage!
+            if let url = NSURL(string: userImageUrl) {
+                if let data = NSData(contentsOf: url as URL) {
+                    let img = UIImage(data: data as Data)
+                    imageView.image = img
+                    imageView.layer.cornerRadius = (imageView.frame.height) / 2
+                    imageView.clipsToBounds = true
+                }
+            }
+        }
     }
     
     func addSaveInContactButtonLink(){
