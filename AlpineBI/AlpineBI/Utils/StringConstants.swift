@@ -27,6 +27,8 @@ struct StringConstants {
     //Customer Action
     static let GET_CUSTOMER_NAMES = ACTION_API_URL + "CustomerAction.php?call=getAllCustomerNames&userSeq={0}"
     static let GET_CUSTOMER_DETAIL = ACTION_API_URL + "CustomerAction.php?call=getCustomerDetails&userSeq={0}&customerseq={1}"
+    static let GET_CUSTOMER_DETAIL_AND_BUYERS = ACTION_API_URL + "CustomerAction.php?call=getCustomerDetailsAndBuyers&userSeq={0}&customerseq={1}"
+    
     static let GET_BUYER_DETAIL = ACTION_API_URL + "CustomerAction.php?call=getBuyerDetail&userSeq={0}&buyerseq={1}"
     static let SUBMIT_ADD_CUSTOMER = ACTION_API_URL  + "CustomerAction.php?call=addCustomer&userSeq={0}&customer={1}"
     static let SUBMIT_ADD_BUYER = ACTION_API_URL  + "CustomerAction.php?call=addBuyer&userSeq={0}&buyer={1}"

@@ -70,9 +70,9 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     func saveCustomer(){
         var customerArr:[String: Any] = [:]
         customerArr["fullname"] = self.form.fullname
-        customerArr["customerid"] = self.form.id
+        customerArr["customerid"] = self.form.customerid
         customerArr["salespersonid"] = self.form.salespersonid
-        customerArr["salespersonname"] = self.form.salesperson
+        customerArr["salespersonname"] = self.form.salespersonname
         customerArr["businesstype"] = self.form.businesstype
         customerArr["priority"] = self.form.priority
         var isStoreEnabled = 1
@@ -258,9 +258,9 @@ class AddCustomerViewController : UIViewController,UITableViewDelegate,UIGesture
     func loadFormOnEdit(response:[String:Any]){
         editCustomerData = response["customer"] as! [String:Any]
         self.form.fullname = editCustomerData["fullname"] as? String
-        self.form.id = editCustomerData["customerid"] as? String
+        self.form.customerid = editCustomerData["customerid"] as? String
         self.form.salespersonid = editCustomerData["salespersonid"] as? String
-        self.form.salesperson = editCustomerData["salespersonname"] as? String
+        self.form.salespersonname = editCustomerData["salespersonname"] as? String
         self.form.businesstype = editCustomerData["businesstype"] as? String
         self.form.priority = editCustomerData["priority"] as? String
         self.form.storename = editCustomerData["storename"] as? String

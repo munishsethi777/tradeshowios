@@ -1,22 +1,24 @@
 import Foundation
 
-class Form {
+class Form : ObjectConvertor {
   var formItems = [FormItem]()
   
   var title: String?
-  
+
   var fullname: String?
-  var id: String?
+  var customerid: String?
   var businesstype: String?
-  var salesperson: String?
+  var salespersonname: String?
   var salespersonid: String?
   var priority: String?
   var storename:String?
   var storeid:String?
     
-  init() {
+override init() {
+    super.init()
     self.configureItems()
     self.title = "Add Customer"
+    
   }
   
   // MARK: Form Validation
@@ -32,7 +34,9 @@ class Form {
     }
     return (isValid, nil)
   }
-  
+  func reload() {
+      self.configureItems()
+  }
   /// Prepare all form Items ViewModels for the DirectStudioForm
   private func configureItems() {
     
@@ -49,16 +53,16 @@ class Form {
     // ID
     let idItem = FormItem(placeholder: "ID")
     idItem.uiProperties.cellType = FormItemCellType.textField
-    idItem.value = self.id
+    idItem.value = self.customerid
     idItem.name = "customerid"
     idItem.valueCompletion = { [weak self, weak idItem] value in
-        self?.id = value
+        self?.customerid = value
         idItem?.value = value
     }
     
     // Business Type
     let businessTypeItem = FormItem(placeholder: "Business Type")
-    businessTypeItem.uiProperties.cellType = FormItemCellType.buttonView
+    businessTypeItem.uiProperties.cellType = FormItemCellType.selectionView
     businessTypeItem.value = self.businesstype
     businessTypeItem.name = "businesstype"
     businessTypeItem.valueCompletion = { [weak self, weak businessTypeItem] value in
@@ -66,22 +70,22 @@ class Form {
         businessTypeItem?.value = value
     }
     
-    let businessTypePickerItem = FormItem(placeholder: "Business Type picker")
-    businessTypePickerItem.uiProperties.cellType = FormItemCellType.pickerView
-    businessTypePickerItem.value = self.businesstype
-    businessTypePickerItem.name = "businesstypepicker"
-    businessTypePickerItem.valueCompletion = { [weak self, weak businessTypePickerItem] value in
-        self?.businesstype = value
-        businessTypePickerItem?.value = value
-    }
+//    let businessTypePickerItem = FormItem(placeholder: "Business Type picker")
+//    businessTypePickerItem.uiProperties.cellType = FormItemCellType.pickerView
+//    businessTypePickerItem.value = self.businesstype
+//    businessTypePickerItem.name = "businesstypepicker"
+//    businessTypePickerItem.valueCompletion = { [weak self, weak businessTypePickerItem] value in
+//        self?.businesstype = value
+//        businessTypePickerItem?.value = value
+//    }
     
     // Sales Person
     let salesPersonitem = FormItem(placeholder: "Sales Person")
     salesPersonitem.uiProperties.cellType = FormItemCellType.textField
-    salesPersonitem.value = self.salesperson
+    salesPersonitem.value = self.salespersonname
     salesPersonitem.name = "salespersonname"
     salesPersonitem.valueCompletion = { [weak self, weak salesPersonitem] value in
-        self?.salesperson = value
+        self?.salespersonname = value
         salesPersonitem?.value = value
     }
     
@@ -97,7 +101,7 @@ class Form {
     
     // Priority
     let priorityNameItem = FormItem(placeholder: "Priority")
-    priorityNameItem.uiProperties.cellType = FormItemCellType.buttonView
+    priorityNameItem.uiProperties.cellType = FormItemCellType.selectionView
     priorityNameItem.value = self.priority
     priorityNameItem.name = "priority"
     priorityNameItem.valueCompletion = { [weak self, weak priorityNameItem] value in
@@ -105,14 +109,14 @@ class Form {
         priorityNameItem?.value = value
     }
     
-    let priorityPickerNameItem = FormItem(placeholder: "Priority")
-    priorityPickerNameItem.uiProperties.cellType = FormItemCellType.pickerView
-    priorityPickerNameItem.value = self.priority
-    priorityPickerNameItem.name = "prioritypicker"
-    priorityPickerNameItem.valueCompletion = { [weak self, weak priorityPickerNameItem] value in
-        self?.priority = value
-        priorityPickerNameItem?.value = value
-    }
+//    let priorityPickerNameItem = FormItem(placeholder: "Priority")
+//    priorityPickerNameItem.uiProperties.cellType = FormItemCellType.pickerView
+//    priorityPickerNameItem.value = self.priority
+//    priorityPickerNameItem.name = "prioritypicker"
+//    priorityPickerNameItem.valueCompletion = { [weak self, weak priorityPickerNameItem] value in
+//        self?.priority = value
+//        priorityPickerNameItem?.value = value
+//    }
     
     // Store Name
     let storeNameItem = FormItem(placeholder: "Store Name")
@@ -134,6 +138,6 @@ class Form {
         storeIdItem?.value = value
     }
     
-    self.formItems = [fullNameItem, idItem, businessTypeItem,businessTypePickerItem,salesPersonitem,salesPersonIdItem,priorityNameItem,priorityPickerNameItem,storeNameItem,storeIdItem]
+    self.formItems = [fullNameItem, idItem, businessTypeItem,salesPersonitem,salesPersonIdItem,priorityNameItem,storeNameItem,storeIdItem]
   }
 }
