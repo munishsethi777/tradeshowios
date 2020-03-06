@@ -18,8 +18,8 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol,CustomCell {
     var dataKeyValueArray: [String:String] = [:]
     var indexPath: IndexPath!
     private var selectedValues:[String] = [String]()
-   
     @IBOutlet weak var detailLabel: UILabel!
+    
     @IBAction func crossButtonTapped(_ sender: UIButton) {
         detailLabel.text = nil
         self.formItem?.valueCompletion?(nil)
@@ -27,6 +27,7 @@ class RSSelectionMenuCellView: UITableViewCell,DatePickerProtocol,CustomCell {
         selectedValues = []
         self.delegate.updateValue(valueSent: "", indexPath: indexPath)
     }
+    
     @IBOutlet weak var crossButtonView: UIButton!
     
     override func awakeFromNib() {

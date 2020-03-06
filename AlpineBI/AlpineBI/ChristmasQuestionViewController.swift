@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import RSSelectionMenu
 class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,CallBackProtocol{
+    
+    
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
@@ -63,14 +65,17 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         tableView.contentInset = contentInset
     }
+    
     func addEditButton(){
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
     }
+    
     @objc func editTapped(){
         isReadOnly = false
         tableView.reloadData()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveChritmasQuestion))
     }
+    
     @objc func saveChritmasQuestion(){
         var arr = self.form.toArray();
         arr["customerseq"] = self.customerSeq
@@ -82,6 +87,8 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
     func updateCallback(selectedValue: String,indexPath: IndexPath){
         form.formItems[indexPath.row].value = selectedValue
     }
+    
+    func buttonTapped(indexPath: IndexPath) {}
     
     private func excecuteSaveCall(jsonstring: String!){
         self.progressHUD.show()

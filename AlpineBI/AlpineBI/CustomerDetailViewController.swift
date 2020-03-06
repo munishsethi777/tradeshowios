@@ -12,9 +12,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
     
     
     @IBAction func addBuyerTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "AddBuyer", sender: self)
+        selectedBuyerSeq = 0
+        self.performSegue(withIdentifier: "BuyerDetailViewController", sender: self)
     }
-    
+    func buttonTapped(indexPath index: IndexPath) {}
     var selectedCustomerSeq:Int = 0;
     var loggedInUserSeq:Int = 0;
     var progressHUD: ProgressHUD!
@@ -63,8 +64,9 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        customerDetailSt = []
-        buyerDetailSt = []
+        //customerDetailSt = []
+        //buyerDetailSt = []
+        //loadEnumData()
     }
 
     @objc func editTapped(){
@@ -221,6 +223,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
         if let secondController = segue.destination as? BuyerDetailViewController {
             secondController.selectedBuyerSeq =  selectedBuyerSeq
             secondController.selectedCustomerSeq = selectedCustomerSeq
+            secondController.isNew = selectedBuyerSeq == 0
         }
         if let secondController = segue.destination as? AddCustomerViewController {
             secondController.editCustomerSeq =  selectedCustomerSeq

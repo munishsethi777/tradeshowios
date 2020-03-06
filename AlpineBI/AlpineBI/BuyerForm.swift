@@ -7,24 +7,25 @@
 //
 
 import Foundation
-class BuyerForm {
+import UIKit
+class BuyerForm:ObjectConvertor {
     var formItems = [FormItem]()
-    
-    var title: String?
-    
     var firstname: String?
     var lastname: String?
     var email: String?
     var cellphone: String?
-    var phone: String?
+    var officephone: String?
     var category: String?
     var notes:String?
     
-    init() {
+    override init() {
+        super.init()
         self.configureItems()
-        self.title = "Add Buyer"
     }
     
+    func reload(){
+        self.configureItems()
+    }
     // MARK: Form Validation
     @discardableResult
     func isValid() -> (Bool, String?) {
@@ -85,31 +86,21 @@ class BuyerForm {
         // Phone
         let phoneItem = FormItem(placeholder: "Phone")
         phoneItem.uiProperties.cellType = FormItemCellType.textField
-        phoneItem.value = self.phone
+        phoneItem.value = self.officephone
         phoneItem.name = "officephone"
         phoneItem.valueCompletion = { [weak self, weak phoneItem] value in
-            self?.phone = value
+            self?.officephone = value
             phoneItem?.value = value
         }
         
         // Category
         let categoryLabelItem = FormItem(placeholder: "Category")
-        categoryLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        categoryLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         categoryLabelItem.value = self.category
         categoryLabelItem.name = "category"
         categoryLabelItem.valueCompletion = { [weak self, weak categoryLabelItem] value in
             self?.category = value
             categoryLabelItem?.value = value
-        }
-        // Category Picker
-        let categoryTypePickerItem = FormItem(placeholder: "Category")
-        categoryTypePickerItem.uiProperties.cellType = FormItemCellType.pickerView
-        categoryTypePickerItem.value = self.category
-        categoryTypePickerItem.name = "categorypicker"
-        categoryTypePickerItem.isPicker = true
-        categoryTypePickerItem.valueCompletion = { [weak self, weak categoryTypePickerItem] value in
-            self?.category = value
-            categoryTypePickerItem?.value = value
         }
         
         // Notes
@@ -122,10 +113,21 @@ class BuyerForm {
             notesItem?.value = value
         }
         
-        let saveFromContactItem = FormItem(placeholder: "Save From Contacts")
-        saveFromContactItem.uiProperties.cellType = FormItemCellType.buttonView
-        saveFromContactItem.value = "Save From Contacts"
-        saveFromContactItem.name = "saveFromContact"
-        self.formItems = [fullNameItem, lastNameItem, emailItem,cellPhoneitem,phoneItem,categoryLabelItem,categoryTypePickerItem,notesItem,saveFromContactItem]
+        
+//        let saveFromContactItem = FormItem(placeholder: "Save From Contacts")
+//        saveFromContactItem.uiProperties.cellType = FormItemCellType.buttonView
+//        saveFromContactItem.value = ""
+//        saveFromContactItem.isButtonOnly = true
+//        saveFromContactItem.name = "saveFromContact"
+//        
+//        
+//        let deleteCustomerItem = FormItem(placeholder: "Delete Customer")
+//        deleteCustomerItem.uiProperties.cellType = FormItemCellType.buttonView
+//        deleteCustomerItem.value = ""
+//        deleteCustomerItem.isButtonOnly = true
+//        deleteCustomerItem.color = UIColor.red
+//        deleteCustomerItem.name = "deletecustsomer"
+        
+        self.formItems = [fullNameItem,lastNameItem, emailItem,cellPhoneitem,phoneItem,categoryLabelItem,notesItem]
     }
 }

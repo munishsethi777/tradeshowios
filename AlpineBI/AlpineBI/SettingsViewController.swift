@@ -140,6 +140,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
             }
         })
     }
+    
     func loadEnumData(){
         let args: [Int] = [self.loggedInUserSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_TIMEZONES, args: args)
@@ -167,6 +168,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
             }
         })
     }
+    
     func getUserDetail(){
         self.progressHUD.show()
         let args: [Int] = [self.loggedInUserSeq]

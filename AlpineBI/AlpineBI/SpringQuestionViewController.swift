@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBackProtocol{
-    func updateValue(valueSent: String, indexPath: IndexPath) {
-        form.formItems[indexPath.row].value = valueSent
-        tableView?.beginUpdates()
-        tableView?.endUpdates()
-    }
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
@@ -79,7 +74,12 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
     func addDoneButton(){
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveSpringQuestion))
     }
-    
+    func buttonTapped(indexPath: IndexPath) {}
+    func updateValue(valueSent: String, indexPath: IndexPath) {
+        form.formItems[indexPath.row].value = valueSent
+        tableView?.beginUpdates()
+        tableView?.endUpdates()
+    }
     @objc private func saveSpringQuestion(){
         var arr = self.form.toArray(swiftClass: self.form);
         arr["seq"] = self.selectedCategorySeq
@@ -160,6 +160,37 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
         tableView.reloadData()
     }
     
+    func getSelectedValueForMenu(fieldName:String)->String?{
+        if let selectedValueStr = editProgData[fieldName] as? String{
+            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
+            var selectedValues:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for value in selctedValuesArr {
+                selectedValues.append(enumData[value]!)
+            }
+            let valueStr = selectedValues.joined(separator: ", ")
+            self.editProgData[fieldName] = valueStr
+            return valueStr
+        }
+        return nil
+    }
+    func getSelectedNameForMenu(fieldName:String,value:String?)->String?{
+        if value != nil && !value!.isEmpty{
+            let selctedValuesNameArr = value!.components(separatedBy: ",")
+            var selectedValuesName:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for var value in selctedValuesNameArr {
+                value = value.trimmingCharacters(in: .whitespacesAndNewlines)
+                let selectedValueName =  enumData.keysForValue(value:value).first
+                selectedValuesName.append(selectedValueName!)
+            }
+            let nameStr = selectedValuesName.joined(separator: ",")
+            //self.editProgData[fieldName] = nameStr
+            return nameStr
+        }
+        return nil
+    }
+    
     private func excecuteSaveCall(jsonstring: String!){
         self.progressHUD.show()
         let json = jsonstring.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
@@ -231,36 +262,7 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
             }
         })
     }
-    func getSelectedValueForMenu(fieldName:String)->String?{
-        if let selectedValueStr = editProgData[fieldName] as? String{
-            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
-            var selectedValues:[String] = []
-            let enumData = enums[fieldName] as! [String:String];
-            for value in selctedValuesArr {
-                selectedValues.append(enumData[value]!)
-            }
-            let valueStr = selectedValues.joined(separator: ", ")
-            self.editProgData[fieldName] = valueStr
-            return valueStr
-        }
-        return nil
-    }
-    func getSelectedNameForMenu(fieldName:String,value:String?)->String?{
-        if value != nil && !value!.isEmpty{
-            let selctedValuesNameArr = value!.components(separatedBy: ",")
-            var selectedValuesName:[String] = []
-            let enumData = enums[fieldName] as! [String:String];
-            for var value in selctedValuesNameArr {
-                value = value.trimmingCharacters(in: .whitespacesAndNewlines)
-                let selectedValueName =  enumData.keysForValue(value:value).first
-                selectedValuesName.append(selectedValueName!)
-            }
-            let nameStr = selectedValuesName.joined(separator: ",")
-            //self.editProgData[fieldName] = nameStr
-            return nameStr
-        }
-        return nil
-    }
+    
 }
 
 extension SpringQuestionViewController: UITableViewDataSource {

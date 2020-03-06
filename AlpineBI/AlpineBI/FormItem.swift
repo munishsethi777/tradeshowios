@@ -11,6 +11,8 @@ class FormItem: FormValidable {
     var isMandatory = true
     var isPicker = false
     var isLabel = false
+    var isButtonOnly = false
+    var color:UIColor?
     var isValid = true //FormValidable
     var isMultiSelect = false
     var isDatePickerView = false

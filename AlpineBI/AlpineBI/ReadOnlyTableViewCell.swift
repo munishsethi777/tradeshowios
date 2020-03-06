@@ -21,13 +21,14 @@ class ReadOnlyTableViewCell: UITableViewCell, FormConformity,UITextFieldDelegate
 extension ReadOnlyTableViewCell: FormUpdatable {
     func update(with formItem: FormItem,isSetCaption:Bool = false) {
         self.formItem = formItem
-        if(self.formItem != nil && !self.formItem!.isPicker){
-            captionLabelField.text = self.formItem?.placeholder
-            self.labelField.text = self.formItem?.value
-            self.labelField.tintColor = self.formItem?.uiProperties.tintColor
-        }else{
-            captionLabelField.text = ""
-            self.labelField.text = ""
+        captionLabelField.text = ""
+        self.labelField.text = ""
+        if(!formItem.isButtonOnly){
+            if(self.formItem != nil && !self.formItem!.isPicker){
+                captionLabelField.text = self.formItem?.placeholder
+                self.labelField.text = self.formItem?.value
+                self.labelField.tintColor = self.formItem?.uiProperties.tintColor
+            }
         }
     }
 }
