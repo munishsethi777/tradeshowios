@@ -198,6 +198,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
     }
     
     func loadBuyers(jsonReponse:[String:Any]){
+        buyerDetailSt =  []
         let buyers = jsonReponse["buyers"] as! [Any]
         for j in 0..<buyers.count{
             let buyerJson = buyers[j] as! [String: Any]
