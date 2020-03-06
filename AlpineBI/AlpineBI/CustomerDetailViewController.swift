@@ -207,10 +207,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
             buyerDetailSt.append(detail)
         }
         addFormButtonsLinks()
-        if(buyers.count > 0){
+        //if(buyers.count > 0){
             addDeleteButtonLink()
             lastIndexOfBuyerArr = buyerDetailSt.count - 1
-        }
+        //}
         buyerTableView.dataSource = self
         buyerTableView.delegate = self
         buyerTableView.reloadData()
