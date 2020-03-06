@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBackProtocol{
+    func buttonTapped(indexPath: IndexPath) {
+    }
+    
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";

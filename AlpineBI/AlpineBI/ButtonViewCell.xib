@@ -13,37 +13,34 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="yxp-fd-zTS" customClass="FormButtonViewTableViewCell" customModule="AlpineBI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="489" height="83"/>
+            <rect key="frame" x="0.0" y="0.0" width="483" height="83"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baC-lg-Sxi">
-                    <rect key="frame" x="0.0" y="0.0" width="489" height="49"/>
+                    <rect key="frame" x="0.0" y="0.0" width="483" height="49"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2s-ip-0FC">
-                            <rect key="frame" x="18" y="7" width="453" height="16"/>
+                            <rect key="frame" x="18" y="7" width="447" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avT-gC-aYh">
-                            <rect key="frame" x="18" y="23" width="453" height="29"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2c-Bc-0C1">
+                            <rect key="frame" x="18" y="26" width="447" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="buttonViewTapped:" destination="yxp-fd-zTS" eventType="touchUpInside" id="QSa-bb-3hC"/>
-                            </connections>
-                        </button>
+                            <color key="textColor" red="0.21840506792068481" green="0.54863566160202026" blue="0.92042714357376099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="avT-gC-aYh" secondAttribute="bottom" constant="7" id="DGx-Bo-l2o"/>
+                        <constraint firstItem="Y2c-Bc-0C1" firstAttribute="leading" secondItem="baC-lg-Sxi" secondAttribute="leading" constant="18" id="Dwy-hC-np6"/>
                         <constraint firstItem="r2s-ip-0FC" firstAttribute="top" secondItem="baC-lg-Sxi" secondAttribute="top" constant="7" id="Eej-ex-Rk0"/>
-                        <constraint firstItem="avT-gC-aYh" firstAttribute="leading" secondItem="baC-lg-Sxi" secondAttribute="leading" constant="18" id="Ju7-xG-wUQ"/>
-                        <constraint firstItem="avT-gC-aYh" firstAttribute="top" secondItem="r2s-ip-0FC" secondAttribute="bottom" id="O9U-Rh-etJ"/>
+                        <constraint firstAttribute="trailing" secondItem="Y2c-Bc-0C1" secondAttribute="trailing" constant="18" id="Egb-M3-g3a"/>
+                        <constraint firstItem="Y2c-Bc-0C1" firstAttribute="top" secondItem="r2s-ip-0FC" secondAttribute="bottom" constant="3" id="Lro-hr-qDl"/>
                         <constraint firstItem="r2s-ip-0FC" firstAttribute="leading" secondItem="baC-lg-Sxi" secondAttribute="leading" constant="18" id="Was-Fk-KMJ"/>
                         <constraint firstAttribute="trailing" secondItem="r2s-ip-0FC" secondAttribute="trailing" constant="18" id="lZc-VT-hSv"/>
-                        <constraint firstAttribute="trailing" secondItem="avT-gC-aYh" secondAttribute="trailing" constant="18" id="mTb-Zw-H29"/>
-                        <constraint firstItem="avT-gC-aYh" firstAttribute="top" secondItem="r2s-ip-0FC" secondAttribute="bottom" constant="7" id="wnP-oZ-YE6"/>
+                        <constraint firstAttribute="bottom" secondItem="Y2c-Bc-0C1" secondAttribute="bottom" id="uCs-I9-u5A"/>
                     </constraints>
                 </view>
             </subviews>
@@ -59,10 +56,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Z7s-8r-g9x"/>
             <connections>
-                <outlet property="buttonView" destination="avT-gC-aYh" id="SK7-pz-pO1"/>
                 <outlet property="labelField" destination="r2s-ip-0FC" id="JNo-rd-OlI"/>
+                <outlet property="labelbutton" destination="Y2c-Bc-0C1" id="wVE-Xo-4Lb"/>
             </connections>
-            <point key="canvasLocation" x="-781.8840579710145" y="-1069.7544642857142"/>
+            <point key="canvasLocation" x="-786.23188405797111" y="-1069.7544642857142"/>
         </view>
     </objects>
 </document>

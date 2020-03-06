@@ -27,6 +27,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
     var picker:UIImagePickerController?=UIImagePickerController()
     var isImageSet:Bool = false
     @IBOutlet weak var uiImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
@@ -49,9 +50,12 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
         loadEnumData()
     }
     
+    
+    
     @objc func connected(_ sender:AnyObject){
         editImage()
     }
+    
     func cancel(){
         print("Cancel Clicked")
     }
@@ -77,6 +81,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
         }
         self.present(alert, animated: true, completion: nil)
     }
+    
     func tapGesture(gesture: UIGestureRecognizer) {
         editImage()
     }
@@ -102,10 +107,10 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
             dismiss(animated: true, completion: nil)
         }
     }
+    
     func presentCropViewController() {
         let cropViewController = CropViewController(image: uiImage)
         cropViewController.delegate = self
-        cropViewController.isModalInPopover = true
         self.present(cropViewController, animated: true, completion: nil)
     }
     
@@ -132,7 +137,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
         buyerArr["lastname"] = self.form.lastname
         buyerArr["email"] = self.form.email
         buyerArr["cellphone"] = self.form.cellphone
-        buyerArr["officephone"] = self.form.phone
+        buyerArr["officephone"] = self.form.officephone
         buyerArr["category"] = self.form.category
         buyerArr["seq"] = editBuyerSeq
         buyerArr["customerseq"] = customerSeq
@@ -141,13 +146,14 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
         let jsonString = JsonUtil.toJsonString(jsonObject: buyerArr);
         excecuteSaveBuyerCall(jsonstring: jsonString)
     }
+    
     func loadFormOnEdit(response:[String:Any]){
         editBuyerData = response["buyer"] as! [String:Any]
         self.form.firstname = editBuyerData["firstname"] as? String
         self.form.lastname = editBuyerData["lastname"] as? String
         self.form.email = editBuyerData["email"] as? String
         self.form.cellphone = editBuyerData["cellphone"] as? String
-        self.form.phone = editBuyerData["officephone"] as? String
+        self.form.officephone = editBuyerData["officephone"] as? String
         self.form.category = editBuyerData["category"] as? String
         self.form.notes = editBuyerData["notes"] as? String
         self.addBuyerTableView.reloadData()
@@ -164,6 +170,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
             }
         }
     }
+    
     @objc func keyboardWillShow(notification:NSNotification){
         var userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -237,7 +244,6 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
     }
     
     private func excecuteSaveBuyerCall(jsonstring: String!){
-       
         self.progressHUD.show()
         let json = jsonstring.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let args: [Any] = [self.loggedInUserSeq,json]
@@ -263,9 +269,11 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
             }
         })
     }
-   override func viewDidAppear(_ animated: Bool) {
+    
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
     @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -273,6 +281,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
     @IBAction func doneTapped(_ sender: Any) {
         saveBuyer()
     }
+    
     private func toggleShowDateDatepicker (selectedIndex:Int) {
         if(selectedIndex == 5){
             dpShowCategoryTypeVisible = !dpShowCategoryTypeVisible
@@ -305,6 +314,7 @@ class AddBuyerViewController: UIViewController,UITableViewDelegate,UIImagePicker
             
         }
     }
+    
     func buttonTappedCallBack(fieldName:String?){
         if(fieldName == "category"){
             dpShowCategoryTypeVisible = !dpShowCategoryTypeVisible
@@ -352,9 +362,9 @@ extension AddBuyerViewController: UITableViewDataSource {
         var cell: UITableViewCell
         let pickerViewData:[String:String] = categoryTypes
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
-            if(item.isPicker  && cellType == FormItemCellType.pickerView){
-                item.value = editBuyerData["category"] as? String
-            }
+           if(item.isPicker  && cellType == FormItemCellType.pickerView){
+               item.value = editBuyerData["category"] as? String
+           }
            cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData)
            if let pickerViewCell = cell as? FormPickerViewTableViewCell {
                 pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)

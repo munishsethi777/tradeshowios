@@ -65,6 +65,8 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
         }
         return [:]
     }
+    func buttonTapped(indexPath: IndexPath) {
+    }
     func loadEnumData(){
         let args: [Int] = [self.loggedInUserSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_ENUMS_FOR_OPPURTUNITY_QUESTION, args: args)

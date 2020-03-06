@@ -27,7 +27,7 @@ extension FormLabelFieldTableViewCell: FormUpdatable {
                  self.labelField.text = self.formItem?.value
                  self.labelField.textColor = .black
             }else{
-               // self.labelField.text = self.formItem?.placeholder
+                //self.labelField.text = self.formItem?.placeholder
                 self.labelField.font = UIFont(name:"Helvetica",size: 13.0)
                 self.labelField.textColor = .init(white: 0.740, alpha: 1.0)
             }

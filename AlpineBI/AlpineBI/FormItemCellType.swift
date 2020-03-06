@@ -14,6 +14,7 @@ protocol FormUpdatable {
 }
 protocol CallBackProtocol {
     func updateValue(valueSent: String,indexPath:IndexPath)
+    func buttonTapped(indexPath: IndexPath);
 }
 
 /// Conform receiver to have a form item property
@@ -89,6 +90,7 @@ enum FormItemCellType {
                 let cell:FormButtonViewTableViewCell
                 let cellIdentifier = "ButtonViewCell"
                 cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FormButtonViewTableViewCell
+                cell.indexPath = indexPath
                 return cell
             case .selectionView:
                 let cell:RSSelectionMenuCellView
