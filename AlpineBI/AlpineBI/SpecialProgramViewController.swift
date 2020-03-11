@@ -12,9 +12,11 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBac
     func buttonTapped(indexPath: IndexPath) {
     }
     
+    @IBOutlet weak var storeNameLabel: UILabel!
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
+    var storeName:String = "";
     var progressHUD: ProgressHUD!
     var editProgSeq:Int = 0
     var form = SpecialProgramForm()
@@ -27,6 +29,7 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBac
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         progressHUD = ProgressHUD(text: "Processing")
         customerNameLabel.text = customerName
+        storeNameLabel.text = storeName
         addEditButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)

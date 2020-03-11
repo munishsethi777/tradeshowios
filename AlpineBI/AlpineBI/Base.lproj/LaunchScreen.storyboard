@@ -604,7 +604,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9SH-7H-DIr">
-                                <rect key="frame" x="0.0" y="82" width="375" height="565"/>
+                                <rect key="frame" x="0.0" y="113" width="375" height="534"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="customer name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnU-Vx-Wy0">
@@ -613,9 +613,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwJ-Zg-7Qu" userLabel="StoreName">
+                                <rect key="frame" x="0.0" y="81.5" width="375" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="kwJ-Zg-7Qu" firstAttribute="leading" secondItem="7wK-Xn-CEj" secondAttribute="leading" id="1ru-IP-vza"/>
                             <constraint firstItem="ZnU-Vx-Wy0" firstAttribute="leading" secondItem="7wK-Xn-CEj" secondAttribute="leading" id="1zc-Mf-WIl"/>
                             <constraint firstItem="9SH-7H-DIr" firstAttribute="leading" secondItem="7wK-Xn-CEj" secondAttribute="leading" id="916-gH-AVM"/>
                             <constraint firstItem="9SH-7H-DIr" firstAttribute="width" secondItem="7wK-Xn-CEj" secondAttribute="width" id="BtE-wL-pL8"/>
@@ -623,20 +630,24 @@
                             <constraint firstItem="ZnU-Vx-Wy0" firstAttribute="trailing" secondItem="7wK-Xn-CEj" secondAttribute="trailing" id="dhW-Eb-5gE"/>
                             <constraint firstAttribute="bottom" secondItem="9SH-7H-DIr" secondAttribute="bottom" constant="20" symbolic="YES" id="fZy-Kg-Wne"/>
                             <constraint firstItem="ZnU-Vx-Wy0" firstAttribute="width" secondItem="7wK-Xn-CEj" secondAttribute="width" id="jRZ-64-ew2"/>
+                            <constraint firstItem="kwJ-Zg-7Qu" firstAttribute="trailing" secondItem="7wK-Xn-CEj" secondAttribute="trailing" id="oTQ-Os-K1e"/>
                             <constraint firstItem="9SH-7H-DIr" firstAttribute="trailing" secondItem="7wK-Xn-CEj" secondAttribute="trailing" id="qsr-bM-MkJ"/>
-                            <constraint firstItem="9SH-7H-DIr" firstAttribute="top" secondItem="ZnU-Vx-Wy0" secondAttribute="bottom" constant="8" id="zK8-cz-FR9"/>
+                            <constraint firstItem="kwJ-Zg-7Qu" firstAttribute="width" secondItem="7wK-Xn-CEj" secondAttribute="width" id="t0t-hQ-fB1"/>
+                            <constraint firstItem="9SH-7H-DIr" firstAttribute="top" secondItem="kwJ-Zg-7Qu" secondAttribute="bottom" constant="8" id="w3e-me-3jd"/>
+                            <constraint firstItem="kwJ-Zg-7Qu" firstAttribute="top" secondItem="ZnU-Vx-Wy0" secondAttribute="bottom" constant="4" id="wiM-1P-AGM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7wK-Xn-CEj"/>
                     </view>
                     <navigationItem key="navigationItem" id="fvK-sj-kYK"/>
                     <connections>
                         <outlet property="customerNameLabel" destination="ZnU-Vx-Wy0" id="kEo-iP-MTK"/>
+                        <outlet property="storeNameLabel" destination="kwJ-Zg-7Qu" id="ZKP-SO-tbl"/>
                         <outlet property="tableView" destination="9SH-7H-DIr" id="CRy-MZ-0VY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIe-bW-VK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2022" y="2331"/>
+            <point key="canvasLocation" x="-2023.2" y="2330.2848575712146"/>
         </scene>
         <!--Christmas Questions-->
         <scene sceneID="AW5-hx-kmq">
@@ -849,7 +860,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fG-FPW">
-                                <rect key="frame" x="0.0" y="64" width="361" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-fP-mHo" userLabel="buyeraction">
                                         <rect key="frame" x="8" y="8" width="360" height="272"/>
