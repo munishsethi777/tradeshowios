@@ -28,6 +28,10 @@ class SettingForm {
         self.configureItems()
         self.title = "Settings"
     }
+    func reload() {
+        self.configureItems()
+    }
+    
     
     // MARK: Form Validation
     @discardableResult
@@ -77,23 +81,13 @@ class SettingForm {
         
         // TimeZone
         let timezoneLabelItem = FormItem(placeholder: "Time Zone")
-        timezoneLabelItem.uiProperties.cellType = FormItemCellType.buttonView
+        timezoneLabelItem.uiProperties.cellType = FormItemCellType.selectionView
         timezoneLabelItem.value = self.usertimezone
         timezoneLabelItem.name = "usertimezone"
         timezoneLabelItem.valueCompletion = { [weak self, weak timezoneLabelItem] value in
             self?.usertimezone = value
             timezoneLabelItem?.value = value
         }
-        // Time Zone
-        let timezoneItem = FormItem(placeholder: "Time Zone")
-        timezoneItem.uiProperties.cellType = FormItemCellType.pickerView
-        timezoneItem.value = self.usertimezone
-        timezoneItem.name = "usertimezonepicker"
-        timezoneItem.isPicker = true
-        timezoneItem.valueCompletion = { [weak self, weak timezoneItem] value in
-            self?.usertimezone = value
-            timezoneItem?.value = value
-        }
-        self.formItems = [fullNameItem, emailItem, mobileitem,timezoneLabelItem,timezoneItem]
+        self.formItems = [fullNameItem, emailItem, mobileitem,timezoneLabelItem]
     }
 }

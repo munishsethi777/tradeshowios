@@ -96,7 +96,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
     @objc func refreshView(control:UIRefreshControl){
         customerDetailSt = []
         buyerDetailSt = []
-        getCustomerDetail()
+        loadEnumData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -336,6 +336,9 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
                         self.getCustomerDetail()
                         self.addEditButton()
                         self.progressHUD.hide()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }

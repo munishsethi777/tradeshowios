@@ -235,7 +235,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,CNContact
     }
     func reloadData(){
         buyerDetailSt = []
-        getBuyerDetail()
+        loadEnumData()
     }
     @IBAction func sms1Button(_ sender: Any) {
         sendSMS()
@@ -395,6 +395,9 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,CNContact
                         self.buyerDetailTableView.delegate = self
                         self.getBuyer()
                         self.progressHUD.hide()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }

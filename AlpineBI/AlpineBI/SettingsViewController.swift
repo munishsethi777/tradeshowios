@@ -8,7 +8,15 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController ,UITableViewDelegate{
+class SettingsViewController: UIViewController ,UITableViewDelegate,CallBackProtocol{
+    
+   
+    @IBAction func updateTapped(_ sender: UIBarButtonItem) {
+        updateUser()
+    }
+    
+    @IBOutlet weak var updateTapped: UIBarButtonItem!
+    
     var loggedInUserSeq:Int = 0
     var progressHUD: ProgressHUD!
     private var form = SettingForm()
@@ -16,6 +24,8 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
     private var timeZones:[String:String] = [:]
     private var dpShowTimeZoneVisible = false
     private var selectedIndex = 0;
+    var refreshControl:UIRefreshControl!
+    var enums:[String:Any] = [:]
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,11 +34,24 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
         progressHUD = ProgressHUD(text: "Processing")
         self.view.addSubview(progressHUD)
         hideKeyboardWhenTappedAround()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
+        loadEnumData()
     }
+    @objc func refreshView(control:UIRefreshControl){
+        reloadData()
+    }
+    func reloadData(){
+        loadEnumData()
+    }
+    
     @objc func keyboardWillShow(notification:NSNotification){
         var userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -52,12 +75,9 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadEnumData()
+       // loadEnumData()
     }
     
-    @IBAction func updateTapped(_ sender: Any) {
-        updateUser()
-    }
     func initPickerViewData(){
         timeZones["Asia/Yekaterinburg"] = "(GMT+05:00) Ekaterinburg"
         timeZones["Asia/Tashkent"] = "(GMT+05:00) Tashkent"
@@ -112,7 +132,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
         buyerArr["fullname"] = self.form.fullname
         buyerArr["email"] = self.form.email
         buyerArr["mobile"] = self.form.mobile
-        buyerArr["usertimezone"] = self.form.usertimezone
+        buyerArr["usertimezone"] = getSelectedNameForMenu(fieldName: "usertimezone", value: self.form.usertimezone)
         let jsonString = JsonUtil.toJsonString(jsonObject: buyerArr);
         excecuteUpdateUserCall(jsonstring: jsonString)
     }
@@ -153,12 +173,15 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        self.timeZones = json["timezones"] as! [String:String]
+                        self.enums["usertimezone"] = json["timezones"] as! [String:String]
                         self.prepareSubViews()
                         self.tableView.dataSource = self
                         self.tableView.delegate = self
                         self.getUserDetail()
                         self.progressHUD.hide()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }
@@ -198,8 +221,52 @@ class SettingsViewController: UIViewController ,UITableViewDelegate{
         self.form.fullname = editSettingsData["fullname"] as? String
         self.form.email = editSettingsData["email"] as? String
         self.form.mobile = editSettingsData["mobile"] as? String
-        self.form.usertimezone = editSettingsData["usertimezone"] as? String
+        self.form.usertimezone = getSelectedValueForMenu(fieldName: "usertimezone")
+        self.form.reload()
         self.tableView.reloadData()
+    }
+    func getSelectedValueForMenu(fieldName:String)->String?{
+        if let selectedValueStr = editSettingsData[fieldName] as? String{
+            let selctedValuesArr = selectedValueStr.components(separatedBy: ",")
+            var selectedValues:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for value in selctedValuesArr {
+                selectedValues.append(enumData[value]!)
+            }
+            let valueStr = selectedValues.joined(separator: ", ")
+            self.editSettingsData[fieldName] = valueStr
+            return valueStr
+        }
+        return nil
+    }
+    func getSelectedNameForMenu(fieldName:String,value:String?)->String?{
+        if value != nil && !value!.isEmpty{
+            let selctedValuesNameArr = value!.components(separatedBy: ",")
+            var selectedValuesName:[String] = []
+            let enumData = enums[fieldName] as! [String:String];
+            for var value in selctedValuesNameArr {
+                value = value.trimmingCharacters(in: .whitespacesAndNewlines)
+                let selectedValueName =  enumData.keysForValue(value:value).first
+                selectedValuesName.append(selectedValueName!)
+            }
+            let nameStr = selectedValuesName.joined(separator: ",")
+            //self.editProgData[fieldName] = nameStr
+            return nameStr
+        }
+        return nil
+    }
+    func updateValue(valueSent: String, indexPath: IndexPath) {
+        self.form.formItems[indexPath.row].value = valueSent;
+    }
+    func buttonTapped(indexPath: IndexPath) {}
+    func getPickerViewData(formItem:FormItem)->[String:String]{
+        // if(formItem.isPicker || formItem.isLabel){
+        let name = formItem.name!
+        if let pickerData = enums[name]{
+            return pickerData as! [String : String]
+        }
+        //}
+        return [:]
     }
 }
 extension SettingsViewController: UITableViewDataSource {
@@ -212,36 +279,24 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let isSetCaption = true
+        var isSetCaption = true
         let item = self.form.formItems[indexPath.row]
-        let name = item.name
-        if let val = editSettingsData[name!] as? String {
-            item.value = val
-            if(name == "usertimezone" && val != ""){
-                if let v = timeZones[val] {
-                    item.value = v;
-                }
-            }
-        }
         var cell: UITableViewCell
-        let pickerViewData:[String:String] = timeZones
+        let pickerViewData:[String:String] = getPickerViewData(formItem: item)
         if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
-            if(item.isPicker  && cellType == FormItemCellType.pickerView){
-                item.value = editSettingsData["usertimezone"] as? String
-            }
-            cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData)
-            if let pickerViewCell = cell as? FormPickerViewTableViewCell {
-                pickerViewCell.labelFieldCellIndex = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                pickerViewCell.updateCallback = self.UpdateCallback
-                cell = pickerViewCell
-            }
-            if let buttonViewCell = cell as? FormButtonViewTableViewCell {
-                buttonViewCell.buttonTappedCallBack = buttonTappedCallBack
+            cell = cellType.dequeueCell(for: tableView, at: indexPath,pickerViewData: pickerViewData,isReadOnlyView: false)
+            if var selectionViewCell = cell as? CustomCell {
+                if(item.isLabel){
+                    isSetCaption = true
+                }else{
+                    isSetCaption = false
+                }
+                selectionViewCell.parent = self
+                selectionViewCell.delegate = self
             }
         }else{
             cell = UITableViewCell()
         }
-        
         if let formUpdatableCell = cell as? FormUpdatable {
             item.indexPath = indexPath
             formUpdatableCell.update(with: item,isSetCaption:isSetCaption)
