@@ -458,7 +458,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,CNContact
        }
        form.reload()
        buyerDetailTableView.reloadData()
-       let scrollViewHeight = buyerActionView.frame.height + buyerDetailTableView.frame.height + 18;
+       let scrollViewHeight = buyerActionView.frame.height + buyerDetailTableView.frame.height;
        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight)
     }
     

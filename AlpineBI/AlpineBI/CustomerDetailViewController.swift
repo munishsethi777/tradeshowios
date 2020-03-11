@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 class CustomerDetailViewController : UIViewController , UITableViewDelegate, CallBackProtocol{
-    
-    
     @IBAction func addBuyerTapped(_ sender: Any) {
         selectedBuyerSeq = 0
         self.performSegue(withIdentifier: "BuyerDetailViewController", sender: self)
     }
     func buttonTapped(indexPath index: IndexPath) {}
+    
+    @IBOutlet weak var addBuyerButton: UIButton!
+    @IBOutlet weak var buyersLabel: UILabel!
     var selectedCustomerSeq:Int = 0;
+    var isNew:Bool = false;
     var loggedInUserSeq:Int = 0;
     var progressHUD: ProgressHUD!
     var customerDetailSt: [IDNamePair]!
@@ -43,6 +45,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
     var enums:[String:Any] = [:]
     var editCustomerData:[String:Any] = [:]
     var isReadOnly = true;
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         prepareSubViews()
@@ -60,8 +63,12 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
             scrollView.refreshControl = refreshControl
         }
         self.view.addSubview(progressHUD)
+        isReadOnly = !isNew
+        buyersLabel.isHidden = isNew
+        addBuyerButton.isHidden = isNew
         loadEnumData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //customerDetailSt = []
@@ -72,10 +79,18 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
     @objc func editTapped(){
         isReadOnly = false
         self.detailTableView.reloadData()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveCustomer))
+        addDoneButton();
     }
     func addEditButton(){
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        if(self.selectedCustomerSeq > 0){
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        }else{
+            addDoneButton()
+        }
+    }
+    
+    func addDoneButton(){
+          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveCustomer))
     }
     
     @objc func refreshView(control:UIRefreshControl){
@@ -140,13 +155,33 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
                         self.addEditButton()
                     }
                     self.progressHUD.hide()
-                    GlobalData.showAlert(view: self, message: message!)
+                    self.showAlertMessage(view: self, message: message!)
                 }
             } catch let parseError as NSError {
                 GlobalData.showAlert(view: self, message: parseError.description)
             }
         })
     }
+    
+    func showAlertMessage(view:UIViewController,message:String,nextViewControllerSegueId:String? = nil){
+        let alert = UIAlertController(title: "Success", message: message, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+            if(self.isNew){
+                self.isNew = false
+                self.goToDetailView()
+            }
+        }
+        alert.addAction(action)
+        view.present(alert, animated: true, completion: nil)
+    }
+    
+    func goToDetailView(){
+        let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabViewController") as! DashboardTabController
+        nextViewController.selectedCustomerSeq = selectedCustomerSeq
+        nextViewController.isGoToDetailView = true
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.detailTableView)
         self.detailTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -155,6 +190,10 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
     }
     
     func getCustomerDetail(){
+        if(self.selectedCustomerSeq == 0){
+            detailTableView.reloadData()
+            return;
+        }
         self.view.addSubview(progressHUD)
         let args: [Int] = [self.loggedInUserSeq,self.selectedCustomerSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_CUSTOMER_DETAIL_AND_BUYERS, args: args)
@@ -275,9 +314,8 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
         detail.id = String(selectedCustomerSeq)
         detail.value = CHRISTMAS_QUESTIONNAIRE
         buyerDetailSt.append(detail)
-        
-        
     }
+    
     func loadEnumData(){
         let args: [Int] = [self.loggedInUserSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_BUSINESS_TYPES, args: args)
@@ -307,6 +345,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
             }
         })
     }
+    
     func deleteCustomerConfirm(){
         let refreshAlert = UIAlertController(title: "Delete Customer", message: StringConstants.DELETE_CUSTOMER_CONFIRM, preferredStyle: UIAlertController.Style.alert)
         

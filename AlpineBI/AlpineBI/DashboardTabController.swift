@@ -25,6 +25,11 @@ class DashboardTabController : UITabBarController,UITabBarControllerDelegate{
                 isGoToDetailView = false
             }
         }
+        if(self.selectedIndex == 1){
+            let viewController1 = self.selectedViewController as! CustomerDetailViewController
+            viewController1.isNew = true
+            viewController1.selectedCustomerSeq = 0;
+        }
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is SignOutViewController {
@@ -40,9 +45,21 @@ class DashboardTabController : UITabBarController,UITabBarControllerDelegate{
             }))
             present(refreshAlert, animated: true, completion: nil)
             return false;
-        }else{
-            return true;
         }
-        
+        return true;
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let navController  = viewController as? UINavigationController{
+            if let controller = navController.visibleViewController as? CustomerDetailViewController{
+                if(tabBarController.selectedIndex == 0){
+                    controller.isNew = false
+                }else{
+                    controller.isNew = true
+                    controller.selectedCustomerSeq = 0
+                }
+            }
+        }
+    }
+
 }
