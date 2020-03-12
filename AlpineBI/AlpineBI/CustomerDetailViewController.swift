@@ -180,6 +180,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
         let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabViewController") as! DashboardTabController
         nextViewController.selectedCustomerSeq = selectedCustomerSeq
         nextViewController.isGoToDetailView = true
+        nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated: true, completion: nil)
     }
     
