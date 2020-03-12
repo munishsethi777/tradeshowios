@@ -148,14 +148,15 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
                 success = json["success"] as! Int
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.progressHUD.hide()
                     if(success == 1){
                         self.selectedCustomerSeq = Int(json["customerseq"] as! Int)
                         self.isReadOnly = true
                         self.loadEnumData()
                         self.addEditButton()
+                        self.showAlertMessage(view: self, message: message!)
                     }
-                    self.progressHUD.hide()
-                    self.showAlertMessage(view: self, message: message!)
+                    GlobalData.showAlert(view: self, message: message!, success: success)
                 }
             } catch let parseError as NSError {
                 GlobalData.showAlert(view: self, message: parseError.description)
