@@ -275,18 +275,22 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
         }
         if let secondController = segue.destination as? ChristmasQuestionViewController {
             secondController.customerName = customerNameLabel.text!
+            secondController.storeName = storeNameLabel.text ?? ""
             secondController.customerSeq =  selectedCustomerSeq
         }
         if let secondController = segue.destination as? SpecialProgramViewContorller {
             secondController.customerName = customerNameLabel.text!
+            secondController.storeName = storeNameLabel.text ?? ""
             secondController.customerSeq =  selectedCustomerSeq
         }
         if let secondController = segue.destination as? OppurtunityQuestionViewController {
             secondController.customerNameStr = customerNameLabel.text!
+            secondController.storeNameStr = storeNameLabel.text ?? ""
             secondController.customerSeq =  selectedCustomerSeq
         }
         if let secondController = segue.destination as? ShowSpringQestionsViewController {
             secondController.customerName = customerNameLabel.text!
+            secondController.storeName = storeNameLabel.text ?? ""
             secondController.customerSeq =  selectedCustomerSeq
         }
     

@@ -15,6 +15,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
+    var storeName:String = "";
     var progressHUD: ProgressHUD!
     var editProgSeq:Int = 0
     var form = ChristmasQuestionForm()
@@ -22,6 +23,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
     var editProgData:[String:Any] = [:]
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var storeNameLabel: UILabel!
     var enums:[String:Any] = [:]
     var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
@@ -30,6 +32,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         progressHUD = ProgressHUD(text: "Processing")
         customerNameLabel.text = customerName
+        storeNameLabel.text = storeName
         addEditButton()
         isReadOnly = true
         loadEnumData()

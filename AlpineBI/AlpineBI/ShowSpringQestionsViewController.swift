@@ -12,15 +12,18 @@ class ShowSpringQestionsViewController:UIViewController,UITableViewDelegate{
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
+    var storeName:String = "";
     var progressHUD: ProgressHUD!
     var springQuestions: [IDNamePair]!
     var selectedCategory:Int = 0
     var data:[String:Any]!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customerNameLabel: UILabel!
-     var refreshControl:UIRefreshControl!
+    @IBOutlet weak var storeNameLabel: UILabel!
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         customerNameLabel.text = customerName
+        storeNameLabel.text = storeName
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         progressHUD = ProgressHUD(text: "Processing")
         prepareSubViews()

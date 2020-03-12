@@ -12,6 +12,7 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerName:String = "";
+    var storeName:String = "";
     var selectedCategorySeq:Int = 0;
     var progressHUD: ProgressHUD!
     var editProgSeq:Int = 0

@@ -12,6 +12,7 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     var loggedInUserSeq:Int = 0
     var customerSeq:Int = 0;
     var customerNameStr:String = "";
+    var storeNameStr:String = "";
     var progressHUD: ProgressHUD!
     var editProgSeq:Int = 0
     var form = OppurtunityQuestionForm()
@@ -22,6 +23,7 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         customerName.text = customerNameStr
+        storeName.text = storeNameStr
         prepareSubViews()
         addEditButton()
         isReadOnly = true
@@ -35,6 +37,7 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     }
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customerName: UILabel!
+    @IBOutlet weak var storeName: UILabel!
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
