@@ -23,6 +23,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var enums:[String:Any] = [:]
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareSubViews()
@@ -37,10 +38,18 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewDidLoad()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
     }
-    
-    
-    
+    @objc func refreshView(control:UIRefreshControl){
+        reloadData()
+    }
+    func reloadData(){
+        loadEnumData()
+    }
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -146,6 +155,9 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
                         self.tableView.delegate = self
                         self.getChristmasQuestionDetails()
                         self.progressHUD.hide()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }

@@ -66,6 +66,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,CallBackProt
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         tableView.contentInset = contentInset
     }
+    
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -73,6 +74,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,CallBackProt
         self.tableView.estimatedRowHeight = 90
         initPickerViewData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // loadEnumData()

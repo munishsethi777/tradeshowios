@@ -18,6 +18,7 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     var isReadOnly = true;
     var editProgData:[String:Any] = [:]
     var emums:[String:Any] = [:]
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         customerName.text = customerNameStr
@@ -26,6 +27,11 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
         isReadOnly = true
         self.loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loadEnumData()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
     }
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customerName: UILabel!
@@ -39,7 +45,12 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+    @objc func refreshView(control:UIRefreshControl){
+        reloadData()
+    }
+    func reloadData(){
+        loadEnumData()
+    }
     func addEditButton(){
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
     }
@@ -85,6 +96,9 @@ class OppurtunityQuestionViewController: UIViewController,CallBackProtocol {
                         self.tableView.dataSource = self
                         self.getChristmasQuestionDetails()
                         self.tableView.reloadData()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }

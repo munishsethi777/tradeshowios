@@ -24,6 +24,7 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBac
     @IBOutlet weak var customerNameLabel: UILabel!
     var editProgData:[String:Any] = [:]
     var enums:[String:Any] = [:]
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         prepareSubViews()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -35,10 +36,23 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBac
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
         super.viewDidLoad()
         isReadOnly = true
         loadEnumData()
     }
+    
+    @objc func refreshView(control:UIRefreshControl){
+        reloadData()
+    }
+    func reloadData(){
+        loadEnumData()
+    }
+    
     func addEditButton(){
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
     }
@@ -97,6 +111,9 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBac
                         self.tableView.delegate = self
                         self.getSpecialProgDetail()
                         self.progressHUD.hide()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }

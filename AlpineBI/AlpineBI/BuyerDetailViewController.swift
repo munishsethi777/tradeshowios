@@ -40,6 +40,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,CNContact
     var uiImage:UIImage! = UIImage()
     var picker:UIImagePickerController?=UIImagePickerController()
     var tapGestureRecognizer:UITapGestureRecognizer!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();

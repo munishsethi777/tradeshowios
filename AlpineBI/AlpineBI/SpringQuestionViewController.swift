@@ -21,7 +21,7 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
     var editProgData:[String:Any] = [:]
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customerNameLabel: UILabel!
-    
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareSubViews()
@@ -35,8 +35,19 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
         super.viewDidLoad()
         isReadOnly = true
         loadEnumData()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
+    }
+    @objc func refreshView(control:UIRefreshControl){
+        reloadData()
     }
     
+    func reloadData(){
+       loadEnumData()
+    }
     private func prepareSubViews() {
         FormItemCellType.registerCells(for: self.tableView)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -252,6 +263,9 @@ class SpringQuestionViewController : UIViewController,UITableViewDelegate,CallBa
                             self.addDoneButton()
                         }
                         self.progressHUD.hide()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                         self.tableView.reloadData()
                     }else{
                         GlobalData.showAlert(view: self, message: message!)

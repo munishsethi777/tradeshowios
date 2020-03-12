@@ -18,7 +18,7 @@ class ShowSpringQestionsViewController:UIViewController,UITableViewDelegate{
     var data:[String:Any]!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customerNameLabel: UILabel!
-    
+     var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         customerNameLabel.text = customerName
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -28,10 +28,22 @@ class ShowSpringQestionsViewController:UIViewController,UITableViewDelegate{
         springQuestions = []
         //getSpringQuestionDetail()
         data = [:]
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        reloadData()
+    }
+    @objc func refreshView(control:UIRefreshControl){
+        reloadData()
+    }
+    
+    func reloadData(){
         springQuestions = []
         getSpringQuestionDetail()
     }
@@ -84,6 +96,9 @@ class ShowSpringQestionsViewController:UIViewController,UITableViewDelegate{
                     if(success == 1){
                         self.loadFormOnEdit(response: json)
                         self.progressHUD.hide()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }
@@ -139,6 +154,7 @@ class ShowSpringQestionsViewController:UIViewController,UITableViewDelegate{
                         self.springQuestions = []
                         self.getSpringQuestionDetail()
                         self.progressHUD.hide()
+                        
                     }else{
                         GlobalData.showAlert(view: self, message: message!)
                     }
