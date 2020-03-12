@@ -145,7 +145,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,CNContact
         }
     }
     func presentCropViewController() {
-        let cropViewController = CropViewController(image: uiImage)
+        let cropViewController = CropViewController(croppingStyle: TOCropViewCroppingStyle.circular,image: uiImage)
         cropViewController.delegate = self
         self.present(cropViewController, animated: true, completion: nil)
     }
