@@ -33,7 +33,6 @@ class LoginViewController : UIViewController{
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillBeHidden),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
 
     
@@ -58,13 +57,14 @@ class LoginViewController : UIViewController{
         userNameText.text = ""
         passwordTextfield.text = ""
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        if(loggedInUserSeq > 0){
-            self.performSegue(withIdentifier: "MainTabViewController", sender: nil)
-        }
+       // let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        //UIApplication.shared.applicationIconBadgeNumber = 0
+      //  if(loggedInUserSeq > 0){
+           // self.performSegue(withIdentifier: "MainTabViewController", sender: nil)
+       // }
     }
     
     @IBAction func loginAction(_ sender: UIButton) {

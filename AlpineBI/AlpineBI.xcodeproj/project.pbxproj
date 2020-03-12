@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D372038336BEF8112A369854 /* Pods_AlpineBI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3189FD1CE164CF2901C2E3E /* Pods_AlpineBI.framework */; };
 		E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680058723F1610600F943AD /* ViewWithBottomBorder.swift */; };
+		F61D0D12241A43C200295C08 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61D0D11241A43C200295C08 /* SplashScreenViewController.swift */; };
 		F63060B023F1148F0032BCCF /* AddBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */; };
 		F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060B123F11E340032BCCF /* BuyerForm.swift */; };
 		F63060B423F136DB0032BCCF /* MyCustomeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */; };
@@ -99,6 +100,7 @@
 		B3189FD1CE164CF2901C2E3E /* Pods_AlpineBI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpineBI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E680058723F1610600F943AD /* ViewWithBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithBottomBorder.swift; sourceTree = "<group>"; };
 		E6C5D7DF23D9B3820038A920 /* AlpineBI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpineBI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61D0D11241A43C200295C08 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		F63060AF23F1148F0032BCCF /* AddBuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuyerViewController.swift; sourceTree = "<group>"; };
 		F63060B123F11E340032BCCF /* BuyerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerForm.swift; sourceTree = "<group>"; };
 		F63060B323F136DB0032BCCF /* MyCustomeCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomeCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				F68D79BF240D13CA00592826 /* ShowSpringQestionsViewController.swift */,
 				F68D79C1240D20B200592826 /* ShowSpringQuestionForm.swift */,
 				F68D79C3240D2B3700592826 /* ShowSpringQuestionTableViewCell.swift */,
+				F61D0D11241A43C200295C08 /* SplashScreenViewController.swift */,
 			);
 			path = AlpineBI;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				F6EFBACA23F6A39700D4B9EB /* ReadOnlyTableViewCell.swift in Sources */,
 				F6EFBABC23F3F3F600D4B9EB /* SettingsViewController.swift in Sources */,
 				E680058823F1610600F943AD /* ViewWithBottomBorder.swift in Sources */,
+				F61D0D12241A43C200295C08 /* SplashScreenViewController.swift in Sources */,
 				F6319AFF23E82FA9003B2DDF /* PreferencesUtil.swift in Sources */,
 				F63060B223F11E340032BCCF /* BuyerForm.swift in Sources */,
 				F68D79C0240D13CA00592826 /* ShowSpringQestionsViewController.swift in Sources */,
