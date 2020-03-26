@@ -72,6 +72,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,CNContact
         picker?.delegate = self
         loadEnumData()
         imageView.isUserInteractionEnabled = true
+        hideKeyboardWhenTappedAround()
     }
     
     @objc func keyboardWillShow(notification:NSNotification){
@@ -219,8 +220,7 @@ class BuyerDetailViewController : UIViewController,UITableViewDelegate,CNContact
         FormItemCellType.registerCells(for: self.buyerDetailTableView)
         self.buyerDetailTableView.tableFooterView = UIView(frame: CGRect.zero)
         self.buyerDetailTableView.allowsSelection = false
-        self.buyerDetailTableView.estimatedRowHeight = 10
-        //buyerDetailTableView.estimatedRowHeight = 0
+        self.buyerDetailTableView.estimatedRowHeight = 60
         buyerDetailTableView.estimatedSectionHeaderHeight = 0
         buyerDetailTableView.estimatedSectionFooterHeight = 0
         self.buyerDetailTableView.rowHeight = UITableView.automaticDimension

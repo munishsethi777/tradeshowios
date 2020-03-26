@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +24,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2c-Bc-0C1">
-                            <rect key="frame" x="18" y="26" width="447" height="21"/>
+                            <rect key="frame" x="18" y="26" width="447" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.21840506792068481" green="0.54863566160202026" blue="0.92042714357376099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -40,7 +38,7 @@
                         <constraint firstItem="Y2c-Bc-0C1" firstAttribute="top" secondItem="r2s-ip-0FC" secondAttribute="bottom" constant="3" id="Lro-hr-qDl"/>
                         <constraint firstItem="r2s-ip-0FC" firstAttribute="leading" secondItem="baC-lg-Sxi" secondAttribute="leading" constant="18" id="Was-Fk-KMJ"/>
                         <constraint firstAttribute="trailing" secondItem="r2s-ip-0FC" secondAttribute="trailing" constant="18" id="lZc-VT-hSv"/>
-                        <constraint firstAttribute="bottom" secondItem="Y2c-Bc-0C1" secondAttribute="bottom" id="uCs-I9-u5A"/>
+                        <constraint firstAttribute="bottom" secondItem="Y2c-Bc-0C1" secondAttribute="bottom" constant="10" id="rln-mu-eUI"/>
                     </constraints>
                 </view>
             </subviews>

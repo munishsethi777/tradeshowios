@@ -42,6 +42,7 @@ class SpecialProgramViewContorller: UIViewController,UITableViewDelegate,CallBac
             tableView.refreshControl = refreshControl
         }
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         isReadOnly = true
         loadEnumData()
     }

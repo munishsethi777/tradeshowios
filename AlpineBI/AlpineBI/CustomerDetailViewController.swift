@@ -57,6 +57,8 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
         detailTableView.delegate = self
         detailTableView.tableFooterView = UIView()
         buyerTableView.tableFooterView = UIView()
+        hideKeyboardWhenTappedAround()
+
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
@@ -68,6 +70,7 @@ class CustomerDetailViewController : UIViewController , UITableViewDelegate, Cal
         addBuyerButton.isHidden = isNew
         loadEnumData()
     }
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -41,6 +41,7 @@ class ChristmasQuestionViewController : UIViewController,UITableViewDelegate,Cal
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
