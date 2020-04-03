@@ -29,6 +29,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -57,8 +59,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
- 	<array>
-    		<string>whatsapp</string>
- 	</array>
+	<array>
+		<string>whatsapp</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access is required to take profile picture</string>
 </dict>
 </plist>
